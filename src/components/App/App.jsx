@@ -20,6 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import PetForm from '../PetForm/PetForm';
+import PetProfile from '../PetProfile/PetProfile';
 
 import './App.css';
 
