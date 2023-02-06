@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+//components
+import DeleteButton from '../../Buttons/DeleteButton/DeleteButton';
 
 function PetProfile () {
     //declare dispatch
-    dispatch = useDispatch();
+    const dispatch = useDispatch();
     //subscribe to singlePetReducer
-    const singlePetReducer = useSelector(store => store.singlePetReducer);
+    const pets = useSelector(store => store.pets);
     //grab id from route parameter
     let { id } = useParams();
 
@@ -20,7 +22,10 @@ function PetProfile () {
     }, [])
 
     return (
-        <h2>{singlePetReducer.name}</h2>
+        <div>
+            <DeleteButton className="petDelete" pet={pets.singlePetReducer}/>
+            <h2>Here is {pets.singlePetReducer && pets.singlePetReducer.name}</h2>
+        </div> 
     )
 }
 

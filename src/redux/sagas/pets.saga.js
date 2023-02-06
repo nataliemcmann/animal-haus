@@ -11,9 +11,9 @@ function* createPet(action) {
             url: "/api/pets",
             data: newPet
         });
-        //once get route/sagas is written, yield put to get pets
+        //once get route/sagas is written, yield put to get all pets
     } catch (error) {
-        console.log('Error with pet creation: ', error);
+        console.log('Error in pet creation: ', error);
     }
 }
 
@@ -31,13 +31,28 @@ function* fetchAPet(action) {
         //send the data to the single pet reducer
         yield put({type: 'SET_A_PET', payload: singlePet});
     } catch (error) {
-        console.log('Error with single pet fetch: ', error);
+        console.log('Error in single pet fetch: ', error);
     }
 } 
+
+//DELETE:id Saga: will fire on "DELETE_THIS_PET"
+function* deleteAPet(action) {
+    try {
+        //get pet id from action object
+        const id = action.payload;
+        //axios delete by pet id
+        yield axios.delete(`/api/pets/${id}`);
+        console.log('delete this pet:', id);
+        //yield put to get all pets
+    } catch (error) {
+        console.log('Error in delete a pet: ', error);
+    }
+}
 
 function* petsSaga() {
     yield takeEvery('ADD_PET', createPet);
     yield takeEvery('FETCH_PET_DETAILS', fetchAPet);
+    yield takeEvery('DELETE_THIS_PET', deleteAPet);
 }
 
 export default petsSaga;

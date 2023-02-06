@@ -53,4 +53,19 @@ router.post('/', (req, res) => {
     });
 });
 
+//DELETE by id route
+router.delete('/:id', (req, res) => {
+    //get id of pet to delete
+    const sqlValues = [req.params.id];
+    const sqlQuery = `
+    DELETE FROM "pets"
+    WHERE "id" = $1;`;
+    pool.query(sqlQuery, sqlValues)
+    .then(() => res.sendStatus(200))
+    .catch((err) => {
+        console.log('Pet deletion failed: ', err);
+        res.sendStatus(500);
+    });
+})
+
 module.exports = router;

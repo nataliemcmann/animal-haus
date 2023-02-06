@@ -19,8 +19,8 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-import PetForm from '../PetForm/PetForm';
-import PetProfile from '../PetProfile/PetProfile';
+import PetForm from '../Pet Components/PetForm/PetForm';
+import PetProfile from '../Pet Components/PetProfile/PetProfile';
 
 import './App.css';
 
