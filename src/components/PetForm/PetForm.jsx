@@ -26,8 +26,11 @@ function PetForm() {
         }
         console.log('Data to dispatch: ', petObject);
         //dispatch to sagas
-
-        //send to Pet Profile
+        dispatch({
+            type: 'ADD_PET',
+            payload: petObject
+        })
+        //history.push(send to Pet Profile)
     }
 
 
