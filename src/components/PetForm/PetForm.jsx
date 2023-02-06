@@ -42,6 +42,51 @@ function PetForm() {
                         onChange={(event) => setName(event.target.value)}
                     />
                 </label>
+                <label htmlFor="petAge">
+                    <input
+                        type="text"
+                        placeholder="age"
+                        value={age}
+                        required
+                        onChange={(event) => setAge(event.target.value)}
+                    />
+                </label>
+                <label htmlFor="foodDescription">
+                    <input
+                        type="text"
+                        placeholder="food type and/or instructions"
+                        value={foodDesc}
+                        required
+                        onChange={(event) => setFoodDesc(event.target.value)}
+                    />
+                </label>
+                <label htmlFor="foodAmount">
+                    <input
+                        type="text"
+                        placeholder="cups per feeding"
+                        value={cupsPerFeeding}
+                        required
+                        onChange={(event) => setCupsPerFeeding(event.target.value)}
+                    />
+                </label>
+                <label htmlFor="exerciseDescription">
+                    <input
+                        type="text"
+                        placeholder="exercise type (ex: walk or play)"
+                        value={exerciseDesc}
+                        required
+                        onChange={(event) => setExerciseDesc(event.target.value)}
+                    />
+                </label>
+                <label htmlFor="exerciseDuration">
+                    <input
+                        type="text"
+                        placeholder="total minutes or hours of daily exercise"
+                        value={exerciseMin}
+                        required
+                        onChange={(event) => setExerciseMin(event.target.value)}
+                    />
+                </label>
             </div>
         </form>
     )
