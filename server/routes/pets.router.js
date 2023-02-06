@@ -9,15 +9,35 @@ router.get('/', (req, res) => {
   // GET route code here
 });
 
+//GET/:id route
+router.get('/:id', (req, res) => {
+    //get specific pet id from params
+    const sqlValues = [req.params.id];
+    const sqlQuery = `
+    SELECT * FROM "pets"
+        WHERE "id" = $1;`;
+    pool.query(sqlQuery, sqlValues)
+    .then((result) => {
+        res.send(result.rows);
+    })
+    .catch(err => {
+        console.log('GET:id pet failed', err);
+    })
+});
+
+
 /**
  * POST route template
  */
 router.post('/', (req, res) => {
+    //grab user id from req.user
     const userId = req.user.id;
+    //create an array of req.body values plus userIdto inject into the query
     const sqlValues = [req.body.name, req.body.age, 
                         req.body.foodDesc, req.body.cupsPerFeeding,
                         req.body.exerciseDesc, req.body.exerciseMin,
                         userId];
+    //post new pet query                    
     const sqlQuery = `
     INSERT INTO "pets"
         ("name", "age", "food_desc", "cups_per_feeding",

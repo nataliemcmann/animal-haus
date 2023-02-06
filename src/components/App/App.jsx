@@ -77,6 +77,13 @@ function App() {
             <PetForm />
           </ProtectedRoute>
 
+          <ProtectedRoute
+            // logged in shows pet profile page else shows LoginPage
+            path="/pet/:id"
+            children={<PetProfile />}
+          >
+          </ProtectedRoute>
+
           <Route
             exact
             path="/login"
@@ -124,6 +131,9 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
+
+        
+
         <Footer />
       </div>
     </Router>
