@@ -24,8 +24,10 @@ function PetForm() {
             exerciseDesc,
             exerciseMin
         }
-        console.log('Data to send to dispatch: ', petObject);
+        console.log('Data to dispatch: ', petObject);
         //dispatch to sagas
+
+        //send to Pet Profile
     }
 
 
@@ -42,6 +44,8 @@ function PetForm() {
                         onChange={(event) => setName(event.target.value)}
                     />
                 </label>
+            </div>
+            <div>
                 <label htmlFor="petAge">
                     <input
                         type="text"
@@ -51,6 +55,8 @@ function PetForm() {
                         onChange={(event) => setAge(event.target.value)}
                     />
                 </label>
+            </div>
+            <div>
                 <label htmlFor="foodDescription">
                     <input
                         type="text"
@@ -60,6 +66,8 @@ function PetForm() {
                         onChange={(event) => setFoodDesc(event.target.value)}
                     />
                 </label>
+            </div>
+            <div>
                 <label htmlFor="foodAmount">
                     <input
                         type="text"
@@ -69,6 +77,8 @@ function PetForm() {
                         onChange={(event) => setCupsPerFeeding(event.target.value)}
                     />
                 </label>
+            </div>
+            <div>
                 <label htmlFor="exerciseDescription">
                     <input
                         type="text"
@@ -78,6 +88,8 @@ function PetForm() {
                         onChange={(event) => setExerciseDesc(event.target.value)}
                     />
                 </label>
+            </div>
+            <div>
                 <label htmlFor="exerciseDuration">
                     <input
                         type="text"
@@ -88,6 +100,7 @@ function PetForm() {
                     />
                 </label>
             </div>
+            <button type="submit">Submit</button>
         </form>
     )
 }
