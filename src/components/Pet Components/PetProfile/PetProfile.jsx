@@ -85,7 +85,23 @@ function PetProfile () {
                         </p>
                         </CardContent>
                     </Card>
-
+                </Grid>
+                <Grid 
+                container spacing={2}
+                marginTop={2}
+                marginBottom={2}
+                >
+                    <Card sx={{
+                            flexGrow: 1,
+                            marginLeft: 1,
+                            marginRight: 3
+                            }}>
+                        <CardContent>
+                        <p>
+                            {pets.singlePetReducer.exercise_min} daily of the following activities: {pets.singlePetReducer.exercise_desc} 
+                        </p>
+                        </CardContent>
+                    </Card>
                 </Grid>
             
             </Box>
