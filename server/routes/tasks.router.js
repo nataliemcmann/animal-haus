@@ -37,9 +37,11 @@ router.get('/:petID', (req, res) => {
     const sqlValues = [req.params.petID];
     const sqlQuery = `
     SELECT 
+        "tasks"."id",
         "tasks"."taskDesc",
         "tasks"."frequency",
         "task_complete"."status",
+        "task_complete"."timeCompleted",
         "tasks_user"."userID"
     FROM "tasks"
         LEFT JOIN "task_complete"
