@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+//import components
+import SubmitButton from '../../Buttons/SubmitButton/SubmitButton';
 
 function PetForm() {
     //state for form inputs
@@ -54,7 +56,6 @@ function PetForm() {
                         type="text"
                         placeholder="age"
                         value={age}
-                        required
                         onChange={(event) => setAge(event.target.value)}
                     />
                 </label>
@@ -65,7 +66,6 @@ function PetForm() {
                         type="text"
                         placeholder="food type and/or instructions"
                         value={foodDesc}
-                        required
                         onChange={(event) => setFoodDesc(event.target.value)}
                     />
                 </label>
@@ -87,7 +87,6 @@ function PetForm() {
                         type="text"
                         placeholder="exercise type (ex: walk or play)"
                         value={exerciseDesc}
-                        required
                         onChange={(event) => setExerciseDesc(event.target.value)}
                     />
                 </label>
@@ -98,12 +97,11 @@ function PetForm() {
                         type="text"
                         placeholder="total minutes or hours of daily exercise"
                         value={exerciseMin}
-                        required
                         onChange={(event) => setExerciseMin(event.target.value)}
                     />
                 </label>
             </div>
-            <button type="submit">Submit</button>
+            <SubmitButton />
         </form>
     )
 }
