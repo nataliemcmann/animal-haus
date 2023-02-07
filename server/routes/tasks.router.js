@@ -40,7 +40,6 @@ router.get('/:petID', (req, res) => {
         "tasks"."id",
         "tasks"."taskDesc",
         "tasks"."frequency",
-        "task_complete"."status",
         "task_complete"."timeCompleted",
         "tasks_user"."userID"
     FROM "tasks"
