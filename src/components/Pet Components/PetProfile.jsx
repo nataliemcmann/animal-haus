@@ -105,8 +105,8 @@ function PetProfile () {
                         </CardContent>
                     </Card>
                 </Grid>
-                <TaskForm />   
-                <PetTasksList petID={ id }/>         
+                <TaskForm />
+                <PetTasksList id={id}/>         
             </Box>
         </> 
     )

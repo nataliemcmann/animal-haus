@@ -1,24 +1,29 @@
-import React, { useEffect }  from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import TaskItem from './TaskItem';
 
-function PetTasksList({ petID }) {
-    const tasks = useSelector(store => store.pets);
+
+function PetTasksList({ id }) {
+    const tasks = useSelector(store => store.tasks);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
+        console.log('This is the array of pet tasks: ', tasks.taskPetReducer);
         dispatch({
             type: 'FETCH_PET_TASKS',
-            payload: petID
+            payload: id
         });
     }, [])
 
     return(
         <>
+            <h2>Here's a list of tasks</h2>
             <ul>
-                {tasks.taskPetReducer && tasks.taskPetReducer.map((task) => {
-                    return <li>{task.taskDesc}</li>
-                })}
+                {tasks.taskPetReducer && tasks.taskPetReducer.map((task) =>{
+                    return <TaskItem task={task}/>
+                    }
+                )}
             </ul>
         </>
     )
