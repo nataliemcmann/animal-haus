@@ -6,7 +6,7 @@ import DeleteButton from '../Buttons/DeleteButton/DeleteButton';
 import TaskForm from '../Task Components/TaskForm';
 import PetTasksList from '../Task Components/PetTasksList';
 //mui components
-import { Box, Card, CardContent } from '@mui/material';
+import { Box, Paper } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
 function PetProfile () {
@@ -37,10 +37,10 @@ function PetProfile () {
                 container spacing={2}
                 m={2}
                 >
-                            <DeleteButton 
-                            className="petDelete" 
-                            pet={pets.singlePetReducer}
-                            />
+                    <DeleteButton 
+                    className="petDelete" 
+                    pet={pets.singlePetReducer}
+                    />
                 </Grid>
                 <Grid
                 container spacing={4}
@@ -49,61 +49,38 @@ function PetProfile () {
                 justifyContent="space-evenly"
                 alignItems="center"
                 >
-                    <Card 
-                        sx={{
-                            flexGrow: 1,
-                            marginLeft: 2,
-                            marginRight: 2
-                        }}
-                    >
-                        <CardContent>
-                        <h3>{pets.singlePetReducer.name}</h3>
-                        </CardContent>
-                    </Card>
-                    <Card 
-                        sx={{
-                            flexGrow: 1,
-                            marginRight: 4
-                        }}
-                    >
-                        <CardContent>
-                        <h3>Age: {pets.singlePetReducer.age}</h3>
-                        </CardContent>
-                    </Card>
+                    <Paper>
+                        <h4>{pets.singlePetReducer.name}</h4>
+                    </Paper>
+                    <Paper>
+                        <h4>Age: {pets.singlePetReducer.age}</h4>
+                    </Paper>
                 </Grid>
                 <Grid 
                 container spacing={2}
+                marginLeft={4}
                 marginTop={2}
                 marginBottom={2}
+                alignItems="center"
                 >
-                    <Card sx={{
-                            flexGrow: 1,
-                            marginLeft: 1,
-                            marginRight: 3
-                            }}>
-                        <CardContent>
+                    <Paper>
                         <p>
                             {pets.singlePetReducer.cups_per_feeding} cup of {pets.singlePetReducer.food_desc} 
                         </p>
-                        </CardContent>
-                    </Card>
+                    </Paper>
                 </Grid>
                 <Grid 
                 container spacing={2}
+                marginLeft={4}
                 marginTop={2}
                 marginBottom={2}
+                alignItems="center"
                 >
-                    <Card sx={{
-                            flexGrow: 1,
-                            marginLeft: 1,
-                            marginRight: 3
-                            }}>
-                        <CardContent>
+                    <Paper>
                         <p>
                             {pets.singlePetReducer.exercise_min} daily of the following activities: {pets.singlePetReducer.exercise_desc} 
                         </p>
-                        </CardContent>
-                    </Card>
+                    </Paper>
                 </Grid>
                 <TaskForm />
                 <PetTasksList id={id}/>         

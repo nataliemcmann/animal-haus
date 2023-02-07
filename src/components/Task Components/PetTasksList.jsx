@@ -21,7 +21,7 @@ function PetTasksList({ id }) {
             <h2>Here's a list of tasks</h2>
             <ul>
                 {tasks.taskPetReducer && tasks.taskPetReducer.map((task) =>{
-                    return <TaskItem task={task}/>
+                    return <TaskItem key={task.id} task={task}/>
                     }
                 )}
             </ul>

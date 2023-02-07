@@ -1,5 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+//mui components
+import Button from '@mui/material/Button';
 
 function DeleteButton(props) {
     const dispatch = useDispatch();
@@ -19,7 +21,9 @@ function DeleteButton(props) {
 
 
         return(
-            <button onClick={runDispatch}>Delete</button>
+            <Button onClick={runDispatch} variant="contained"color="error" size="small">
+                Delete
+            </Button>
         )
 }
 

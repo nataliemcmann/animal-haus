@@ -110,3 +110,13 @@ input {
   margin: 5px;
   margin-bottom: 10px;
 }
+
+h4 {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+p {
+  padding-left: 10px;
+  padding-right: 10px;
+}

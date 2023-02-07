@@ -3,6 +3,10 @@ import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom'; //try using userParams to get petID
 //import components
 import SubmitButton from '../Buttons/SubmitButton/SubmitButton';
+//import mui components
+import Grid from '@mui/material/Unstable_Grid2';
+import { Paper } from '@mui/material';
+import TextField from '@mui/material/TextField';
 
 //this will be on PetProfile to start
 function TaskForm () {
@@ -34,30 +38,45 @@ function TaskForm () {
 
     return (
         <form onSubmit={addTask}>
-            <h2>Add Tasks</h2>
-            <div>
-                <label htmlFor="taskDescription">
-                    <input
-                        type="text"
-                        placeholder="task description"
-                        value={taskDesc}
-                        required
-                        onChange={(event) => setTaskDesc(event.target.value)}
-                    />
-                </label>
-            </div>
-            <div>
-                <label htmlFor="taskFrequency">
-                    <input
-                        type="text"
-                        placeholder="frequency"
-                        value={frequency}
-                        required
-                        onChange={(event) => setFrequency(event.target.value)}
-                    />
-                </label>
-            </div>
-            <SubmitButton />
+            <Grid 
+                container spacing={2}
+                marginLeft={4}
+                marginTop={2}
+                marginBottom={2}
+                alignItems="center"
+            >
+                <Paper>
+                    <Grid marginLeft={10}>
+                        <h3>Add Tasks</h3>
+                    </Grid>
+                    <Grid
+                        container spacing={2}
+                        marginLeft={5}
+                    >
+                            <label htmlFor="taskDescription">
+                                <TextField
+                                    type="text"
+                                    placeholder="task description"
+                                    value={taskDesc}
+                                    required
+                                    onChange={(event) => setTaskDesc(event.target.value)}
+                                />
+                            </label>
+                            <label htmlFor="taskFrequency">
+                                <TextField
+                                    type="text"
+                                    placeholder="frequency"
+                                    value={frequency}
+                                    required
+                                    onChange={(event) => setFrequency(event.target.value)}
+                                />
+                            </label>
+                    </Grid>
+                    <Grid marginLeft={21}>
+                        <SubmitButton />
+                    </Grid>
+                </Paper>
+            </Grid>
         </form>
     );
 }
