@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 //components
-import DeleteButton from '../../Buttons/DeleteButton/DeleteButton';
-import TaskForm from '../../Task Components/TaskForm';
+import DeleteButton from '../Buttons/DeleteButton/DeleteButton';
+import TaskForm from '../Task Components/TaskForm';
+import PetTasksList from '../Task Components/PetTasksList';
 //mui components
 import { Box, Card, CardContent } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
@@ -104,7 +105,8 @@ function PetProfile () {
                         </CardContent>
                     </Card>
                 </Grid>
-                <TaskForm />            
+                <TaskForm />   
+                <PetTasksList petID={ id }/>         
             </Box>
         </> 
     )

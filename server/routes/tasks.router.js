@@ -31,5 +31,31 @@ router.post('/', (req, res) => {
     });
 });
 
+//GET by pet id
+router.get('/:petID', (req, res) => {
+    // get specific pet id from params
+    const sqlValues = [req.params.petID];
+    const sqlQuery = `
+    SELECT 
+        "tasks"."taskDesc",
+        "tasks"."frequency",
+        "task_complete"."status",
+        "tasks_user"."userID"
+    FROM "tasks"
+        LEFT JOIN "task_complete"
+            ON "tasks"."id" = "task_complete"."taskID"
+        LEFT JOIN "tasks_user"
+            ON "tasks"."id" = "tasks_user"."taskID"
+        WHERE "tasks"."petID" = $1;
+    `;
+    pool.query(sqlQuery, sqlValues)
+    .then((result) => {
+        res.send(result.rows);
+    })
+    .catch(err => {
+        console.log('GET:petID task failed: ', err);
+    });
+});
+
 module.exports = router;
 

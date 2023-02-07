@@ -1,7 +1,7 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
-//POST Saga: will be fire on "ADD_PET" actions
+//POST Saga: will fire on "ADD_PET" actions
 function* createPet(action) {
     try{
         const newPet = action.payload;
@@ -13,7 +13,7 @@ function* createPet(action) {
         });
         //once get route/sagas is written, yield put to get all pets
     } catch (error) {
-        console.log('Error in pet creation: ', error);
+        console.log('Error in createPet: ', error);
     }
 }
 
@@ -31,7 +31,7 @@ function* fetchAPet(action) {
         //send the data to the single pet reducer
         yield put({type: 'SET_A_PET', payload: singlePet});
     } catch (error) {
-        console.log('Error in single pet fetch: ', error);
+        console.log('Error in fetchAPet: ', error);
     }
 } 
 
@@ -45,7 +45,7 @@ function* deleteAPet(action) {
         console.log('delete this pet:', id);
         //yield put to get all pets
     } catch (error) {
-        console.log('Error in delete a pet: ', error);
+        console.log('Error in deleteAPet: ', error);
     }
 }
 

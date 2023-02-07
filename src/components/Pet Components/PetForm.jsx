@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 //import components
-import SubmitButton from '../../Buttons/SubmitButton/SubmitButton';
+import SubmitButton from '../Buttons/SubmitButton/SubmitButton';
 
 function PetForm() {
     //state for form inputs
