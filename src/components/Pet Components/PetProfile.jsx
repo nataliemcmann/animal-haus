@@ -30,7 +30,6 @@ function PetProfile () {
         <>
             <Box sx={{
                 width: 318,
-                height: 480,
                 m: 1}}
                 >
                 <Grid 
