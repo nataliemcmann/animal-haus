@@ -21,10 +21,18 @@ CREATE TABLE "pets" (
     "user_id" INT REFERENCES "user" NOT NULL
 );
 
---pets post query
-INSERT INTO "pets" 
-    ("name", "age", "food_desc", "cups_per_feeding", 
-    "exercise_desc", "exercise_min", "user_id")
-VALUES
-    ('Bennett', '2 years', 'Fromm Ancient Grains with 1/4 cup water or broth', 1.00, 
-    'walking, fetch, tug-of-war, chase, and threshold training', '2 hours', 1);
+-- create tasks table
+CREATE TABLE "tasks" (
+	"id" SERIAL PRIMARY KEY,
+	"taskDesc" VARCHAR (1000) NOT NULL,
+	"frequency" VARCHAR (250),
+	"petID" INT REFERENCES "pets" NOT NULL
+);
+
+-- create task_complete table
+CREATE TABLE "task_complete" (
+	"id" SERIAL PRIMARY KEY,
+	"status" BOOLEAN,
+	"timeCompleted" DATE NOT NULL DEFAULT CURRENT_DATE, 
+	"taskID" INT REFERENCES "tasks" NOT NULL
+);
