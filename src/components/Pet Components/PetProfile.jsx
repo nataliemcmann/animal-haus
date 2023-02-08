@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 //components
-import DeleteButton from '../Buttons/DeleteButton/DeleteButton';
+import DeleteButton from '../Buttons/DeleteButton';
 import TaskForm from '../Task Components/TaskForm';
 import PetTasksList from '../Task Components/PetTasksList';
 //mui components

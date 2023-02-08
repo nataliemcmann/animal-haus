@@ -1,8 +1,10 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 //components
-import DeleteButton from '../Buttons/DeleteButton/DeleteButton';
-
+import DeleteButton from '../Buttons/DeleteButton';
+import TaskClaimButton from '../Buttons/TaskClaimButton';
+import ClaimedChip from './ClaimedChip';
+import UnclaimTaskButton from '../Buttons/UnclaimTaskButton';
 
 function TaskItem({task}){
     const user = useSelector((store) => store.user);
@@ -12,7 +14,8 @@ function TaskItem({task}){
             <>
                 <li> 
                     {task.frequency} {task.taskDesc} 
-                     claimed button 
+                    <ClaimedChip />
+                    <UnclaimTaskButton />
                     <DeleteButton />
                 </li>
             </>
@@ -22,7 +25,7 @@ function TaskItem({task}){
             <>
                 <li> 
                     {task.frequency} {task.taskDesc} 
-                     claim button
+                    <TaskClaimButton task={task}/>
                     <DeleteButton />
                 </li>
             </>

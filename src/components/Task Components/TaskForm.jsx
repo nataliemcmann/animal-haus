@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom'; //try using userParams to get petID
 //import components
-import SubmitButton from '../Buttons/SubmitButton/SubmitButton';
+import SubmitButton from '../Buttons/SubmitButton';
 //import mui components
 import Grid from '@mui/material/Unstable_Grid2';
 import { Paper } from '@mui/material';
