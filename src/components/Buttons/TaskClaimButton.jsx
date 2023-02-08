@@ -8,14 +8,18 @@ function TaskClaimButton({task}) {
     const dispatch = useDispatch();
 
     //function to post new user relationship
-    const addTaskUser = () => {
+    const addUserClaim = () => {
         let taskID = task.id
         console.log(taskID);
+        dispatch({
+            type: 'ADD_TASK_USER',
+            payload: taskID
+        })
     }
 
     return(
         <Button 
-            onClick={addTaskUser}
+            onClick={addUserClaim}
             variant="contained" color ="success" size="small"
         >
             Claim

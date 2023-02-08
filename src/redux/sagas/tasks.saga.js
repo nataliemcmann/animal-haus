@@ -1,7 +1,7 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
-//POST Saga: will fire on "ADD_TASK" actions
+//POST Task Saga: will fire on "ADD_TASK" actions
 function* createTask(action) {
     try {
         const newTask = action.payload;
@@ -14,6 +14,20 @@ function* createTask(action) {
         //yield put to render task list
     } catch (error) {
         console.log('Error in createTask: ', error);
+    }
+}
+
+//POST Task-User-Claim Saga: will fire on "ADD_TASK_USER" actions
+function* createTaskUserClaim(action) {
+    try {
+        const taskID = action.payload;
+        yield axios ({
+            method: "POST",
+            url: "/api/tasks/user",
+            data: { taskID }
+        })
+    } catch (error) {
+        console.log('Error in createTaskUserClaim: ', error);
     }
 }
 
@@ -36,6 +50,7 @@ function* fetchPetTasks(action) {
 function* tasksSaga() {
     yield takeEvery('ADD_TASK', createTask);
     yield takeEvery('FETCH_PET_TASKS', fetchPetTasks);
+    yield takeEvery('ADD_TASK_USER', createTaskUserClaim);
 }
 
 export default tasksSaga;
