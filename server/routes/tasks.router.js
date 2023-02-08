@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 });
 
 /**
- * POST route 
+ * POST TASK route 
  */
 router.post('/', (req, res) => {
     //separate out petID --not sure where this will come from yet
@@ -31,6 +31,23 @@ router.post('/', (req, res) => {
         res.sendStatus(500);
     });
 });
+
+//POST task-user relation
+router.post('/user', (req, res) => {
+    const sqlValues = [req.body.taskID, req.user.id];
+    const sqlQuery = `
+    INSERT INTO "tasks_user"
+        ("taskID", "userID")
+    VALUES
+        ($1, $2);
+    `;
+    pool.query(sqlQuery, sqlValues)
+    .then(() => res.sendStatus(201))
+    .catch((err) => {
+        console.log('Task-user relation post failed: ', err);
+        res.sendStatus(500);
+    })
+})
 
 //GET by pet id
 router.get('/:petID', (req, res) => {
@@ -60,6 +77,7 @@ router.get('/:petID', (req, res) => {
         console.log('GET:petID task failed: ', err);
     });
 });
+
 
 module.exports = router;
 
