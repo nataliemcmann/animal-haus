@@ -9,11 +9,14 @@ function TaskClaimButton({task}) {
 
     //function to post new user relationship
     const addUserClaim = () => {
-        let taskID = task.id
-        console.log(taskID);
+        let taskObject = { 
+            taskID: task.id,
+            petID: task.petID
+        } //need task id for dispatch to re-render petTasks
+        console.log(taskObject);
         dispatch({
             type: 'ADD_TASK_USER',
-            payload: taskID
+            payload: taskObject
         })
     }
 

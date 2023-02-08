@@ -15,7 +15,7 @@ function TaskItem({task}){
                 <li> 
                     {task.frequency} {task.taskDesc} 
                     <ClaimedChip />
-                    <UnclaimTaskButton />
+                    <UnclaimTaskButton task={task}/>
                     <DeleteButton />
                 </li>
             </>

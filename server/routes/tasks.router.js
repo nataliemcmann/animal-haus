@@ -49,6 +49,20 @@ router.post('/user', (req, res) => {
     })
 })
 
+router.delete('/user', (req, res) => {
+    const sqlValues = [req.body.claimID]
+    const sqlQuery = `
+    DELETE FROM "tasks_user"
+        WHERE "id" = $1;
+    `;
+    pool.query(sqlQuery, sqlValues)
+    .then(() => res.sendStatus(200))
+    .catch((err) => {
+        console.log('Task-user relation delete failed: ', err);
+        res.sendStatus(500);
+    })
+})
+
 //GET by pet id
 router.get('/:petID', (req, res) => {
     // get specific pet id from params
@@ -59,6 +73,7 @@ router.get('/:petID', (req, res) => {
         "tasks"."taskDesc",
         "tasks"."frequency",
         "task_complete"."timeCompleted",
+        "tasks_user"."id" AS "claimID",
         "tasks_user"."userID"
     FROM "tasks"
         LEFT JOIN "task_complete"

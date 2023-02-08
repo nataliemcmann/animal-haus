@@ -20,12 +20,13 @@ function* createTask(action) {
 //POST Task-User-Claim Saga: will fire on "ADD_TASK_USER" actions
 function* createTaskUserClaim(action) {
     try {
-        const taskID = action.payload;
+        const taskObject = action.payload;
         yield axios ({
             method: "POST",
             url: "/api/tasks/user",
-            data: { taskID }
+            data: taskObject
         })
+        yield put({ type: 'FETCH_PET_TASK', payload: taskObject.petID })
     } catch (error) {
         console.log('Error in createTaskUserClaim: ', error);
     }
