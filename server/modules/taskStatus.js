@@ -20,7 +20,7 @@ function addTaskStatus(taskArray){
             task.status = 'true'; //add status property of true
         }
     }
-    return taskArray;
+    return uniqueID(taskArray);
 }
 
 //helper function to change sqlDate
@@ -31,7 +31,7 @@ function reformatDate(date) {
     //to 10 characters 
     for (let i = 0; i < 10; i++){
         newDate += stringDate[i];
-    }
+    } 
     return newDate //format "YEAR-MM-DD"
 }
 
@@ -54,6 +54,19 @@ function matchDates(currentDate, sqlDate) {
     //don't match and matchDates will be true
     return arrayMatch.includes(false);
 } 
+
+//function to filter out multiple copies of a task
+function uniqueID(taskArray) {
+    let uniqueArray = [];
+    for (let i = 0; i < taskArray.length; i++) {
+        if (i === 0) {
+            uniqueArray.push(taskArray[i]);
+        } else if (taskArray[i].id !== taskArray[i-1].id) {
+            uniqueArray.push(taskArray[i]);
+        }
+    }
+    return uniqueArray
+}
 
 
 module.exports = addTaskStatus;
@@ -114,3 +127,4 @@ module.exports = addTaskStatus;
 //         }
 //     ])
 // )
+

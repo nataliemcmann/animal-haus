@@ -34,7 +34,7 @@ function PetTasksList({ id }) {
                     <Grid paddingBottom={1}>
                         <ul>
                             {tasks.taskPetReducer && tasks.taskPetReducer.map((task) =>{
-                                return <TaskItem key={task.id} task={task}/>
+                                return <TaskItem id = {id} key={task.id} task={task}/>
                                 }
                             )}
                         </ul>

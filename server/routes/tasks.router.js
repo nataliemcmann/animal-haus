@@ -48,7 +48,8 @@ router.get('/:petID', (req, res) => {
             ON "tasks"."id" = "task_complete"."taskID"
         LEFT JOIN "tasks_user"
             ON "tasks"."id" = "tasks_user"."taskID"
-        WHERE "tasks"."petID" = $1;
+        WHERE "tasks"."petID" = $1
+        ORDER BY "tasks"."id";
     `;
     pool.query(sqlQuery, sqlValues)
     .then((result) => {
