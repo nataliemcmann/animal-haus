@@ -1,6 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const addTaskStatus = require('../modules/taskStatus');
 
 /**
  * GET route 
@@ -51,7 +52,8 @@ router.get('/:petID', (req, res) => {
     `;
     pool.query(sqlQuery, sqlValues)
     .then((result) => {
-        res.send(result.rows);
+        let taskArray = addTaskStatus(result.rows);
+        res.send(taskArray);
     })
     .catch(err => {
         console.log('GET:petID task failed: ', err);
