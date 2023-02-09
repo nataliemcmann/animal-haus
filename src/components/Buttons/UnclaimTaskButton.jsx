@@ -17,7 +17,7 @@ function UnclaimTaskButton({ task }) {
         dispatch({
             type: 'DELETE_TASK_USER',
             payload: taskObject
-        })
+        });
     }
 
     return (

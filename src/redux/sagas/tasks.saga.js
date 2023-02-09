@@ -12,38 +12,9 @@ function* createTask(action) {
             data: newTask
         });
         //yield put to render task list
+        yield put({ type: 'FETCH_PET_TASKS', payload: newTask.petID })
     } catch (error) {
         console.log('Error in createTask: ', error);
-    }
-}
-
-//POST Task-User-Claim Saga: will fire on "ADD_TASK_USER" actions
-function* createTaskUserClaim(action) {
-    try {
-        const taskObject = action.payload;
-        yield axios ({
-            method: "POST",
-            url: "/api/tasks/user",
-            data: taskObject
-        })
-        yield put({ type: 'FETCH_PET_TASK', payload: taskObject.petID })
-    } catch (error) {
-        console.log('Error in createTaskUserClaim: ', error);
-    }
-}
-
-//DELETE Task-User-Claim Saga: will fire on "DELETE_TASK_USER" actions
-function* deleteTaskUserClaim(action) {
-    try {
-        const taskObject = action.payload;
-        yield axios ({
-            method: "DELETE",
-            url: "/api/tasks/user",
-            data: taskObject 
-        })
-        yield put({ type: 'FETCH_PET_TASK', payload: taskObject.petID })
-    } catch (error) {
-        console.log('Error in deleteTaskUserClaim: ', error);
     }
 }
 
@@ -66,8 +37,6 @@ function* fetchPetTasks(action) {
 function* tasksSaga() {
     yield takeEvery('ADD_TASK', createTask);
     yield takeEvery('FETCH_PET_TASKS', fetchPetTasks);
-    yield takeEvery('ADD_TASK_USER', createTaskUserClaim);
-    yield takeEvery('DELETE_TASK_USER', deleteTaskUserClaim);
 }
 
 export default tasksSaga;

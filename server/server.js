@@ -11,6 +11,7 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const petsRouter = require('./routes/pets.router');
 const tasksRouter = require('./routes/tasks.router');
+const taskUserRouter = require('./routes/tasks_user.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -27,6 +28,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter); //for user data
 app.use('/api/pets', petsRouter); //for pet data
 app.use('/api/tasks', tasksRouter); //for task data
+app.use('/api/tasks_user', taskUserRouter); // for task user relation data
 
 // Serve static files
 app.use(express.static('build'));

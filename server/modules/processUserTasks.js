@@ -1,6 +1,6 @@
-//function to add task status
+//function to add task status and sort to specific user
 //based on taskCompleted date and current date
-function addTaskStatus(taskArray){
+function processUserTasks(taskArray, userID){
     //get current date in format "YEAR-MM-DD"
     const currentDate = reformatDate(new Date());
     for (let task of taskArray){ //loop through task objects
@@ -20,7 +20,8 @@ function addTaskStatus(taskArray){
             task.status = 'true'; //add status property of true
         }
     }
-    return uniqueID(taskArray);
+    //retain only unique tasks IDs, only tasks claimed by user
+    return retainFirstUniqueID(sortUserID(taskArray, userID));
 }
 
 //helper function to change sqlDate
@@ -55,8 +56,8 @@ function matchDates(currentDate, sqlDate) {
     return arrayMatch.includes(false);
 } 
 
-//function to filter out multiple copies of a task
-function uniqueID(taskArray) {
+//function to retain one of each task id
+function retainFirstUniqueID(taskArray) {
     let uniqueArray = [];
     for (let i = 0; i < taskArray.length; i++) {
         if (i === 0) {
@@ -68,10 +69,93 @@ function uniqueID(taskArray) {
     return uniqueArray
 }
 
+//function to aggregate userID
+function sortUserID(taskArray, userID) {
+    let userArray = [];
+    for (let i = 0; i < taskArray.length; i++) {
+        if (taskArray[i].userID === userID) {
+            userArray.push(taskArray[i]);
+        }
+    }
+    return userArray;
+}
 
-module.exports = addTaskStatus;
+
+module.exports = { processUserTasks, retainFirstUniqueID };
 
 // *** Function tests below here *** //
+
+//test array
+// let test1 =
+//         [
+//             {
+//                 "id": 2,
+//                 "taskDesc": "feed PM",
+//                 "frequency": "daily",
+//                 "petID": 4,
+//                 "timeCompleted": "2023-02-08T06:00:00.000Z",
+//                 "claimID": 3,
+//                 "userID": 2
+//             },
+//             {
+//                 "id": 2,
+//                 "taskDesc": "feed PM",
+//                 "frequency": "daily",
+//                 "petID": 4,
+//                 "timeCompleted": "2023-02-07T06:00:00.000Z",
+//                 "claimID": 10,
+//                 "userID": 4
+//             },
+//             {
+//                 "id": 3,
+//                 "taskDesc": "walk",
+//                 "frequency": "daily",
+//                 "petID": 4,
+//                 "timeCompleted": "2023-02-08T06:00:00.000Z",
+//                 "claimID": 16,
+//                 "userID": 4
+//             },
+//             {
+//                 "id": 3,
+//                 "taskDesc": "walk",
+//                 "frequency": "daily",
+//                 "petID": 4,
+//                 "timeCompleted": "2023-02-07T06:00:00.000Z",
+//                 "claimID": 16,
+//                 "userID": 4
+//             },
+//             {
+//                 "id": 4,
+//                 "taskDesc": "threshold training",
+//                 "frequency": "daily",
+//                 "petID": 4,
+//                 "timeCompleted": null,
+//                 "claimID": null,
+//                 "userID": null
+//             },
+//             {
+//                 "id": 5,
+//                 "taskDesc": "brush teeth",
+//                 "frequency": "daily",
+//                 "petID": 4,
+//                 "timeCompleted": null,
+//                 "claimID": null,
+//                 "userID": null
+//             },
+//             {
+//                 "id": 6,
+//                 "taskDesc": "fill water bowl",
+//                 "frequency": "daily",
+//                 "petID": 4,
+//                 "timeCompleted": null,
+//                 "claimID": null,
+//                 "userID": null
+//             }
+//         ]
+
+// console.log(retainFirstUniqueID(sortUserID(test1, 4))); //
+
+
 
 // //test reformatDate
 // let sqlDate = reformatDate("2023-02-07T06:00:00.000Z");
