@@ -33,6 +33,21 @@ router.post('/', (req, res) => {
     });
 });
 
+//Delete task by id
+router.delete('/:id', (req, res) => {
+    const sqlValues = [req.params.id];
+    const sqlQuery = `
+    DELETE FROM "tasks"
+    WHERE "id" = $1;
+    `;
+    pool.query(sqlQuery, sqlValues)
+    .then(() => res.sendStatus(200))
+    .catch((err) => {
+        console.log('Task deletion failed: ', err);
+        res.sendStatus(500);
+    });
+})
+
 //GET by pet id
 router.get('/:petID', (req, res) => {
     console.log('getting pet tasks');
@@ -44,19 +59,21 @@ router.get('/:petID', (req, res) => {
         "tasks"."taskDesc",
         "tasks"."frequency",
         "tasks"."petID",
-        "tasks_user"."id" AS "claimID",
-        "tasks_user"."userID"
+        JSON_AGG(
+            JSON_BUILD_OBJECT(
+            'claimID', "tasks_user"."id",
+            'userID', "tasks_user"."userID")
+        ) AS "taskUserRelation"
     FROM "tasks"
         LEFT JOIN "task_complete"
             ON "tasks"."id" = "task_complete"."taskID"
         LEFT JOIN "tasks_user"
             ON "tasks"."id" = "tasks_user"."taskID"
         WHERE "tasks"."petID" = $1
-        ORDER BY "tasks"."id";
+        GROUP BY "tasks"."id";
     `;
     pool.query(sqlQuery, sqlValues)
     .then((result) => {
-        // let taskArray = processPetTasks(result.rows);
         res.send(result.rows);
     })
     .catch(err => {

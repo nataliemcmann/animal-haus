@@ -16,7 +16,17 @@ function DeleteButton(props) {
                 payload: idToDelete
             })
             //then history.push to pet summary page
-        } 
+        } else if (props.className === 'taskDelete') {
+            let taskObject = {
+                idToDelete: props.task.id,
+                petID: props.task.petID
+            }
+            console.log('task id to delete', taskObject.idToDelete);
+            dispatch({
+                type: 'DELETE_THIS_TASK',
+                payload: taskObject
+            })
+        }
     }
 
 

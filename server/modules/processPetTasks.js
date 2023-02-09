@@ -1,12 +1,14 @@
 const retainFirstUniqueID = require('./processUserTasks');
 
-function processPetTasks(taskArray) {
+function processPetTasks(taskArray, userID) {
     let sortedArray = [];
     for (let i=0; i < taskArray.length; i++) {
-        if (taskArray[i].id === taskArray[i++].id) {
-            if (taskArray[i].userID === taskArray[i++].userID) {
+        if (taskArray[i].id === taskArray[i++].id &&
+            taskArray[i].userID === userID) {
                 sortedArray.push(taskArray[i]);
-            }
+            } else if (taskArray[i].id === taskArray[i++].id &&
+                taskArray[i++].userID === userID) {
+            sortedArray.push(taskArray[i++]);
         } else {
             sortedArray.push(taskArray[i]);
         }

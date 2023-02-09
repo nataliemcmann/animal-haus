@@ -9,14 +9,24 @@ import UnclaimTaskButton from '../Buttons/UnclaimTaskButton';
 function TaskItem({task}){
     const user = useSelector((store) => store.user);
 
-    if (task.userID === user.id) {
+    const findUserID = (id) => {
+        let found = false; 
+        for (let relation of task.taskUserRelation) {
+            if (relation.userID === id) {
+                return true
+            }
+        }
+        return found;
+    }
+
+    if (findUserID(user.id)) {
         return (
             <>
                 <li> 
                     {task.frequency} {task.taskDesc} 
                     <ClaimedChip />
                     <UnclaimTaskButton task={task}/>
-                    <DeleteButton />
+                    <DeleteButton className="taskDelete" task = {task}/>
                 </li>
             </>
         )
@@ -26,7 +36,7 @@ function TaskItem({task}){
                 <li> 
                     {task.frequency} {task.taskDesc} 
                     <TaskClaimButton task={task}/>
-                    <DeleteButton />
+                    <DeleteButton className="taskDelete" task = {task}/>
                 </li>
             </>
         )

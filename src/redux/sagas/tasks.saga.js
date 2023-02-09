@@ -18,6 +18,22 @@ function* createTask(action) {
     }
 }
 
+//DELETE Task Saga: will fire on "DELETE_THIS_TASK"
+function* deleteTask(action) {
+    try {
+        const taskObject = action.payload;
+        let idToDelete = taskObject.idToDelete
+        yield console.log('Delete tasks with id: ', idToDelete);
+        yield axios ({
+            method: "DELETE",
+            url: `/api/tasks/${idToDelete}`
+        });
+        yield put({ type: 'FETCH_PET_TASKS', payload: taskObject.petID })
+    } catch (error) {
+        console.log('Error in deleteTask', error);
+    }
+}
+
 //GET by petID Saga: will fire on "FETCH_PET_TASKS"
 function* fetchPetTasks(action) {
     try {
@@ -37,6 +53,7 @@ function* fetchPetTasks(action) {
 function* tasksSaga() {
     yield takeEvery('ADD_TASK', createTask);
     yield takeEvery('FETCH_PET_TASKS', fetchPetTasks);
+    yield takeEvery('DELETE_THIS_TASK', deleteTask);
 }
 
 export default tasksSaga;
