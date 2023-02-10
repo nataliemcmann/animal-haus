@@ -1,25 +1,18 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import TaskItem from './PetTaskItem';
+import UserTaskItem from './UserTaskItem';
 //mui components
 import Grid from '@mui/material/Unstable_Grid2';
 import { Paper } from '@mui/material';
 
-
-function PetTasksList({ id }) {
+function UserTasksList({ id }) {
     const tasks = useSelector(store => store.tasks);
 
-    const dispatch = useDispatch();
-
     useEffect(() => {
-        console.log('This is the array of pet tasks: ', tasks.taskPetReducer);
-        dispatch({
-            type: 'SET_PET_TASKS',
-            payload: id
-        });
+        console.log('This is the array of user tasks: ', tasks.userTasksReducer);
     }, [])
 
-    return(
+    return (
         <>
             <Grid 
                 marginLeft={4}
@@ -33,8 +26,8 @@ function PetTasksList({ id }) {
                     </Grid>
                     <Grid paddingBottom={1}>
                         <ul>
-                            {tasks.taskPetReducer && tasks.taskPetReducer.map((task) =>{
-                                return <TaskItem id = {id} key={task.id} task={task}/>
+                            {tasks.userTasksReducer && tasks.userTasksReducer.map((task) =>{
+                                return <UserTaskItem id = { id } key={task.id} task={task}/>
                                 }
                             )}
                         </ul>
@@ -45,4 +38,5 @@ function PetTasksList({ id }) {
     )
 }
 
-export default PetTasksList;
+export default UserTasksList;
+

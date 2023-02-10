@@ -7,7 +7,7 @@ import ClaimedChip from './ClaimedChip';
 import UnclaimTaskButton from '../Buttons/UnclaimTaskButton';
 import EditButton from '../Buttons/EditButton';
 
-function TaskItem({task}){
+function PetTaskItem({task}){
     const user = useSelector((store) => store.user);
 
     const findUserID = (id) => {
@@ -46,4 +46,4 @@ function TaskItem({task}){
     }
 }
 
-export default TaskItem;
+export default PetTaskItem;

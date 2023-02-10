@@ -48,18 +48,21 @@ router.get('/user', (req, res) => {
         "tasks"."taskDesc",
         "tasks"."frequency",
         "tasks"."petID",
+        "pets"."name",
         JSON_AGG(
             JSON_BUILD_OBJECT(
             'claimID', "tasks_user"."id",
             'userID', "tasks_user"."userID")
         ) AS "taskUserRelation"
     FROM "tasks"
+        LEFT JOIN "pets"
+            ON "tasks"."petID" = "pets"."id"
         LEFT JOIN "task_complete"
             ON "tasks"."id" = "task_complete"."taskID"
         LEFT JOIN "tasks_user"
             ON "tasks"."id" = "tasks_user"."taskID"
         WHERE "tasks_user"."userID" = $1
-        GROUP BY "tasks"."id";
+        GROUP BY "tasks"."id", "pets"."name";
     `;
     pool.query(sqlQuery, sqlValues)
     .then((result) => {
@@ -166,8 +169,6 @@ router.get('/pet/:petID', (req, res) => {
             'userID', "tasks_user"."userID")
         ) AS "taskUserRelation"
     FROM "tasks"
-        LEFT JOIN "task_complete"
-            ON "tasks"."id" = "task_complete"."taskID"
         LEFT JOIN "tasks_user"
             ON "tasks"."id" = "tasks_user"."taskID"
         WHERE "tasks"."petID" = $1
