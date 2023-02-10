@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import PetForm from '../Pet Components/PetForm';
 import PetProfile from '../Pet Components/PetProfile';
+import EditPetForm from '../Pet Components/EditPetForm';
 
 import './App.css';
 
@@ -80,8 +81,17 @@ function App() {
 
           <ProtectedRoute
             // logged in shows pet profile page else shows LoginPage
+            exact
             path="/pet/:id"
             children={<PetProfile />}
+          >
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows pet profile page else shows LoginPage
+            exact
+            path="/pet/edit/:id"
+            children={<EditPetForm />}
           >
           </ProtectedRoute>
 

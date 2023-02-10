@@ -35,6 +35,22 @@ function* fetchAPet(action) {
     }
 } 
 
+//PUT: id Saga: will fire on "EDIT_THIS_PET"
+function* editAPet(action) {
+    try {
+        const editedPet = action.payload;
+        yield console.log('Pet data to update: ', editedPet);
+        yield axios({
+            method: "PUT",
+            url: `/api/pets/${editedPet.id}`,
+            data: editedPet
+        })
+        yield put({ type: 'FETCH_PET_DETAILS', payload: editedPet.id})
+    } catch (error) {
+        console.log('Error in editAPet: ', error);
+    }
+}
+
 //DELETE:id Saga: will fire on "DELETE_THIS_PET"
 function* deleteAPet(action) {
     try {
@@ -53,6 +69,7 @@ function* petsSaga() {
     yield takeEvery('ADD_PET', createPet);
     yield takeEvery('FETCH_PET_DETAILS', fetchAPet);
     yield takeEvery('DELETE_THIS_PET', deleteAPet);
+    yield takeEvery('EDIT_THIS_PET', editAPet);
 }
 
 export default petsSaga;

@@ -34,6 +34,14 @@ function TaskForm () {
             type: 'ADD_TASK',
             payload: taskObject
         })
+        //clear inputs
+        clearInputs();
+    }
+
+    //clear inputs
+    const clearInputs = () => {
+        setTaskDesc('');
+        setFrequency('');
     }
 
     return (

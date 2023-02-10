@@ -1,7 +1,6 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-const processPetTasks = require('../modules/processPetTasks');
 
 
 /**
@@ -29,6 +28,31 @@ router.post('/', (req, res) => {
     .then(() => res.sendStatus(201))
     .catch((err) => {
         console.log('Task creation failed: ', err);
+        res.sendStatus(500);
+    });
+});
+
+//Put task by id
+router.put('/:id', (req, res) => {
+    //get id of pet to update
+    let idToEdit = req.params.id;
+    //grab task object
+    let editTaskObject = req.body;
+    //values to inject into query
+    const sqlValues = [editTaskObject.taskDesc, 
+        editTaskObject.frequency, idToEdit];
+    //put edit task query
+    const sqlQuery = `
+    UPDATE "tasks"
+        SET 
+            "taskDesc" = $1,
+            "frequency" = $2
+        WHERE "id" = $3;
+    `;
+    pool.query(sqlQuery, sqlValues)
+    .then(() => res.sendStatus(200))
+    .catch((err) => {
+        console.log('Task edit failed: ', err);
         res.sendStatus(500);
     });
 });

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 //components
 import DeleteButton from '../Buttons/DeleteButton';
+import EditButton from '../Buttons/EditButton';
 import TaskForm from '../Task Components/TaskForm';
 import PetTasksList from '../Task Components/PetTasksList';
 //mui components
@@ -40,6 +41,10 @@ function PetProfile () {
                     className="petDelete" 
                     pet={pets.singlePetReducer}
                     />
+                    <EditButton 
+                    className="petEdit"
+                    pet={pets.singlePetReducer}
+                    />
                 </Grid>
                 <Grid
                 container spacing={4}
@@ -64,7 +69,7 @@ function PetProfile () {
                 >
                     <Paper>
                         <p>
-                            {pets.singlePetReducer.cups_per_feeding} cup of {pets.singlePetReducer.food_desc} 
+                            {pets.singlePetReducer.cupsPerFeed} cup of {pets.singlePetReducer.foodDesc} 
                         </p>
                     </Paper>
                 </Grid>
@@ -77,7 +82,7 @@ function PetProfile () {
                 >
                     <Paper>
                         <p>
-                            {pets.singlePetReducer.exercise_min} daily of the following activities: {pets.singlePetReducer.exercise_desc} 
+                            {pets.singlePetReducer.exerciseMin} daily of the following activities: {pets.singlePetReducer.exerciseDesc} 
                         </p>
                     </Paper>
                 </Grid>

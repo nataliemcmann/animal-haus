@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 function DeleteButton(props) {
     const dispatch = useDispatch();
 
-    const runDispatch = () => {
+    const runDeleteDispatch = () => {
         console.log(props)
         if (props.className === 'petDelete') {
             let idToDelete = props.pet.id;
@@ -31,7 +31,7 @@ function DeleteButton(props) {
 
 
         return(
-            <Button onClick={runDispatch} variant="contained"color="error" size="small">
+            <Button onClick={runDeleteDispatch} variant="contained"color="error" size="small">
                 Delete
             </Button>
         )

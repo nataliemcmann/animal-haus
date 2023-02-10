@@ -34,14 +34,14 @@ router.post('/', (req, res) => {
     const userId = req.user.id;
     //create an array of req.body values plus userIdto inject into the query
     const sqlValues = [req.body.name, req.body.age, 
-                        req.body.foodDesc, req.body.cupsPerFeeding,
+                        req.body.foodDesc, req.body.cupsPerFeed,
                         req.body.exerciseDesc, req.body.exerciseMin,
                         userId];
     //post new pet query                    
     const sqlQuery = `
     INSERT INTO "pets"
-        ("name", "age", "food_desc", "cups_per_feeding",
-        "exercise_desc", "exercise_min", "user_id")
+        ("name", "age", "foodDesc", "cupsPerFeed",
+        "exerciseDesc", "exerciseMin", "userId")
     VALUES
         ($1, $2, $3, $4, $5, $6, $7);
     `;
@@ -58,10 +58,10 @@ router.put('/:id', (req, res) => {
     //get id of pet to update
     let idToEdit = req.params.id;
     //grab pet object
-    let editPetObject = req.body;''
+    let editPetObject = req.body;
     //values to inject into query
     const sqlValues = [editPetObject.name, editPetObject.age, 
-                    editPetObject.foodDesc, editPetObject.cupsPerFeeding,
+                    editPetObject.foodDesc, editPetObject.cupsPerFeed,
                     editPetObject.exerciseDesc, editPetObject.exerciseMin, idToEdit];
     //put edit pet query
     const sqlQuery = `
@@ -69,10 +69,10 @@ router.put('/:id', (req, res) => {
         SET 
             "name" = $1,
             "age" = $2,
-            "food_desc" = $3,
-            "cups_per_feeding" = $4,
-            "exercise_desc" = $5,
-            "exercise_min" = $6
+            "foodDesc" = $3,
+            "cupsPerFeed" = $4,
+            "exerciseDesc" = $5,
+            "exerciseMin" = $6
         WHERE "id" = $7;
     `;
     pool.query(sqlQuery, sqlValues)

@@ -32,9 +32,20 @@ function PetForm() {
             type: 'ADD_PET',
             payload: petObject
         })
-        //history.push(send to Pet Profile)
+        //clear inputs
+        clearInputs();
+        //history.push(send to Pet Summary)
     }
 
+    //function to clear inputs
+    const clearInputs = () => {
+        setName('');
+        setAge('');
+        setFoodDesc('');
+        setCupsPerFeeding('');
+        setExerciseDesc('');
+        setExerciseMin('');
+    }
 
     return (
         <form onSubmit={addPet}>
