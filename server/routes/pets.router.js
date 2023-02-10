@@ -53,6 +53,36 @@ router.post('/', (req, res) => {
     });
 });
 
+//PUT by id route
+router.put('/:id', (req, res) => {
+    //get id of pet to update
+    let idToEdit = req.params.id;
+    //grab pet object
+    let editPetObject = req.body;''
+    //values to inject into query
+    const sqlValues = [editPetObject.name, editPetObject.age, 
+                    editPetObject.foodDesc, editPetObject.cupsPerFeeding,
+                    editPetObject.exerciseDesc, editPetObject.exerciseMin, idToEdit];
+    //put edit pet query
+    const sqlQuery = `
+    UPDATE "pets"
+        SET 
+            "name" = $1,
+            "age" = $2,
+            "food_desc" = $3,
+            "cups_per_feeding" = $4,
+            "exercise_desc" = $5,
+            "exercise_min" = $6
+        WHERE "id" = $7;
+    `;
+    pool.query(sqlQuery, sqlValues)
+    .then(() => res.sendStatus(200))
+    .catch((err) => {
+        console.log('Pet edit failed: ', err);
+        res.sendStatus(500);
+    });
+});
+
 //DELETE by id route
 router.delete('/:id', (req, res) => {
     //get id of pet to delete
