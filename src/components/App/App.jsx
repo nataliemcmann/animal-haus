@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import PetForm from '../Pet Components/PetForm';
 import PetProfile from '../Pet Components/PetProfile';
 import EditPetForm from '../Pet Components/EditPetForm';
+import EditTaskForm from '../Task Components/EditTaskForm';
 
 import './App.css';
 
@@ -92,6 +93,14 @@ function App() {
             exact
             path="/pet/edit/:id"
             children={<EditPetForm />}
+          >
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows pet profile page else shows LoginPage
+            exact
+            path="/task/edit/:id"
+            children={<EditTaskForm />}
           >
           </ProtectedRoute>
 

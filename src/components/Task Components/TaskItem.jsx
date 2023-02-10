@@ -5,6 +5,7 @@ import DeleteButton from '../Buttons/DeleteButton';
 import TaskClaimButton from '../Buttons/TaskClaimButton';
 import ClaimedChip from './ClaimedChip';
 import UnclaimTaskButton from '../Buttons/UnclaimTaskButton';
+import EditButton from '../Buttons/EditButton';
 
 function TaskItem({task}){
     const user = useSelector((store) => store.user);
@@ -27,6 +28,7 @@ function TaskItem({task}){
                     <ClaimedChip />
                     <UnclaimTaskButton task={task}/>
                     <DeleteButton className="taskDelete" task = {task}/>
+                    <EditButton className="taskEdit" task = {task}/>
                 </li>
             </>
         )
@@ -37,6 +39,7 @@ function TaskItem({task}){
                     {task.frequency} {task.taskDesc} 
                     <TaskClaimButton task={task}/>
                     <DeleteButton className="taskDelete" task = {task}/>
+                    <EditButton className="taskEdit" task = {task}/>
                 </li>
             </>
         )

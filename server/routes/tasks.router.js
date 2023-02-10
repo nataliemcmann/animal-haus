@@ -72,8 +72,25 @@ router.delete('/:id', (req, res) => {
     });
 })
 
+//GET single task
+router.get('/:id', (req, res) => {
+    const sqlValues = [req.params.id];
+    const sqlQuery = `
+    SELECT * FROM "tasks"
+        WHERE "id" = $1;
+    `;
+    pool.query(sqlQuery, sqlValues)
+    .then((result) => {
+        res.send(result.rows);
+    })
+    .catch((err) => {
+        console.log('Get single task failed: ', err);
+        res.sendStatus(500);
+    })
+})
+
 //GET by pet id
-router.get('/:petID', (req, res) => {
+router.get('/pet/:petID', (req, res) => {
     console.log('getting pet tasks');
     // get specific pet id from params
     const sqlValues = [req.params.petID];

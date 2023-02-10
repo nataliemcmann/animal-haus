@@ -10,4 +10,11 @@ const taskPetReducer = (state = [], action) => {
     }
 };
 
+const singleTaskReducer = (state = {}, action) => {
+    switch(action.type) {
+        case 'SET_TASK':
+            return action.payload;
+    }
+}
+
 export default combineReducers({taskPetReducer});

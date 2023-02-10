@@ -34,13 +34,25 @@ function* deleteTask(action) {
     }
 }
 
+//GET a task saga: will fire on "FETCH_A_TASK"
+function* fetchATask(action) {
+    try {
+        const taskID = action.payload;
+        const singleTask = yield axios.get(`api/tasks/${taskID}`)
+        console.log('get a single task', singleTask);
+        yield put({type: 'SET_TASK', payload: singleTask.data})
+    } catch (error) {
+        console.log('Error in fetchATask', error);
+    }
+}
+
 //GET by petID Saga: will fire on "FETCH_PET_TASKS"
 function* fetchPetTasks(action) {
     try {
         //get id from action object
         const petID = action.payload;
         //axios get for tasks by petID
-        const petTasks = yield axios.get(`api/tasks/${petID}`);
+        const petTasks = yield axios.get(`api/tasks/pet/${petID}`);
         //make sure data looks correct
         console.log('get a pets taks', petTasks);
         //send data to pet task reducer
@@ -54,6 +66,7 @@ function* tasksSaga() {
     yield takeEvery('ADD_TASK', createTask);
     yield takeEvery('FETCH_PET_TASKS', fetchPetTasks);
     yield takeEvery('DELETE_THIS_TASK', deleteTask);
+    yield takeEvery('FETCH_A_TASK', fetchATask);
 }
 
 export default tasksSaga;
