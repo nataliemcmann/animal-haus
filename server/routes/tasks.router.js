@@ -1,6 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const addTaskStatus = require('../modules/addTaskStatus');
 
 
 /**
@@ -48,6 +49,7 @@ router.get('/user', (req, res) => {
         "tasks"."taskDesc",
         "tasks"."frequency",
         "tasks"."petID",
+        "task_complete"."timeCompleted",
         "pets"."name",
         JSON_AGG(
             JSON_BUILD_OBJECT(
@@ -62,11 +64,12 @@ router.get('/user', (req, res) => {
         LEFT JOIN "tasks_user"
             ON "tasks"."id" = "tasks_user"."taskID"
         WHERE "tasks_user"."userID" = $1
-        GROUP BY "tasks"."id", "pets"."name";
+        GROUP BY "tasks"."id", "pets"."name", "task_complete"."timeCompleted";
     `;
     pool.query(sqlQuery, sqlValues)
     .then((result) => {
-        res.send(result.rows);
+        let taskArray = addTaskStatus(result.rows);
+        res.send(taskArray);
     })
     .catch(err => {
         console.log('GET tasks failed: ', err);
