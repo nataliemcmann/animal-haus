@@ -4,10 +4,70 @@ const router = express.Router();
 
 
 /**
- * GET route 
+ * GET all route 
  */
 router.get('/', (req, res) => {
-    // GET route code here
+    console.log('getting tasks');
+    const sqlQuery = `
+    SELECT 
+        "tasks"."id",
+        "tasks"."taskDesc",
+        "tasks"."frequency",
+        "tasks"."petID",
+        JSON_AGG(
+            JSON_BUILD_OBJECT(
+            'claimID', "tasks_user"."id",
+            'userID', "tasks_user"."userID")
+        ) AS "taskUserRelation"
+    FROM "tasks"
+        LEFT JOIN "task_complete"
+            ON "tasks"."id" = "task_complete"."taskID"
+        LEFT JOIN "tasks_user"
+            ON "tasks"."id" = "tasks_user"."taskID"
+        GROUP BY "tasks"."id";
+    `;
+    pool.query(sqlQuery)
+    .then((result) => {
+        res.send(result.rows);
+    })
+    .catch(err => {
+        console.log('GET tasks failed: ', err);
+    });
+});
+
+
+/**
+ * GET by user route 
+ */
+router.get('/user', (req, res) => {
+    console.log('getting user tasks');
+    const sqlValues = [req.user.id]
+    const sqlQuery = `
+    SELECT 
+        "tasks"."id",
+        "tasks"."taskDesc",
+        "tasks"."frequency",
+        "tasks"."petID",
+        JSON_AGG(
+            JSON_BUILD_OBJECT(
+            'claimID', "tasks_user"."id",
+            'userID', "tasks_user"."userID")
+        ) AS "taskUserRelation"
+    FROM "tasks"
+        LEFT JOIN "task_complete"
+            ON "tasks"."id" = "task_complete"."taskID"
+        LEFT JOIN "tasks_user"
+            ON "tasks"."id" = "tasks_user"."taskID"
+        WHERE "tasks_user"."userID" = $1
+        GROUP BY "tasks"."id";
+    `;
+    pool.query(sqlQuery, sqlValues)
+    .then((result) => {
+        res.send(result.rows);
+    })
+    .catch(err => {
+        console.log('GET tasks failed: ', err);
+    });
 });
 
 /**

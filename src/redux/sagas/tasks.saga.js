@@ -1,4 +1,4 @@
-import { put, takeEvery } from 'redux-saga/effects';
+import { put, take, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 //POST Task Saga: will fire on "ADD_TASK" actions
@@ -15,6 +15,23 @@ function* createTask(action) {
         yield put({ type: 'FETCH_PET_TASKS', payload: newTask.petID })
     } catch (error) {
         console.log('Error in createTask: ', error);
+    }
+}
+
+//PUT task saga: will fire on "EDIT_THIS_TASK"
+function* editTask(action) {
+    try {
+        const editedTask = action.payload;
+        let idToEdit = editedTask.id
+        yield console.log('Task to edit: ', editedTask);
+        yield axios ({
+            method: "PUT",
+            url: `/api/tasks/${idToEdit}`,
+            data: editedTask
+        });
+        yield put({ type: 'FETCH_PET_TASKS', payload: editedTask.petID })
+    } catch (error) {
+        console.log('Error in editTask: ', error);
     }
 }
 
@@ -40,7 +57,7 @@ function* fetchATask(action) {
         const taskID = action.payload;
         const singleTask = yield axios.get(`api/tasks/${taskID}`)
         console.log('get a single task', singleTask);
-        yield put({type: 'SET_TASK', payload: singleTask.data})
+        yield put({type: 'SET_TASK', payload: singleTask.data[0]})
     } catch (error) {
         console.log('Error in fetchATask', error);
     }
@@ -62,11 +79,44 @@ function* fetchPetTasks(action) {
     }
 }
 
+//GET by userID Saga: will fire on "FETCH_USER_TASKS"
+function* fetchUserTasks(action) {
+    try {
+        //get id from action object
+        const userID = action.payload;
+        //axios get for tasks by petID
+        const userTasks = yield axios.get(`api/tasks/user`);
+        //make sure data looks correct
+        console.log('get a pets taks', userTasks);
+        //send data to pet task reducer
+        yield put({type: 'SET_USER_TASKS', payload: userTasks.data});
+    } catch (error) {
+        console.log('Error in fetchUserTasks: ', error);
+    }
+}
+
+//GET all tasks: will fire on "FETCH_ALL_TASKS"
+function* fetchTasks(action) {
+    try {
+        //axios get for tasks by petID
+        const petTasks = yield axios.get(`api/tasks`);
+        //make sure data looks correct
+        console.log('get all tasks');
+        //send data to pet task reducer
+        yield put({type: 'SET_TASKS', payload: petTasks.data});
+    } catch (error) {
+        console.log('Error in fetchPetTasks: ', error);
+    }
+}
+
 function* tasksSaga() {
     yield takeEvery('ADD_TASK', createTask);
     yield takeEvery('FETCH_PET_TASKS', fetchPetTasks);
     yield takeEvery('DELETE_THIS_TASK', deleteTask);
     yield takeEvery('FETCH_A_TASK', fetchATask);
+    yield takeEvery('EDIT_THIS_TASK', editTask);
+    yield takeEvery('FETCH_ALL_TASKS', fetchTasks);
+    yield takeEvery('FETCH_USER_TASKS', fetchUserTasks);
 }
 
 export default tasksSaga;
