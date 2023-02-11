@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 //mui components
-import Button from '@mui/material/Button';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 function DeleteButton(props) {
     const dispatch = useDispatch();
@@ -31,9 +31,9 @@ function DeleteButton(props) {
 
 
         return(
-            <Button onClick={runDeleteDispatch} variant="contained"color="error" size="small">
+            <DeleteForeverIcon onClick={runDeleteDispatch} variant="contained"color="error" size="small">
                 Delete
-            </Button>
+            </DeleteForeverIcon>
         )
 }
 

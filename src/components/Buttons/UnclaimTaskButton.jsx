@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 //mui component
-import Button from '@mui/material/Button';
+import Chip from '@mui/material/Chip';
 
 function UnclaimTaskButton({ task }) {
     //declare dispatch
@@ -34,12 +34,11 @@ function UnclaimTaskButton({ task }) {
     }
 
     return (
-        <Button 
-            onClick={deleteUserClaim}
+        <Chip 
+            label="Unclaim"
+            onDelete={deleteUserClaim}
             variant="contained" color ="secondary" size="small"
-        >
-            Unclaim
-        </Button>
+        />
     )
 }
 
