@@ -23,6 +23,7 @@ import PetForm from '../Pet Components/PetForm';
 import PetProfile from '../Pet Components/PetProfile';
 import EditPetForm from '../Pet Components/EditPetForm';
 import EditTaskForm from '../Task Components/EditTaskForm';
+import PetSummary from '../Pet Components/PetSummary';
 
 import './App.css';
 
@@ -75,6 +76,14 @@ function App() {
             // logged in shows addPetPage else shows LoginPage
             exact
             path="/addPet"
+          >
+            <PetForm />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows addPetPage else shows LoginPage
+            exact
+            path="/petSummary"
           >
             <PetForm />
           </ProtectedRoute>

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-//mui components
+//mui component
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
-function UserProfile() {
+function UserIcon() {
     const history = useHistory();
 
     const sendToUserPage = () => {
@@ -15,4 +15,4 @@ function UserProfile() {
     )
 }
 
-export default UserProfile;
+export default UserIcon;

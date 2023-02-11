@@ -7,7 +7,8 @@ import { useSelector } from 'react-redux';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 //action imports
-import UserProfile from './LinkedIcons/UserProfile';
+import UserIcon from './LinkedIcons/UserIcon';
+import PetsPage from './LinkedIcons/PetsPage';
 
 
 function Nav() {
@@ -15,9 +16,6 @@ function Nav() {
 
   return (
     <div className="nav">
-      <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
-      </Link>
       <div>
         {/* If no user is logged in, show these links */}
         {!user.id && (
@@ -31,7 +29,9 @@ function Nav() {
         {user.id && (
           <>
             <BottomNavigation>
-              <BottomNavigationAction label="Home" icon={<UserProfile />}/>
+              <BottomNavigationAction label="Home" icon={<UserIcon />}/>
+              <BottomNavigationAction label="Pet Summary" icon={<PetsPage />}/>
+
 
             <Link className="navLink" to="/info">
               Task Summary
