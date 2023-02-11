@@ -1,8 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import './Nav.css';
+// import './Nav.css';
 import { useSelector } from 'react-redux';
+//mui import
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+//action imports
+import UserProfile from './LinkedIcons/UserProfile';
+
 
 function Nav() {
   const user = useSelector((store) => store.user);
@@ -24,19 +30,19 @@ function Nav() {
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
-            <Link className="navLink" to="/user">
-              Home
-            </Link>
+            <BottomNavigation>
+              <BottomNavigationAction label="Home" icon={<UserProfile />}/>
 
             <Link className="navLink" to="/info">
-              Info Page
+              Task Summary
             </Link>
 
             <Link className="navLink" to="/addPet">
-              Add Pet
+              Pet Summary
             </Link>
 
             <LogOutButton className="navLink" />
+            </BottomNavigation>
           </>
         )}
 
