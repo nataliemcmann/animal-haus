@@ -26,6 +26,7 @@ function* deleteTaskUserClaim(action) {
             data: taskObject
         })
         yield put({ type: 'FETCH_PET_TASKS', payload: taskObject.petID })
+        yield put({ type: 'FETCH_USER_TASKS', payload: action.payload.userID })
     } catch (error) {
         console.log('Error in deleteTaskUserClaim: ', error);
     }
