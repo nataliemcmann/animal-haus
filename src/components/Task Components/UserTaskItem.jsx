@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 //components
 import DeleteButton from '../Buttons/DeleteButton';
 import UnclaimTaskButton from '../Buttons/UnclaimTaskButton';
@@ -8,6 +8,8 @@ import EditButton from '../Buttons/EditButton';
 import DoneOutlineIcon from '@mui/icons-material/DoneOutline';
 
 function UserTaskItem({ task }) {
+    //subscribe to user info
+    const user = useSelector((store) => store.user);
     //declare dispatch
     const dispatch = useDispatch();
     //dispatch to task_complete saga
@@ -16,7 +18,10 @@ function UserTaskItem({ task }) {
         console.log(taskID);
         dispatch({
             type: 'ADD_COMPLETE',
-            payload: taskID
+            payload: {
+                taskID,
+                userID: user.id
+            }
         })
     }
 
