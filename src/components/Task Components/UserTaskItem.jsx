@@ -12,10 +12,11 @@ function UserTaskItem({ task }) {
     const dispatch = useDispatch();
     //dispatch to task_complete saga
     const markComplete = () => {
-        console.log(task.id);
+        let taskID = task.id
+        console.log(taskID);
         dispatch({
             type: 'ADD_COMPLETE',
-            payload: task.id
+            payload: taskID
         })
     }
 
