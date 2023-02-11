@@ -4,6 +4,7 @@ import React from 'react';
 import DeleteButton from '../Buttons/DeleteButton';
 import UnclaimTaskButton from '../Buttons/UnclaimTaskButton';
 import EditButton from '../Buttons/EditButton';
+import DoneOutlineIcon from '@mui/icons-material/DoneOutline';
 
 function UserTaskItem({ task }) {
 
@@ -14,7 +15,7 @@ function UserTaskItem({ task }) {
                 <UnclaimTaskButton task={task}/>
                 <DeleteButton className="taskDelete" task = {task}/>
                 <EditButton className="taskEdit" task = {task}/>
-                complete
+                <DoneOutlineIcon color= "success" />
             </li>
         </>
     }
@@ -25,7 +26,7 @@ function UserTaskItem({ task }) {
                 <UnclaimTaskButton task={task}/>
                 <DeleteButton className="taskDelete" task = {task}/>
                 <EditButton className="taskEdit" task = {task}/>
-                needs to be done!
+                <DoneOutlineIcon color= "error" />
             </li>
         </>
     )

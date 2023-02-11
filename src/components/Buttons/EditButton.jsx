@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 //mui components
-import Button from '@mui/material/Button';
+import EditIcon from '@mui/icons-material/Edit';
 
 function EditButton(props) {
     const history = useHistory();
@@ -16,9 +16,9 @@ function EditButton(props) {
     }
 
     return(
-        <Button onClick={sendToEditForm} variant="contained" size="small">
+        <EditIcon onClick={sendToEditForm} color="primary" size="small">
             Edit
-        </Button>
+        </EditIcon>
     )
 }
 
