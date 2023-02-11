@@ -25,28 +25,31 @@ function UserTaskItem({ task }) {
         })
     }
 
-    if (task.status) {
-        <>
-            <li> 
-                {task.name}: {task.taskDesc} {task.frequency} 
-                <UnclaimTaskButton task={task}/>
-                <DeleteButton className="taskDelete" task = {task}/>
-                <EditButton className="taskEdit" task = {task}/>
-                <DoneOutlineIcon color= "success" />
-            </li>
-        </>
+    if (task.status === 'true') {
+        return(
+            <>
+                <li> 
+                    <DoneOutlineIcon color= "success"/>
+                    {task.name}: {task.taskDesc} {task.frequency} 
+                    <UnclaimTaskButton task={task}/>
+                    <DeleteButton className="taskDelete" task = {task}/>
+                    <EditButton className="taskEdit" task = {task}/>
+                </li>
+            </>
+        )
+    } else {
+        return (
+            <>
+                <li> 
+                    <DoneOutlineIcon onClick={markComplete} color= "error" />
+                    {task.name}: {task.taskDesc} {task.frequency} 
+                    <UnclaimTaskButton task={task}/>
+                    <DeleteButton className="taskDelete" task = {task}/>
+                    <EditButton className="taskEdit" task = {task}/>
+                </li>
+            </>
+        )
     }
-    return (
-        <>
-            <li> 
-                {task.name}: {task.taskDesc} {task.frequency} 
-                <UnclaimTaskButton task={task}/>
-                <DeleteButton className="taskDelete" task = {task}/>
-                <EditButton className="taskEdit" task = {task}/>
-                <DoneOutlineIcon onClick={markComplete} color= "error" />
-            </li>
-        </>
-    )
 }
 
 export default UserTaskItem;

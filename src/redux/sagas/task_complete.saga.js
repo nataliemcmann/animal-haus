@@ -19,7 +19,7 @@ function* createTaskComplete(action){
     }
 }
 
-function taskCompleteSaga() {
+function* taskCompleteSaga() {
     yield takeEvery('ADD_COMPLETE', createTaskComplete);
 }
 
