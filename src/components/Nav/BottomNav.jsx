@@ -6,52 +6,37 @@ import { useSelector } from 'react-redux';
 //mui import
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import { Paper } from '@mui/material';
 //action imports
 import UserIcon from './LinkedIcons/UserIcon';
 import PetsPage from './LinkedIcons/PetsPage';
+import TasksPage from './LinkedIcons/TasksPage';
 
 
-function Nav() {
+function BottomNav() {
   const user = useSelector((store) => store.user);
 
   return (
     <div className="nav">
-      <div>
-        {/* If no user is logged in, show these links */}
-        {!user.id && (
-          // If there's no user, show login/registration links
-          <Link className="navLink" to="/login">
-            Login / Register
-          </Link>
-        )}
-
+      <Paper 
+        sx={{ position: 'fixed', bottom: 0, left: 0, 
+              right: 0 }} 
+        elevation={3}
+      >
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
             <BottomNavigation>
               <BottomNavigationAction label="Home" icon={<UserIcon />}/>
               <BottomNavigationAction label="Pet Summary" icon={<PetsPage />}/>
-
-
-            <Link className="navLink" to="/info">
-              Task Summary
-            </Link>
-
-            <Link className="navLink" to="/addPet">
-              Pet Summary
-            </Link>
-
-            <LogOutButton className="navLink" />
+              <BottomNavigationAction label="Task Summary" icon={<TasksPage />}/>
             </BottomNavigation>
           </>
         )}
 
-        <Link className="navLink" to="/about">
-          About
-        </Link>
-      </div>
+      </Paper>
     </div>
   );
 }
 
-export default Nav;
+export default BottomNav;
