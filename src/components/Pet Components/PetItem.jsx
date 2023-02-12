@@ -1,5 +1,6 @@
 import React from 'react';
-
+//components
+import DetailsButton from '../Buttons/DetailsButton';
 //mui component
 import { Grid, Paper } from '@mui/material';
 
@@ -13,12 +14,13 @@ function PetItem({ pet }) {
             alignItems="center"
             >    
                 <Paper>
-                    <h3>{pet.name}</h3>
-                    <p>Food Details: {pet.cupsPerFeed} cup of {pet.foodDesc}</p>
+                    <h3>{pet.name}</h3> 
+                    <p>Cups of food per meal: {pet.cupsPerFeed}</p>
                     {pet.exerciseMin && (
-                    <p>Exercise Details: {pet.exerciseMin} of the following: {pet.exerciseDesc}</p>
+                    <p>Daily Exercise: {pet.exerciseMin}</p>
                     )
                     }
+                    <DetailsButton id={pet.id}/>
                 </Paper>
             </Grid>
         </>
