@@ -1,4 +1,4 @@
-import { put, takeEvery } from 'redux-saga/effects';
+import { put, take, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 //POST Saga: will fire on "ADD_PET" actions
@@ -35,6 +35,19 @@ function* fetchAPet(action) {
     }
 } 
 
+//Get all Saga: will fire on "FETCH_PETS"
+function* fetchPets() {
+    try {
+        //ask for pet data
+        const pets = yield axios.get('/api/pets');
+        console.log('all pet data', pets);
+        //once data received, send to petsReducer 
+        yield put({ type: 'SET_PETS', payload: pets.data })
+    } catch (error) {
+        console.log('Error in fetchPets', error);
+    }
+}
+
 //PUT: id Saga: will fire on "EDIT_THIS_PET"
 function* editAPet(action) {
     try {
@@ -70,6 +83,7 @@ function* petsSaga() {
     yield takeEvery('FETCH_PET_DETAILS', fetchAPet);
     yield takeEvery('DELETE_THIS_PET', deleteAPet);
     yield takeEvery('EDIT_THIS_PET', editAPet);
+    yield takeEvery('FETCH_PETS', fetchPets);
 }
 
 export default petsSaga;

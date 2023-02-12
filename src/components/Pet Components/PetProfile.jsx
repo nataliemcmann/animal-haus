@@ -13,7 +13,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 function PetProfile () {
     //declare dispatch
     const dispatch = useDispatch();
-    //subscribe to singlePetReducer
+    //subscribe to pets reducer
     const pets = useSelector(store => store.pets);
     //grab id from route parameter
     let { id } = useParams();

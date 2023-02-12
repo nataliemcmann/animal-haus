@@ -28,4 +28,14 @@ const singlePetReducer = (state = {}, action) => {
     }
 };
 
-export default combineReducers({singlePetReducer});
+//all pets reducer
+const petsReducer = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_PETS':
+            return action.payload;
+        default: 
+            return state;
+    }
+}
+
+export default combineReducers({singlePetReducer, petsReducer});
