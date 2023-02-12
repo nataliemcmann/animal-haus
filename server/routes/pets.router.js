@@ -6,7 +6,16 @@ const router = express.Router();
  * GET route template
  */
 router.get('/', (req, res) => {
-  // GET route code here
+    const sqlQuery = `
+    SELECT * FROM "pets";
+    `;
+    pool.query(sqlQuery)
+    .then((result) => {
+        res.send(result.rows);
+    })
+    .catch(err => {
+        console.log('GET all pets failed', err);
+    })
 });
 
 //GET/:id route
