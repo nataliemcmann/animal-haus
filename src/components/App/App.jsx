@@ -8,7 +8,8 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import Nav from '../Nav/Nav';
+import TopNav from '../Nav/TopNav';
+import BottomNav from '../Nav/BottomNav';
 import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
@@ -23,6 +24,8 @@ import PetForm from '../Pet Components/PetForm';
 import PetProfile from '../Pet Components/PetProfile';
 import EditPetForm from '../Pet Components/EditPetForm';
 import EditTaskForm from '../Task Components/EditTaskForm';
+import PetSummary from '../Pet Components/PetSummary';
+import TaskSummary from '../Task Components/TaskSummary';
 
 import './App.css';
 
@@ -38,7 +41,7 @@ function App() {
   return (
     <Router>
       <div>
-        {/* <Nav /> */}
+        <TopNav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
@@ -81,6 +84,14 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
+            // logged in shows addPetPage else shows LoginPage
+            exact
+            path="/petSummary"
+          >
+            <PetSummary />
+          </ProtectedRoute>
+
+          <ProtectedRoute
             // logged in shows pet profile page else shows LoginPage
             exact
             path="/pet/:id"
@@ -102,6 +113,14 @@ function App() {
             path="/task/edit/:id"
             children={<EditTaskForm />}
           >
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows addPetPage else shows LoginPage
+            exact
+            path="/taskSummary"
+          >
+            <TaskSummary />
           </ProtectedRoute>
 
           <Route
@@ -153,7 +172,7 @@ function App() {
         </Switch>
 
         
-
+        <BottomNav />
         {/* <Footer /> */}
       </div>
     </Router>

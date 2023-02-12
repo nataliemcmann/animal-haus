@@ -1,4 +1,4 @@
-import { put, take, takeEvery } from 'redux-saga/effects';
+import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 //POST Task Saga: will fire on "ADD_TASK" actions
@@ -99,11 +99,11 @@ function* fetchUserTasks(action) {
 function* fetchTasks(action) {
     try {
         //axios get for tasks by petID
-        const petTasks = yield axios.get(`api/tasks`);
+        const allTasks = yield axios.get(`api/tasks`);
         //make sure data looks correct
         console.log('get all tasks');
         //send data to pet task reducer
-        yield put({type: 'SET_TASKS', payload: petTasks.data});
+        yield put({type: 'SET_TASKS', payload: allTasks.data});
     } catch (error) {
         console.log('Error in fetchPetTasks: ', error);
     }
