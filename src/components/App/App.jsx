@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import TopNav from '../Nav/TopNav';
 import BottomNav from '../Nav/BottomNav';
-import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
@@ -173,7 +172,6 @@ function App() {
 
         
         <BottomNav />
-        {/* <Footer /> */}
       </div>
     </Router>
   );
