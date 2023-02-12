@@ -42,7 +42,7 @@ function* fetchPets() {
         const pets = yield axios.get('/api/pets');
         console.log('all pet data', pets);
         //once data received, send to petsReducer 
-        yield put({ type: 'SET_PETS', payload: pets })
+        yield put({ type: 'SET_PETS', payload: pets.data })
     } catch (error) {
         console.log('Error in fetchPets', error);
     }
