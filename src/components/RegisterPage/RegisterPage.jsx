@@ -8,7 +8,7 @@ function RegisterPage() {
   const history = useHistory();
 
   return (
-    <Stack paddingTop={8}>
+    <Stack paddingTop={6}>
       <RegisterForm />
 
           <button

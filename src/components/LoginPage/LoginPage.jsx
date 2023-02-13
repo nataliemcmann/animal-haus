@@ -8,7 +8,7 @@ function LoginPage() {
   const history = useHistory();
 
   return (
-      <Stack paddingTop={8}>
+      <Stack paddingTop={6}>
         <LoginForm />
 
           <button
