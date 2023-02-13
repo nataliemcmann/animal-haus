@@ -16,8 +16,8 @@ function UserPage() {
 
   return (
     <Stack padding={2}>
-      <Grid marginTop={2} marginBottom={2}>
-        <Typography variant="h3">Welcome, {user.username}!</Typography>
+      <Grid m={3}>
+        <Typography variant="h4">Welcome, {user.username}!</Typography>
       </Grid>
       <UserTasksList id={user.id}/>
     </Stack>
