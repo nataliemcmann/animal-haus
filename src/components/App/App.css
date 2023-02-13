@@ -4,13 +4,13 @@ body,
   height: 100%;
 }
 
-* {
+/* * {
   outline: red solid 1px;
-}
+} */
 
 body {
   margin: 0px;
-  background-color: #F8EDE3;
+  background-color: #fcf4f8;
 }
 
 img {
@@ -34,11 +34,12 @@ Button
 .btn_asLink {
   padding: 0;
   border-width: 0;
-  border-bottom: 1px solid #444;
+  border-bottom: 1px solid #171418;
   border-radius: 0;
   background: none;
   font: inherit;
-  color: #444;
+  font-size: 2em;
+  color: #171418;
 }
 
 .btn_asLink:hover {
@@ -70,10 +71,10 @@ Form Treatment
   max-width: 100%;
   padding: 25px;
   margin: 0 auto 20px;
-  background-color: #DFD3C3;
+  background-color: #e2d6f0;
   color: #171418;
   border-radius: 3px;
-  box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
+  box-shadow: 0 1px 10px rgb(0, 0, 0, 0.4);
 }
 
 input {

@@ -9,7 +9,7 @@ const PurpleButton = styled(Button)({
     padding: '6px 12px',
     border: '1px solid',
     lineHeight: 2,
-    backgroundColor: '#7D6E83',
+    backgroundColor: '#8073a4',
     borderColor: '#171418',
     '&:hover': {
     backgroundColor: '#403742',
@@ -18,7 +18,7 @@ const PurpleButton = styled(Button)({
 },
 '&:active': {
     boxShadow: 'none',
-    backgroundColor: '#7D6E83',
+    backgroundColor: '#8073a4',
     borderColor: '#171418',
 }
 });
