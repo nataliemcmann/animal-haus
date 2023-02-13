@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import UserTaskItem from './UserTaskItem';
 //mui components
 import Grid from '@mui/material/Unstable_Grid2';
