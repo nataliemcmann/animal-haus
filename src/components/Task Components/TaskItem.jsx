@@ -5,7 +5,7 @@ import DeleteButton from '../Buttons/DeleteButton';
 import EditButton from '../Buttons/EditButton';
 import CompleteIcon from '../Buttons/CompleteIcon';
 import ClaimStatusChip from './ClaimStatusChip';
-
+//mui components
 
 function TaskItem({ task }) {
     const user = useSelector((store) => store.user);
