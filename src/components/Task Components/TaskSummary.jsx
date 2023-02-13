@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import TaskItem from './PetTaskItem';
+//components
+import TaskItem from './TaskItem';
 //mui components
 import Grid from '@mui/material/Unstable_Grid2';
 import { Paper } from '@mui/material';
@@ -8,12 +9,25 @@ import { Paper } from '@mui/material';
 function TaskSummary() {
     //declare dispatch
     const dispatch = useDispatch();
-    //subscribe to pets reducer
-    const pets = useSelector(store => store.pets);
+    //subscribe to tasks reducer
+    const tasks = useSelector(store => store.tasks);
+
+    useEffect(() => {
+        dispatch({
+            type: 'FETCH_ALL_TASKS'
+        });
+    }, [])
 
     return (
         <>
-        <h2>This is the task summary page!</h2>
+            <Grid marginLeft={10} paddingTop={1}>
+                <h2>Household Task List</h2>
+            </Grid>
+            <Grid>
+                {tasks.allTasksReducer && tasks.allTasksReducer.map((task) => {
+                    return <TaskItem key={task.id} task={task}/>
+                })}
+            </Grid>
         </>
     )
 }

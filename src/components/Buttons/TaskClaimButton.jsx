@@ -1,7 +1,7 @@
 import React from 'react';
 import {useDispatch } from 'react-redux';
 //mui component
-import Button from '@mui/material/Button';
+import Chip from '@mui/material/Chip';
 
 function TaskClaimButton({task}) {
     //declare dispatch
@@ -21,13 +21,11 @@ function TaskClaimButton({task}) {
     }
 
     return(
-        <Button 
+        <Chip 
             onClick={addUserClaim}
-            variant="contained" color ="success" size="small"
-        >
-            Claim
-        </Button>
+            label="CLAIM" color="success" variant="outlined" />
     )
 }
 
 export default TaskClaimButton;
+

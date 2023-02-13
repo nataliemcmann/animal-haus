@@ -14,6 +14,7 @@ function* createTaskComplete(action){
             type: 'FETCH_USER_TASKS',
             payload: action.payload.userID
         })
+        yield put({type: 'FETCH_ALL_TASKS'})
     } catch (error) {
         console.log('Error in createTaskComplete: ', error);
     }
