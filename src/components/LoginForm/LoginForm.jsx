@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
 //mui components
-import { Grid, Paper } from '@mui/material';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
+import { Grid, Typography, TextField } from '@mui/material';
 import LogInButton from '../Buttons/LogInButton';
 
 function LoginForm() {
@@ -31,7 +29,10 @@ function LoginForm() {
 
   return (
       <form className="formPanel" onSubmit={login}>
-        <Grid>
+        <Grid
+          marginLeft={2}
+          justifyContent="center"
+        >
           <Typography variant="h3">Welcome to Animal Haus!</Typography>
           {errors.loginMessage && (
             <h3 className="alert" role="alert">
@@ -41,7 +42,7 @@ function LoginForm() {
         </Grid>
         <Grid
           container spacing={2}
-          marginTop={6}
+          marginTop={4}
           justifyContent="space-evenly"
         >
           <Typography sx={{fontSize:'1.3rem'}}>Username:</Typography>

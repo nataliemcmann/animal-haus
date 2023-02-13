@@ -37,7 +37,7 @@ Button
   border-bottom: 1px solid #171418;
   border-radius: 0;
   background: none;
-  font: inherit;
+  font: roboto;
   font-size: 2em;
   color: #171418;
 }
