@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+//mui components
+import { Grid, Typography, TextField } from '@mui/material';
+import RegisterButton from '../Buttons/RegisterButton';
 
 function RegisterForm() {
   const [username, setUsername] = useState('');
@@ -21,40 +24,53 @@ function RegisterForm() {
 
   return (
     <form className="formPanel" onSubmit={registerUser}>
-      <h2>Register User</h2>
-      {errors.registrationMessage && (
-        <h3 className="alert" role="alert">
-          {errors.registrationMessage}
-        </h3>
-      )}
-      <div>
-        <label htmlFor="username">
-          Username:
-          <input
-            type="text"
-            name="username"
-            value={username}
-            required
-            onChange={(event) => setUsername(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="password">
-          Password:
-          <input
-            type="password"
-            name="password"
-            value={password}
-            required
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <input className="btn" type="submit" name="submit" value="Register" />
-      </div>
-    </form>
+      <Grid
+        marginLeft={2}
+        justifyContent="center"
+      >
+        <Typography variant="h3">Register User</Typography>
+        {errors.registrationMessage && (
+          <h3 className="alert" role="alert">
+            {errors.registrationMessage}
+          </h3>
+        )}
+      </Grid>
+      <Grid
+          container spacing={2}
+          marginTop={4}
+          justifyContent="space-evenly"
+        >
+          <Typography sx={{fontSize:'1.3rem'}}>Username:</Typography>
+            <TextField
+              required
+              id="username-input"
+              variant="filled"
+              label="username"
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+            />
+      </Grid>
+      <Grid
+          container spacing={2}
+          marginTop={2}
+          marginBottom={2}
+          justifyContent="space-evenly"
+        >
+          <Typography sx={{fontSize:'1.3rem'}}>Password:</Typography>
+            <TextField
+              required
+              id="password-input"
+              variant="filled"
+              label="password"
+              type="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+        </Grid>
+        <Grid marginLeft={12}>
+          <RegisterButton />
+        </Grid>
+      </form>
   );
 }
 

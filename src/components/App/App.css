@@ -37,8 +37,8 @@ Button
   border-bottom: 1px solid #171418;
   border-radius: 0;
   background: none;
-  font: inherit;
-  font-size: 2em;
+  font: roboto;
+  font-size: 2rem;
   color: #171418;
 }
 
@@ -58,7 +58,7 @@ Alert
   background-color: #efefef;
   border-radius: 3px;
   color: #e01616;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 /* --------------------------------------------------------------------------------
