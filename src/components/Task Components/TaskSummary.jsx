@@ -6,6 +6,11 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { Paper } from '@mui/material';
 
 function TaskSummary() {
+    //declare dispatch
+    const dispatch = useDispatch();
+    //subscribe to pets reducer
+    const pets = useSelector(store => store.pets);
+
     return (
         <>
         <h2>This is the task summary page!</h2>
