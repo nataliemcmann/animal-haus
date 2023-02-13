@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
+//mui components
+import { Grid } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import LogInButton from '../Buttons/LogInButton';
 
 function LoginForm() {
   const [username, setUsername] = useState('');
@@ -26,39 +31,49 @@ function LoginForm() {
 
   return (
     <form className="formPanel" onSubmit={login}>
-      <h2>Login</h2>
-      {errors.loginMessage && (
-        <h3 className="alert" role="alert">
-          {errors.loginMessage}
-        </h3>
-      )}
-      <div>
-        <label htmlFor="username">
-          Username:
-          <input
-            type="text"
-            name="username"
+      <Grid>
+        <Typography variant="h3">Login</Typography>
+        {errors.loginMessage && (
+          <h3 className="alert" role="alert">
+            {errors.loginMessage}
+          </h3>
+        )}
+      </Grid>
+      <Grid
+        container spacing={2}
+        marginTop={2}
+        justifyContent="space-evenly"
+      >
+        <Typography sx={{fontSize:'1.3rem'}}>Username:</Typography>
+          <TextField
             required
+            id="username-input"
+            variant="filled"
+            label="username"
             value={username}
             onChange={(event) => setUsername(event.target.value)}
           />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="password">
-          Password:
-          <input
-            type="password"
-            name="password"
+      </Grid>
+      <Grid
+        container spacing={2}
+        marginTop={2}
+        marginBottom={2}
+        justifyContent="space-evenly"
+      >
+        <Typography sx={{fontSize:'1.3rem'}}>Password:</Typography>
+          <TextField
             required
+            id="password-input"
+            variant="filled"
+            label="password"
+            type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
-        </label>
-      </div>
-      <div>
-        <input className="btn" type="submit" name="submit" value="Log In" />
-      </div>
+      </Grid>
+      <Grid>
+        <LogInButton />
+      </Grid>
     </form>
   );
 }
