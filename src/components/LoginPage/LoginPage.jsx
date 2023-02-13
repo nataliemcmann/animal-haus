@@ -2,8 +2,7 @@ import React from 'react';
 import LoginForm from '../LoginForm/LoginForm';
 import { useHistory } from 'react-router-dom';
 //mui component
-import { Stack, Grid } from '@mui/material';
-import Typography from '@mui/material/Typography';
+import { Stack } from '@mui/material';
 
 function LoginPage() {
   const history = useHistory();
