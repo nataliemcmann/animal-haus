@@ -77,11 +77,6 @@ Form Treatment
   box-shadow: 0 1px 10px rgb(0, 0, 0, 0.4);
 }
 
-input {
-  margin: 5px;
-  margin-bottom: 10px;
-}
-
 h4 {
   padding-left: 10px;
   padding-right: 10px;
@@ -90,4 +85,12 @@ h4 {
 p {
   padding-left: 10px;
   padding-right: 10px;
+}
+
+/* --------------------------------------------------------------------------------
+List 
+-------------------------------------------------------------------------------- */
+
+ul {
+  list-style: none;
 }
