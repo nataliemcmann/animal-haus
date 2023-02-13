@@ -24,7 +24,6 @@ function addTaskStatus(taskArray){
     }
     //retain only unique tasks IDs, only tasks claimed by user
     let sortArray = retainTasksWithTodaysDateOrNull(modifiedArray);
-    console.log(sortArray);
     return sortArray;
 }
 

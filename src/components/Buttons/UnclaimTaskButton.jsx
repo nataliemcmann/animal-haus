@@ -33,13 +33,13 @@ function UnclaimTaskButton({ task }) {
         });
     }
 
-    return (
-        <Chip 
-            label="Unclaim"
-            onDelete={deleteUserClaim}
-            variant="contained" color ="secondary" size="small"
-        />
-    )
+        return (
+            <Chip 
+                label="Unclaim"
+                onDelete={deleteUserClaim}
+                variant="contained" color ="secondary" size="small"
+            />
+        )  
 }
 
 export default UnclaimTaskButton;

@@ -6,6 +6,7 @@ import DeleteButton from '../Buttons/DeleteButton';
 import UnclaimTaskButton from '../Buttons/UnclaimTaskButton';
 import EditButton from '../Buttons/EditButton';
 import DoneOutlineIcon from '@mui/icons-material/DoneOutline';
+import ClaimStatusChip from './ClaimStatusChip';
 
 
 function TaskItem({ task }) {
@@ -32,7 +33,7 @@ function TaskItem({ task }) {
                 <li> 
                     <DoneOutlineIcon color= "success"/>
                     {task.name}: {task.taskDesc} {task.frequency} 
-                    <UnclaimTaskButton task={task}/>
+                    <ClaimStatusChip id={user.id} task={task}/>
                     <DeleteButton className="taskDelete" task = {task}/>
                     <EditButton className="taskEdit" task = {task}/>
                 </li>
@@ -44,7 +45,7 @@ function TaskItem({ task }) {
                 <li> 
                     <DoneOutlineIcon onClick={markComplete} color= "error" />
                     {task.name}: {task.taskDesc} {task.frequency} 
-                    <UnclaimTaskButton task={task}/>
+                    <ClaimStatusChip id={user.id} task={task}/>
                     <DeleteButton className="taskDelete" task = {task}/>
                     <EditButton className="taskEdit" task = {task}/>
                 </li>
