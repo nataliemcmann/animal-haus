@@ -87,7 +87,7 @@ function* fetchUserTasks(action) {
         //axios get for tasks by petID
         const userTasks = yield axios.get(`api/tasks/user`);
         //make sure data looks correct
-        console.log('get a pets taks', userTasks);
+        console.log('get a pets task', userTasks);
         //send data to pet task reducer
         yield put({type: 'SET_USER_TASKS', payload: userTasks.data});
     } catch (error) {

@@ -15,21 +15,26 @@ router.get('/', (req, res) => {
         "tasks"."taskDesc",
         "tasks"."frequency",
         "tasks"."petID",
+        "task_complete"."timeCompleted",
+        "pets"."name",
         JSON_AGG(
             JSON_BUILD_OBJECT(
             'claimID', "tasks_user"."id",
             'userID', "tasks_user"."userID")
         ) AS "taskUserRelation"
     FROM "tasks"
+        LEFT JOIN "pets"
+            ON "tasks"."petID" = "pets"."id"
         LEFT JOIN "task_complete"
             ON "tasks"."id" = "task_complete"."taskID"
         LEFT JOIN "tasks_user"
             ON "tasks"."id" = "tasks_user"."taskID"
-        GROUP BY "tasks"."id";
+        GROUP BY "tasks"."id", "pets"."name", "task_complete"."timeCompleted";
     `;
     pool.query(sqlQuery)
     .then((result) => {
-        res.send(result.rows);
+        let taskArray = addTaskStatus(result.rows);
+        res.send(taskArray);
     })
     .catch(err => {
         console.log('GET tasks failed: ', err);
@@ -64,7 +69,8 @@ router.get('/user', (req, res) => {
         LEFT JOIN "tasks_user"
             ON "tasks"."id" = "tasks_user"."taskID"
         WHERE "tasks_user"."userID" = $1
-        GROUP BY "tasks"."id", "pets"."name", "task_complete"."timeCompleted";
+        GROUP BY "tasks"."id", "pets"."name", "task_complete"."timeCompleted"
+        ORDER BY "tasks"."id", "task_complete"."timeCompleted" DESC;
     `;
     pool.query(sqlQuery, sqlValues)
     .then((result) => {
