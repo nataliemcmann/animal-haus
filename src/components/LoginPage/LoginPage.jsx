@@ -1,26 +1,27 @@
 import React from 'react';
 import LoginForm from '../LoginForm/LoginForm';
 import { useHistory } from 'react-router-dom';
+//mui component
+import { Stack, Grid } from '@mui/material';
+import Typography from '@mui/material/Typography';
 
 function LoginPage() {
   const history = useHistory();
 
   return (
-    <div>
-      <LoginForm />
+      <Stack paddingTop={8}>
+        <LoginForm />
 
-      <center>
-        <button
-          type="button"
-          className="btn btn_asLink"
-          onClick={() => {
-            history.push('/registration');
-          }}
-        >
-          Register
-        </button>
-      </center>
-    </div>
+          <button
+            type="button"
+            className="btn btn_asLink"
+            onClick={() => {
+              history.push('/registration');
+            }}
+          >
+            Register
+          </button>
+        </Stack>
   );
 }
 

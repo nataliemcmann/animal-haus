@@ -33,8 +33,8 @@ function TopNav() {
                 >
                     <Avatar 
                         alt="Animal Haus Logo" 
-                        src='./AnimalHAUS.png'
-                        sx={{ width: 56, height: 56 }}
+                        src='./Animal_HAUS.png'
+                        sx={{ width: 75, height: 75 }}
                         onClick={sendToLogin}
                     />
 

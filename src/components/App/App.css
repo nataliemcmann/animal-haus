@@ -4,9 +4,13 @@ body,
   height: 100%;
 }
 
+/* * {
+  outline: red solid 1px;
+} */
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
+  background-color: #fcf4f8;
 }
 
 img {
@@ -26,54 +30,20 @@ Container
 Button
 -------------------------------------------------------------------------------- */
 
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  border-color: #014041;
-  border-width: 1px 1px 3px;
-  border-radius: 4px;
-  background-color: #00acb0;
-  color: #f8f8f8;
-  font-size: 1.1rem;
-  outline: 0;
-  cursor: pointer;
-}
-
-.btn_sizeMin {
-  min-height: 50px;
-  min-width: 100px;
-}
-
-.btn_sizeSm {
-  padding: 10px 15px;
-  font-size: 0.8rem;
-}
-
-.btn_sizeFull {
-  display: block;
-  width: 100%;
-}
-
-.btn:hover {
-  background-color: #008183;
-  text-decoration: none;
-}
-
 /* This line makes the "Register" and "Login" buttons look like links */
 .btn_asLink {
   padding: 0;
   border-width: 0;
-  border-bottom: 1px solid #444;
+  border-bottom: 1px solid #171418;
   border-radius: 0;
   background: none;
   font: inherit;
-  color: #444;
+  font-size: 2em;
+  color: #171418;
 }
 
 .btn_asLink:hover {
   background-color: transparent;
-  border-color: #008183;
-  color: #008183;
 }
 
 /* --------------------------------------------------------------------------------
@@ -101,9 +71,10 @@ Form Treatment
   max-width: 100%;
   padding: 25px;
   margin: 0 auto 20px;
-  background-color: #efefef;
+  background-color: #e2d6f0;
+  color: #171418;
   border-radius: 3px;
-  box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
+  box-shadow: 0 1px 10px rgb(0, 0, 0, 0.4);
 }
 
 input {
