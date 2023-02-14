@@ -24,6 +24,8 @@ function FrequencyMenu({task}) {
         <>
         <Button
             variant="contained"
+            color="secondary"
+            size="large"
             aria-controls={open ? 'basic-menu' : undefined}
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
