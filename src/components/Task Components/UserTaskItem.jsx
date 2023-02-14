@@ -12,7 +12,7 @@ import { Grid, Typography } from '@mui/material';
 function UserTaskItem({ task }) {
 
 return(
-        <li> 
+        <li className="bordered"> 
             <Grid
                 marginLeft={1}
                 marginRight={1}
@@ -31,6 +31,7 @@ return(
                 <Grid
                     container spacing={2}
                     marginTop={1}
+                    paddingBottom={1}
                     justifyContent="space-evenly"
                 >
                     <UnclaimTaskButton task={task}/>
