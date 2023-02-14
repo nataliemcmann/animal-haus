@@ -21,26 +21,19 @@ function PetTasksList({ id }) {
 
     return(
         <>
-            <Grid 
-                marginLeft={4}
-                marginTop={2}
-                marginBottom={2}
-                alignItems="center"
-            >
-                <Paper sx={{width: 294}}>
-                    <Grid marginLeft={10} paddingTop={1}>
-                        <h3>Current Tasks</h3>
-                    </Grid>
-                    <Grid paddingBottom={1}>
-                        <ul>
-                            {tasks.taskPetReducer && tasks.taskPetReducer.map((task) =>{
-                                return <TaskItem id = {id} key={task.id} task={task}/>
-                                }
-                            )}
-                        </ul>
-                    </Grid>
-                </Paper>
-            </Grid>
+            <Paper>
+                <Grid marginLeft={10} paddingTop={1}>
+                    <h3>Current Tasks</h3>
+                </Grid>
+                <Grid paddingBottom={1}>
+                    <ul>
+                        {tasks.taskPetReducer && tasks.taskPetReducer.map((task) =>{
+                            return <TaskItem id = {id} key={task.id} task={task}/>
+                            }
+                        )}
+                    </ul>
+                </Grid>
+            </Paper>
         </>
     )
 }

@@ -7,8 +7,7 @@ import EditButton from '../Buttons/EditButton';
 import TaskForm from '../Task Components/TaskForm';
 import PetTasksList from '../Task Components/PetTasksList';
 //mui components
-import { Box, Paper } from '@mui/material';
-import Grid from '@mui/material/Unstable_Grid2';
+import { Stack, Grid, Paper, Typography } from '@mui/material';
 
 function PetProfile () {
     //declare dispatch
@@ -29,13 +28,11 @@ function PetProfile () {
 
     return (
         <>
-            <Box sx={{
-                width: 318,
-                m: 1}}
-                >
+            <Stack padding={1}>
                 <Grid 
-                container spacing={2}
-                m={2}
+                marginTop={2}
+                container direction="row"
+                justifyContent="space-evenly"
                 >
                     <DeleteButton 
                     className="petDelete" 
@@ -47,48 +44,66 @@ function PetProfile () {
                     />
                 </Grid>
                 <Grid
-                container spacing={4}
+                container direction="row"
                 marginTop={2}
                 marginBottom={2}
                 justifyContent="space-evenly"
                 alignItems="center"
                 >
-                    <Paper>
-                        <h4>{pets.singlePetReducer.name}</h4>
+                    <Paper elevation={4}>
+                        <Typography 
+                        variant="h5"
+                        sx={{p:2}}
+                        >
+                            {pets.singlePetReducer.name}
+                        </Typography>
                     </Paper>
-                    <Paper>
-                        <h4>Age: {pets.singlePetReducer.age}</h4>
+                    <Paper elevation={4}>
+                        <Typography
+                        variant="h5"
+                        sx={{p:2}}
+                        >
+                            Age: {pets.singlePetReducer.age}
+                        </Typography>
                     </Paper>
                 </Grid>
                 <Grid 
-                container spacing={2}
-                marginLeft={4}
-                marginTop={2}
                 marginBottom={2}
-                alignItems="center"
+                marginLeft={2.5}
+                marginRight={2.5}
                 >
-                    <Paper>
-                        <p>
+                    <Paper elevation={4}>
+                        <Typography sx={{p:2, fontSize: '1.2rem'}}>
                             {pets.singlePetReducer.cupsPerFeed} cup of {pets.singlePetReducer.foodDesc} 
-                        </p>
+                        </Typography>
                     </Paper>
                 </Grid>
                 <Grid 
-                container spacing={2}
-                marginLeft={4}
-                marginTop={2}
                 marginBottom={2}
-                alignItems="center"
+                marginLeft={2.5}
+                marginRight={2.5}
                 >
-                    <Paper>
-                        <p>
+                    <Paper elevation={4}>
+                        <Typography sx={{p:2, fontSize: '1.2rem'}}>
                             {pets.singlePetReducer.exerciseMin} daily of the following activities: {pets.singlePetReducer.exerciseDesc} 
-                        </p>
+                        </Typography>
                     </Paper>
                 </Grid>
-                <TaskForm />
-                <PetTasksList id={id}/>         
-            </Box>
+                <Grid 
+                marginBottom={2}
+                marginLeft={2.5}
+                marginRight={2.5}
+                >
+                    <TaskForm />
+                </Grid>
+                <Grid 
+                marginBottom={2}
+                marginLeft={2.5}
+                marginRight={2.5}
+                >
+                    <PetTasksList id={id}/>    
+                </Grid>
+            </Stack>
         </> 
     )
 }

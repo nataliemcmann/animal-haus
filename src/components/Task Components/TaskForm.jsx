@@ -4,9 +4,7 @@ import { useParams } from 'react-router-dom'; //try using userParams to get petI
 //import components
 import SubmitButton from '../Buttons/SubmitButton';
 //import mui components
-import Grid from '@mui/material/Unstable_Grid2';
-import { Paper } from '@mui/material';
-import TextField from '@mui/material/TextField';
+import { Grid, Paper, Typography, TextField } from '@mui/material';
 
 //this will be on PetProfile to start
 function TaskForm () {
@@ -45,17 +43,18 @@ function TaskForm () {
     }
 
     return (
-        <form onSubmit={addTask}>
-            <Grid 
-                container spacing={2}
-                marginLeft={4}
-                marginTop={2}
-                marginBottom={2}
-                alignItems="center"
-            >
-                <Paper>
-                    <Grid marginLeft={10}>
-                        <h3>Add Tasks</h3>
+        <Paper elevation={4}>
+            <form onSubmit={addTask}>
+                    <Grid marginBottom={3}>
+                        <Typography 
+                        variant="h6"
+                        sx={{p: 1.5, 
+                            textAlign: 'center',
+                            color: '#fff',
+                            backgroundColor: '#6c5a8f'}}
+                        >
+                            Add Tasks
+                        </Typography>
                     </Grid>
                     <Grid
                         container spacing={2}
@@ -83,9 +82,8 @@ function TaskForm () {
                     <Grid marginLeft={21}>
                         <SubmitButton />
                     </Grid>
-                </Paper>
-            </Grid>
-        </form>
+            </form>
+        </Paper>
     );
 }
 
