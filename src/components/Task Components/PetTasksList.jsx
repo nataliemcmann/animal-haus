@@ -21,7 +21,7 @@ function PetTasksList({ id }) {
     return(
         <>
             <Paper>
-                <Grid marginBottom={1}>
+                <Grid>
                         <Typography 
                         sx={{p: 1.5, 
                             fontSize: '1.2rem',
@@ -32,7 +32,7 @@ function PetTasksList({ id }) {
                             Current Tasks
                         </Typography>
                     </Grid>
-                <Grid paddingBottom={1}>
+                <Grid>
                     <ul>
                         {tasks.taskPetReducer && tasks.taskPetReducer.map((task) =>{
                             return <TaskItem id = {id} key={task.id} task={task}/>

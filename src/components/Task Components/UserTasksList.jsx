@@ -15,18 +15,26 @@ function UserTasksList({ id }) {
     return (
         <>
             <Grid 
-                marginLeft={4}
+                marginLeft={2}
                 marginTop={2}
                 marginBottom={2}
                 alignItems="center"
             >
-                <Paper sx={{width: 294}}>
-                    <Grid marginLeft={10} paddingTop={1}>
-                        <Typography variant="h5">Your Tasks</Typography>
+                <Paper sx={{width: 310}}>
+                    <Grid>
+                        <Typography 
+                        variant="h5"
+                        sx={{p: 1,
+                            textAlign: 'center',
+                            color: '#fff',
+                            backgroundColor: '#6c5a8f'}}
+                        >
+                            Your Tasks
+                        </Typography>
                     </Grid>
                 </Paper>
-                <Paper sx={{width: 294}}>
-                    <Grid marginTop={1} padding={0.2}>
+                <Paper sx={{width: 310}}>
+                    <Grid>
                         <ul>
                             {tasks.userTasksReducer && tasks.userTasksReducer.map((task) =>{
                                 return <UserTaskItem id = { id } key={task.id} task={task}/>
