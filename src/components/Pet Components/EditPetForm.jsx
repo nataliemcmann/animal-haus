@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 //
 import SubmitButton from '../Buttons/SubmitButton';
+//mui components
+import { Grid, Typography, TextField } from '@mui/material/';
 
 function EditPetForm() {
     //declare dispatch
@@ -77,63 +79,97 @@ function EditPetForm() {
     }
 
     return (
-        <form onSubmit={editPet}>
-            <div>
-                <label htmlFor="petName">
-                    <input
-                        type="text"
-                        value={pets.singlePetReducer.name || ''}
-                        onChange={(event) => changeName(event.target.value)}
-                    />
-                </label>
-            </div>
-            <div>
-                <label htmlFor="petAge">
-                    <input
-                        type="text"
-                        value={pets.singlePetReducer.age || ''}
-                        onChange={(event) => changeAge(event.target.value)}
-                    />
-                </label>
-            </div>
-            <div>
-                <label htmlFor="foodDescription">
-                    <input
-                        type="text"
+        <Grid padding={0.6} paddingTop={4} paddingBottom={4}>
+            <Grid
+            marginLeft={2}
+            marginBottom={2}
+            justifyContent="center"
+            >
+                <Typography variant="h5">Update Pet Information</Typography>
+            </Grid>
+            <form onSubmit={editPet}>
+                <Grid
+                container direction="row"
+                flexWrap="nowrap"
+                justifyContent="space-evenly"
+                marginBottom={1}
+                >
+                        <TextField sx={{width: '45%'}}
+                            id="pet-name"
+                            variant="filled"
+                            label="Pet Name"
+                            size="small"
+                            value={pets.singlePetReducer.name || ''}
+                            onChange={(event) => changeName(event.target.value)}
+                        />
+                        <TextField sx={{width: '45%'}}
+                            id="pet-age"
+                            variant="filled"
+                            label="Pet Age"
+                            size="small"
+                            value={pets.singlePetReducer.age || ''}
+                            onChange={(event) => changeAge(event.target.value)}
+                        />
+                </Grid>
+                <Grid 
+                    flexGrow={1} 
+                    marginTop={2} 
+                    paddingLeft={1}
+                    justifyContent="center"
+                >
+                    <TextField sx={{width: '95%'}}
+                        id="food-description"
+                        variant="filled"
+                        multiline
+                        label="Food Description"
                         value={pets.singlePetReducer.foodDesc || ''}
                         onChange={(event) => changeFoodDesc(event.target.value)}
                     />
-                </label>
-            </div>
-            <div>
-                <label htmlFor="foodAmount">
-                    <input
-                        type="text"
+                </Grid>
+                <Grid
+                container direction="row"
+                flexWrap="nowrap"
+                justifyContent="space-evenly"
+                marginTop={2} 
+                >
+                    <TextField sx={{width: '45%'}}
+                        id="food-amount"
+                        variant="filled"
+                        label="Amount Per Feeding"
+                        type="numeric"
+                        size="small"
                         value={pets.singlePetReducer.cupsPerFeed || ''}
                         onChange={(event) => changeFoodAmount(event.target.value)}
                     />
-                </label>
-            </div>
-            <div>
-                <label htmlFor="exerciseDescription">
-                    <input
-                        type="text"
-                        value={pets.singlePetReducer.exerciseDesc || ''}
-                        onChange={(event) => changeExerciseDesc(event.target.value)}
-                    />
-                </label>
-            </div>
-            <div>
-                <label htmlFor="exerciseDuration">
-                    <input
-                        type="text"
+                    <TextField sx={{width: '45%'}}
+                        id="exercise-time"
+                        variant="filled"
+                        label="Total Exercise Time"
+                        size="small"
                         value={pets.singlePetReducer.exerciseMin || ''}
                         onChange={(event) => changeExerciseAmount(event.target.value)}
                     />
-                </label>
-            </div>
-            <SubmitButton className="petEdit"/>
-        </form>
+                </Grid>            
+                <Grid 
+                    flexGrow={1} 
+                    marginTop={2} 
+                    paddingLeft={1}
+                    justifyContent="center"
+                >
+                    <TextField sx={{width: '95%'}}
+                        id="exercise-description"
+                        variant="filled"
+                        multiline
+                        label="Exercise Description"
+                        value={pets.singlePetReducer.exerciseDesc || ''}
+                        onChange={(event) => changeExerciseDesc(event.target.value)}
+                    />
+                </Grid>
+                <Grid marginTop={2} marginLeft={13}>
+                    <SubmitButton className="petEdit"/>
+                </Grid>
+            </form>
+        </Grid>
     )
 }
 
