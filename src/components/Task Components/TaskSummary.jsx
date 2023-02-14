@@ -20,7 +20,7 @@ function TaskSummary() {
 
     return (
         <>
-            <Stack padding={1}>
+            <Stack padding={0.6} paddingTop={1}>
                 <Grid 
                     marginLeft={4}
                     marginTop={2}
@@ -28,7 +28,7 @@ function TaskSummary() {
                     alignItems="center"
                 >
                     <Paper sx={{width: 300}}>
-                        <Grid marginLeft={5} paddingTop={1}>
+                        <Grid marginLeft={4} paddingTop={1}>
                             <Typography variant="h5">Household Tasks List</Typography>
                         </Grid>
                     </Paper>
