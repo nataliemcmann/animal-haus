@@ -4,7 +4,7 @@ import { useParams, useHistory } from 'react-router-dom';
 //
 import SubmitButton from '../Buttons/SubmitButton';
 //mui components
-import { Grid, Typography, TextField, Input} from '@mui/material/';
+import { Grid, Typography, TextField } from '@mui/material/';
 
 function EditPetForm() {
     //declare dispatch
@@ -91,9 +91,10 @@ function EditPetForm() {
                 <Grid
                 container direction="row"
                 flexWrap="nowrap"
+                justifyContent="space-evenly"
                 marginBottom={1}
                 >
-                        <TextField
+                        <TextField sx={{width: '45%'}}
                             id="pet-name"
                             variant="filled"
                             label="Pet Name"
@@ -101,7 +102,7 @@ function EditPetForm() {
                             value={pets.singlePetReducer.name || ''}
                             onChange={(event) => changeName(event.target.value)}
                         />
-                        <TextField
+                        <TextField sx={{width: '45%'}}
                             id="pet-age"
                             variant="filled"
                             label="Pet Age"
@@ -113,10 +114,10 @@ function EditPetForm() {
                 <Grid 
                     flexGrow={1} 
                     marginTop={2} 
-                    paddingLeft={9.5}
+                    paddingLeft={1}
                     justifyContent="center"
                 >
-                    <TextField 
+                    <TextField sx={{width: '95%'}}
                         id="food-description"
                         variant="filled"
                         multiline
@@ -128,9 +129,10 @@ function EditPetForm() {
                 <Grid
                 container direction="row"
                 flexWrap="nowrap"
+                justifyContent="space-evenly"
                 marginTop={2} 
                 >
-                    <TextField
+                    <TextField sx={{width: '45%'}}
                         id="food-amount"
                         variant="filled"
                         label="Amount Per Feeding"
@@ -139,7 +141,7 @@ function EditPetForm() {
                         value={pets.singlePetReducer.cupsPerFeed || ''}
                         onChange={(event) => changeFoodAmount(event.target.value)}
                     />
-                    <TextField
+                    <TextField sx={{width: '45%'}}
                         id="exercise-time"
                         variant="filled"
                         label="Total Exercise Time"
@@ -151,10 +153,10 @@ function EditPetForm() {
                 <Grid 
                     flexGrow={1} 
                     marginTop={2} 
-                    paddingLeft={9.5}
+                    paddingLeft={1}
                     justifyContent="center"
                 >
-                    <TextField 
+                    <TextField sx={{width: '95%'}}
                         id="exercise-description"
                         variant="filled"
                         multiline
