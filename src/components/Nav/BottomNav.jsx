@@ -19,7 +19,7 @@ function BottomNav() {
   return (
     <div className="nav">
       <Paper 
-        sx={{ position: 'fixed', bottom: 0, left: 0, 
+        sx={{ bottom: 0, left: 0, 
               right: 0 }} 
         elevation={3}
       >
