@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 //custom component
 import SubmitButton from '../Buttons/SubmitButton';
+import FrequencyMenu from './FrequencyMenu';
 //mui component
-import { Stack, Grid, Typography, TextField, Menu, MenuItem } from '@mui/material/';
+import { Stack, Grid, Typography, TextField} from '@mui/material/';
 
 function EditTaskForm() {
     //declare dispatch
@@ -29,13 +30,6 @@ function EditTaskForm() {
     const changeTaskDesc = (value) => {
         dispatch({
             type: 'SET_TASK_DESC',
-            payload: value
-        })
-    }
-
-    const changeFrequency = (value) => {
-        dispatch({
-            type: 'SET_FREQUENCY',
             payload: value
         })
     }
@@ -79,13 +73,7 @@ function EditTaskForm() {
             marginTop={4}
             justifyContent="space-evenly"
             >
-                <label htmlFor="taskFrequency">
-                    <TextField
-                        type="text"
-                        value={tasks.singleTaskReducer.frequency || ''}
-                        onChange={(event) => changeFrequency(event.target.value)}
-                    />
-                </label>
+                <FrequencyMenu task={tasks.singleTaskReducer}/>
             </Grid>
             <Grid
             container spacing={2}
