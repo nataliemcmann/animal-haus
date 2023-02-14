@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import TaskItem from './TaskItem';
 //mui components
 import Grid from '@mui/material/Unstable_Grid2';
-import { Paper } from '@mui/material';
+import { Stack, Paper, Typography } from '@mui/material';
 
 function TaskSummary() {
     //declare dispatch
@@ -20,14 +20,27 @@ function TaskSummary() {
 
     return (
         <>
-            <Grid marginLeft={10} paddingTop={1}>
-                <h2>Household Task List</h2>
-            </Grid>
-            <Grid>
-                {tasks.allTasksReducer && tasks.allTasksReducer.map((task) => {
-                    return <TaskItem key={task.id} task={task}/>
-                })}
-            </Grid>
+            <Stack padding={1}>
+                <Grid 
+                    marginLeft={4}
+                    marginTop={2}
+                    marginBottom={2}
+                    alignItems="center"
+                >
+                    <Paper sx={{width: 300}}>
+                        <Grid marginLeft={5} paddingTop={1}>
+                            <Typography variant="h5">Household Tasks List</Typography>
+                        </Grid>
+                    </Paper>
+                    <Grid>
+                        <ul>
+                        {tasks.allTasksReducer && tasks.allTasksReducer.map((task) => {
+                            return <TaskItem key={task.id} task={task}/>
+                        })}
+                        </ul>
+                    </Grid>
+                </Grid>
+            </Stack>
         </>
     )
 }
