@@ -95,3 +95,7 @@ ul {
   list-style: none;
   padding: 0;
 }
+
+.bordered {
+  border: #6c5a8f solid 1px;
+}

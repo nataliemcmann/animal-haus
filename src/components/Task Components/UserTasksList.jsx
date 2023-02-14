@@ -26,7 +26,7 @@ function UserTasksList({ id }) {
                     </Grid>
                 </Paper>
                 <Paper sx={{width: 294}}>
-                    <Grid paddingBottom={1}>
+                    <Grid marginTop={1} padding={0.2}>
                         <ul>
                             {tasks.userTasksReducer && tasks.userTasksReducer.map((task) =>{
                                 return <UserTaskItem id = { id } key={task.id} task={task}/>
