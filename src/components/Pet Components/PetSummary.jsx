@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import PetItem from './PetItem';
 import AddPetButton from '../Buttons/AddPetButton';
 //mui components
-import { Grid } from '@mui/material';
+import { Stack, Grid, Paper, Typography } from '@mui/material';
 
 
 function PetSummary() {
@@ -24,20 +24,31 @@ function PetSummary() {
 
     return (
         <>
-            <Grid marginLeft={10} paddingTop={1}>
-                <h2>Household Pet List</h2>
-            </Grid>
-            <Grid>
-                {pets.petsReducer && pets.petsReducer.map((pet) => {
-                    return <PetItem key={pet.id} pet={pet}/>
-                })}
-            </Grid>
-            <Grid
-                margin={2}
-                alignItems="center"
-            >
-                <AddPetButton />
-            </Grid>
+            <Stack padding={0.6} paddingTop={1}>
+                <Grid 
+                        marginLeft={4}
+                        marginTop={2}
+                        marginBottom={2}
+                        alignItems="center"
+                >
+                    <Paper sx={{width: 300}}>
+                            <Grid marginLeft={4} paddingTop={1}>
+                                <Typography variant="h5">Household Pet List</Typography>
+                            </Grid>
+                    </Paper>
+                </Grid>
+                <Grid marginLeft={2}>
+                    {pets.petsReducer && pets.petsReducer.map((pet) => {
+                        return <PetItem key={pet.id} pet={pet}/>
+                    })}
+                </Grid>
+                <Grid
+                    margin={2}
+                    marginLeft={17}
+                >
+                    <AddPetButton />
+                </Grid>
+            </Stack>
         </>
     )
 }

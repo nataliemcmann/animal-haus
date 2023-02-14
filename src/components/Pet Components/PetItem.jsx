@@ -2,7 +2,7 @@ import React from 'react';
 //components
 import DetailsButton from '../Buttons/DetailsButton';
 //mui component
-import { Grid, Paper } from '@mui/material';
+import { Grid, Paper, Typography } from '@mui/material';
 
 function PetItem({ pet }) {
 
@@ -13,14 +13,30 @@ function PetItem({ pet }) {
             margin={2}
             alignItems="center"
             >    
-                <Paper>
-                    <h3>{pet.name}</h3> 
-                    <p>Cups of food per meal: {pet.cupsPerFeed}</p>
-                    {pet.exerciseMin && (
-                    <p>Daily Exercise: {pet.exerciseMin}</p>
-                    )
-                    }
+                <Paper sx={{width: 300}} elevation={3}>
+                    <Grid>
+                        <Typography 
+                        variant="h6" 
+                        sx={{p: 1, 
+                            color: '#fff',
+                            backgroundColor: '#6c5a8f', 
+                            fontWeight: 'bold'}}
+                        >
+                            {pet.name}
+                        </Typography>
+                    </Grid>
+                    <Grid padding={1}>
+                        <Typography>Cups of food per meal: {pet.cupsPerFeed}</Typography>
+                    </Grid>
+                    <Grid padding={1}>
+                        {pet.exerciseMin && (
+                        <Typography>Daily Exercise: {pet.exerciseMin}</Typography>
+                        )
+                        }
+                    </Grid>
+                    <Grid padding={1}>
                     <DetailsButton id={pet.id}/>
+                    </Grid>
                 </Paper>
             </Grid>
         </>
