@@ -1,7 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-const addTaskStatus = require('../modules/addTaskStatus');
+const sortTasks = require('../modules/sortTasks');
 
 
 /**
@@ -29,11 +29,12 @@ router.get('/', (req, res) => {
             ON "tasks"."id" = "task_complete"."taskID"
         LEFT JOIN "tasks_user"
             ON "tasks"."id" = "tasks_user"."taskID"
-        GROUP BY "tasks"."id", "pets"."name", "task_complete"."timeCompleted";
+        GROUP BY "tasks"."id", "pets"."name", "task_complete"."timeCompleted"
+        ORDER BY "tasks"."id", "task_complete"."timeCompleted" DESC;
     `;
     pool.query(sqlQuery)
     .then((result) => {
-        let taskArray = addTaskStatus(result.rows);
+        let taskArray = sortTasks(result.rows);
         res.send(taskArray);
     })
     .catch(err => {
@@ -74,7 +75,7 @@ router.get('/user', (req, res) => {
     `;
     pool.query(sqlQuery, sqlValues)
     .then((result) => {
-        let taskArray = addTaskStatus(result.rows);
+        let taskArray = sortTasks(result.rows);
         res.send(taskArray);
     })
     .catch(err => {

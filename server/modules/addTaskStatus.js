@@ -1,7 +1,6 @@
 //function to add task status
 //based on taskCompleted date and current date
 function addTaskStatus(taskArray){
-    let modifiedArray = [];
     //get current date in format "YEAR-MM-DD"
     const currentDate = reformatDate(new Date());
     for (let task of taskArray){ //loop through task objects
@@ -20,11 +19,10 @@ function addTaskStatus(taskArray){
             //if false, the dates match
             task.status = 'true'; //add status property of true
         }
-        modifiedArray.push(task);
     }
-    //retain only unique tasks IDs, only tasks claimed by user
-    let sortArray = retainTasksWithTodaysDateOrNull(modifiedArray);
-    return sortArray;
+    // //retain only unique tasks IDs, only tasks claimed by user
+    // let sortArray = retainTasksWithTodaysDateOrNull(modifiedArray);
+    return taskArray;
 }
 
 //helper function to change sqlDate
@@ -58,18 +56,5 @@ function matchDates(currentDate, sqlDate) {
     //don't match and matchDates will be true
     return arrayMatch.includes(false);
 } 
-
-//function to filter out multiple copies of a task
-    function retainTasksWithTodaysDateOrNull(taskArray) {
-        let uniqueArray = [];
-        for (let i = 0; i < taskArray.length; i++) {
-
-            if (taskArray[i].timeCompleted === null ||
-                taskArray[i].status === 'true') {
-                uniqueArray.push(taskArray[i]);
-            }
-        }
-        return uniqueArray
-    }
 
 module.exports = addTaskStatus;
