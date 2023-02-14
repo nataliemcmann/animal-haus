@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import UserTaskItem from './UserTaskItem';
 //mui components
 import Grid from '@mui/material/Unstable_Grid2';
-import { Paper } from '@mui/material';
+import { Paper, Typography } from '@mui/material';
 
 function UserTasksList({ id }) {
     const tasks = useSelector(store => store.tasks);
@@ -22,8 +22,10 @@ function UserTasksList({ id }) {
             >
                 <Paper sx={{width: 294}}>
                     <Grid marginLeft={10} paddingTop={1}>
-                        <h3>Current Tasks</h3>
+                        <Typography variant="h5">Your Tasks</Typography>
                     </Grid>
+                </Paper>
+                <Paper sx={{width: 294}}>
                     <Grid paddingBottom={1}>
                         <ul>
                             {tasks.userTasksReducer && tasks.userTasksReducer.map((task) =>{
