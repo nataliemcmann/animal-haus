@@ -55,34 +55,34 @@ function EditTaskForm() {
                 <Typography variant="h6">Update task description or frequency!</Typography>
             </Grid>
             <form onSubmit={editTask}>
-            <Grid
-            container spacing={2}
-            marginTop={2}
-            justifyContent="center"
-            >
-                <TextField
-                    id="task-description"
-                    variant="outlined"
-                    label="Task Description"
-                    value={tasks.singleTaskReducer.taskDesc || ''}
-                    onChange={(event) => changeTaskDesc(event.target.value)}
-                />
-            </Grid>
-            <Grid
-            container spacing={2}
-            marginTop={4}
-            justifyContent="space-evenly"
-            >
-                <FrequencyMenu task={tasks.singleTaskReducer}/>
-            </Grid>
-            <Grid
-            container spacing={2}
-            marginTop={4}
-            marginBottom={4}
-            justifyContent="space-evenly"
-            >
-                <SubmitButton className="taskEdit"/>
-            </Grid>
+                <Grid
+                container spacing={2}
+                marginTop={2}
+                justifyContent="center"
+                >
+                    <TextField
+                        id="task-description"
+                        variant="outlined"
+                        label="Task Description"
+                        value={tasks.singleTaskReducer.taskDesc || ''}
+                        onChange={(event) => changeTaskDesc(event.target.value)}
+                    />
+                </Grid>
+                <Grid
+                container spacing={2}
+                marginTop={4}
+                justifyContent="space-evenly"
+                >
+                    <FrequencyMenu task={tasks.singleTaskReducer}/>
+                </Grid>
+                <Grid
+                container spacing={2}
+                marginTop={4}
+                marginBottom={4}
+                justifyContent="space-evenly"
+                >
+                    <SubmitButton className="taskEdit"/>
+                </Grid>
             </form>
         </Stack>
     )

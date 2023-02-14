@@ -22,30 +22,30 @@ function FrequencyMenu({task}) {
 
     return (
         <>
-        <Button
-            variant="contained"
-            color="secondary"
-            size="large"
-            aria-controls={open ? 'basic-menu' : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? 'true' : undefined}
-            onClick={handleClick}
-        >
-            {task.frequency || ''}
-        </Button>
-        <Menu
-        id="basic-menu"
-        anchorEl={anchorElement}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-        'aria-labelledby': 'basic-button',
-        }}
-        >
-            <MenuItem onClick={handleClose}>Daily</MenuItem>
-            {/* <MenuItem onClick={handleClose}>Weekly</MenuItem>
-            <MenuItem onClick={handleClose}>Monthly</MenuItem> */}
-        </Menu>
+            <Button
+                variant="contained"
+                color="secondary"
+                size="large"
+                aria-controls={open ? 'basic-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+                onClick={handleClick}
+            >
+                {task.frequency || ''}
+            </Button>
+            <Menu
+            id="basic-menu"
+            anchorEl={anchorElement}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+            'aria-labelledby': 'basic-button',
+            }}
+            >
+                <MenuItem onClick={handleClose}>Daily</MenuItem>
+                {/* <MenuItem onClick={handleClose}>Weekly</MenuItem>
+                <MenuItem onClick={handleClose}>Monthly</MenuItem> */}
+            </Menu>
         </>
     )
 }
