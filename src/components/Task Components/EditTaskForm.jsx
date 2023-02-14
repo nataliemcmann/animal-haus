@@ -4,7 +4,7 @@ import { useParams, useHistory } from 'react-router-dom';
 //custom component
 import SubmitButton from '../Buttons/SubmitButton';
 //mui component
-import TextField from '@mui/material/TextField';
+import { Stack, Grid, Typography, TextField, Menu, MenuItem } from '@mui/material/';
 
 function EditTaskForm() {
     //declare dispatch
@@ -52,26 +52,51 @@ function EditTaskForm() {
     }
 
     return (
-        <>
-        <h3>This is the task edit form!</h3>
-        <form onSubmit={editTask}>
-            <label htmlFor="taskDescription">
+        <Stack padding={0.6} paddingTop={4}>
+            <Grid
+            marginLeft={2}
+            marginBottom={2}
+            justifyContent="center"
+            >
+                <Typography variant="h6">Update task description or frequency!</Typography>
+            </Grid>
+            <form onSubmit={editTask}>
+            <Grid
+            container spacing={2}
+            marginTop={2}
+            justifyContent="center"
+            >
                 <TextField
-                    type="text"
+                    id="task-description"
+                    variant="outlined"
+                    label="Task Description"
                     value={tasks.singleTaskReducer.taskDesc || ''}
                     onChange={(event) => changeTaskDesc(event.target.value)}
                 />
-            </label>
-            <label htmlFor="taskFrequency">
-                <TextField
-                    type="text"
-                    value={tasks.singleTaskReducer.frequency || ''}
-                    onChange={(event) => changeFrequency(event.target.value)}
-                />
-            </label>
-            <SubmitButton className="taskEdit"/>
-        </form>
-        </>
+            </Grid>
+            <Grid
+            container spacing={2}
+            marginTop={4}
+            justifyContent="space-evenly"
+            >
+                <label htmlFor="taskFrequency">
+                    <TextField
+                        type="text"
+                        value={tasks.singleTaskReducer.frequency || ''}
+                        onChange={(event) => changeFrequency(event.target.value)}
+                    />
+                </label>
+            </Grid>
+            <Grid
+            container spacing={2}
+            marginTop={4}
+            marginBottom={4}
+            justifyContent="space-evenly"
+            >
+                <SubmitButton className="taskEdit"/>
+            </Grid>
+            </form>
+        </Stack>
     )
 }
 
