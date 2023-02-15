@@ -20,8 +20,6 @@ function addTaskStatus(taskArray){
             task.status = 'true'; //add status property of true
         }
     }
-    // //retain only unique tasks IDs, only tasks claimed by user
-    // let sortArray = retainTasksWithTodaysDateOrNull(modifiedArray);
     return taskArray;
 }
 
