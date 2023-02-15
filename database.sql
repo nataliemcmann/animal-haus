@@ -19,7 +19,7 @@ CREATE TABLE "pets" (
     "cupsPerFeed" DECIMAL (3, 2),
     "exerciseDesc" VARCHAR (1000),
     "exerciseMin" VARCHAR (20),
-    "userId" INT REFERENCES "user" NOT NULL ON DELETE CASCADE
+    "userId" INT REFERENCES "user" ON DELETE CASCADE NOT NULL 
 );
 
 -- create tasks table
@@ -27,19 +27,19 @@ CREATE TABLE "tasks" (
 	"id" SERIAL PRIMARY KEY,
 	"taskDesc" VARCHAR (1000) NOT NULL,
 	"frequency" VARCHAR (250),
-	"petID" INT REFERENCES "pets" NOT NULL ON DELETE CASCADE
+	"petID" INT REFERENCES "pets" ON DELETE CASCADE NOT NULL 
 );
 
 -- create task_complete table
 CREATE TABLE "task_complete" (
 	"id" SERIAL PRIMARY KEY,
 	"timeCompleted" DATE NOT NULL DEFAULT CURRENT_DATE, 
-	"taskID" INT REFERENCES "tasks" NOT NULL ON DELETE CASCADE
+	"taskID" INT REFERENCES "tasks" ON DELETE CASCADE NOT NULL 
 );
 
 -- create tasks_user join
 CREATE TABLE "tasks_user" (
 	"id" SERIAL PRIMARY KEY,
-	"taskID" INT REFERENCES "tasks" NOT NULL ON DELETE CASCADE
-	"userID" INT REFERENCES "user" NOT NULL ON DELETE CASCADE
+	"taskID" INT REFERENCES "tasks" ON DELETE CASCADE NOT NULL,
+	"userID" INT REFERENCES "user" ON DELETE CASCADE NOT NULL 
 );
