@@ -11,6 +11,22 @@ import { Grid, Paper, Typography } from '@mui/material';
 function TaskItem({ task }) {
     const user = useSelector((store) => store.user);
 
+    //filter taskUserRelation for unique ids
+    const filterUserID = (array) => {
+        let newArray = [];
+        let userID = 0;
+        for (let obj of array) {
+            if (obj.userID !== userID) {
+                newArray.push(obj);
+                userID = obj.userID;
+            }
+        }
+        return newArray;
+    }
+
+    //create filtered taskUserRelation array
+    const uniqueTURelation = filterUserID(task.taskUserRelation);
+
     return(
             <li> 
                 <Paper sx={{width: 300}} elevation={2} padding={2}>
@@ -29,6 +45,9 @@ function TaskItem({ task }) {
                         </Grid>
                     <Typography>Pet: {task.name}</Typography>
                     <Typography>{task.frequency} Task: {task.taskDesc}</Typography> 
+                    <Typography>Responsible People:
+                        {uniqueTURelation.map(user => <Typography>{user.username}</Typography>)}
+                    </Typography>
                         <Grid
                             container spacing={2}
                             marginTop={1}

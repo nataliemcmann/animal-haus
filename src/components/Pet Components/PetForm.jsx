@@ -109,7 +109,6 @@ function PetForm() {
                         id="food-amount"
                         variant="filled"
                         label="Amount Per Feeding"
-                        type="numeric"
                         size="small"
                         value={cupsPerFeeding}
                         required

@@ -1,6 +1,5 @@
 
 import React from 'react';
-import './TaskItem.css';
 //components
 import DeleteButton from '../Buttons/DeleteButton';
 import UnclaimTaskButton from '../Buttons/UnclaimTaskButton';

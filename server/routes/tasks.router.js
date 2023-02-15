@@ -20,7 +20,8 @@ router.get('/', (req, res) => {
         JSON_AGG(
             JSON_BUILD_OBJECT(
             'claimID', "tasks_user"."id",
-            'userID', "tasks_user"."userID")
+            'userID', "tasks_user"."userID",
+            'username', "user"."username")
         ) AS "taskUserRelation"
     FROM "tasks"
         LEFT JOIN "pets"
@@ -29,8 +30,10 @@ router.get('/', (req, res) => {
             ON "tasks"."id" = "task_complete"."taskID"
         LEFT JOIN "tasks_user"
             ON "tasks"."id" = "tasks_user"."taskID"
+        LEFT JOIN "user"
+        	ON "tasks_user"."userID" = "user"."id"
         GROUP BY "tasks"."id", "pets"."name", "task_complete"."timeCompleted"
-        ORDER BY "tasks"."id", "task_complete"."timeCompleted" DESC;
+	    ORDER BY "tasks"."id", "task_complete"."timeCompleted" DESC;
     `;
     pool.query(sqlQuery)
     .then((result) => {

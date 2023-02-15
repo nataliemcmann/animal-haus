@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 //components
 import DeleteButton from '../Buttons/DeleteButton';
 import ClaimStatusChip from './ClaimStatusChip';
@@ -7,6 +8,7 @@ import EditButton from '../Buttons/EditButton';
 import { Grid, Typography } from '@mui/material';
 
 function PetTaskItem({task}){
+    const user = useSelector(store => store.user);
 
     return (
         <>
@@ -23,7 +25,7 @@ function PetTaskItem({task}){
                     paddingBottom={1}
                     justifyContent="space-around"
                 >
-                    <ClaimStatusChip task={task}/>
+                    <ClaimStatusChip id={user.id} task={task}/>
                     <DeleteButton className="taskDelete" task = {task}/>
                     <EditButton className="taskEdit" task = {task}/>
                 </Grid>
