@@ -37,13 +37,12 @@ function PetSummary() {
                             </Grid>
                     </Paper>
                 </Grid>
-                <Grid marginLeft={2}>
+                <Grid marginLeft={2} sx={{width: 300}}>
                     {pets.petsReducer && pets.petsReducer.map((pet) => {
                         return <PetItem key={pet.id} pet={pet}/>
                     })}
                 </Grid>
                 <Grid
-                    margin={2}
                     marginLeft={17}
                 >
                     <AddPetButton />

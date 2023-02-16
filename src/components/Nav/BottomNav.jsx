@@ -17,9 +17,8 @@ function BottomNav() {
   const user = useSelector((store) => store.user);
 
   return (
-    <div className="nav">
       <Paper 
-        sx={{ bottom: 0, left: 0, 
+        sx={{ position: 'fixed', bottom: 0, left: 0, 
               right: 0 }} 
         elevation={3}
       >
@@ -35,7 +34,6 @@ function BottomNav() {
         )}
 
       </Paper>
-    </div>
   );
 }
 
