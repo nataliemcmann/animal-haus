@@ -1,7 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-const rejectUnauthenticated = require('../modules/authentication-middleware')
+const { rejectUnauthenticated } = require('../modules/authentication-middleware')
 
 /**
  * GET route template
@@ -16,7 +16,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     })
     .catch(err => {
         console.log('GET all pets failed', err);
-    })
+    });
 });
 
 //GET/:id route
