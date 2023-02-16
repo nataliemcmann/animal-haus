@@ -43,7 +43,7 @@ router.post('/', (req, res) => {
     const userId = req.user.id;
     //create an array of req.body values plus userIdto inject into the query
     const sqlValues = [req.body.name, req.body.age, 
-                        req.body.foodDesc, req.body.cupsPerFeed,
+                        req.body.foodDesc, req.body.cupsPerFeeding,
                         req.body.exerciseDesc, req.body.exerciseMin,
                         userId];
     //post new pet query                    
@@ -52,10 +52,14 @@ router.post('/', (req, res) => {
         ("name", "age", "foodDesc", "cupsPerFeed",
         "exerciseDesc", "exerciseMin", "userId")
     VALUES
-        ($1, $2, $3, $4, $5, $6, $7);
+        ($1, $2, $3, $4, $5, $6, $7)
+    RETURNING id;
     `;
     pool.query(sqlQuery, sqlValues)
-    .then(() => res.sendStatus(201))
+    .then((result) => {
+        const petID = result.rows[0].id;n
+        res.sendStatus(201)
+    })
     .catch((err) => {
         console.log('Pet creation failed: ', err);
         res.sendStatus(500);

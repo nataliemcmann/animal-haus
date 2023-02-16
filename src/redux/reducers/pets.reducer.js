@@ -1,5 +1,15 @@
 import { combineReducers } from 'redux';
 
+//returning pet id reducer
+const petIDReducer = (state = 0, action) => {
+    switch (action.type) {
+        case 'SET_PET_ID':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 //specific pet reducer
 const singlePetReducer = (state = {}, action) => {
     switch (action.type) {
@@ -38,4 +48,4 @@ const petsReducer = (state = [], action) => {
     }
 }
 
-export default combineReducers({singlePetReducer, petsReducer});
+export default combineReducers({ petIDReducer, singlePetReducer, petsReducer});

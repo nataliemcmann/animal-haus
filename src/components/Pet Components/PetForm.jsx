@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 //import components
 import SubmitButton from '../Buttons/SubmitButton';
 //mui components
@@ -10,9 +11,15 @@ function PetForm() {
     const [name, setName] = useState('');
     const [age, setAge] = useState('');
     const [foodDesc, setFoodDesc] = useState('');
-    const [cupsPerFeeding, setCupsPerFeeding] = useState('');
+    const [cupsPerFeeding, setCupsPerFeeding] = useState(0);
     const [exerciseDesc, setExerciseDesc] = useState('');
     const [exerciseMin, setExerciseMin] = useState('');
+
+    //subscribe to petID
+    // const pets = useSelector(store => store.pets);
+
+    //declare history
+    const history = useHistory();
     
     //declare dispatch
     const dispatch = useDispatch();
@@ -36,7 +43,8 @@ function PetForm() {
         })
         //clear inputs
         clearInputs();
-        //history.push(send to Pet Summary)
+        history.push('/petSummary');
+        // console.log(pets.petIDReducer);
     }
 
     //function to clear inputs
@@ -109,6 +117,7 @@ function PetForm() {
                         id="food-amount"
                         variant="filled"
                         label="Amount Per Feeding"
+                        type="numeric"
                         size="small"
                         value={cupsPerFeeding}
                         required
