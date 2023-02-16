@@ -1,6 +1,7 @@
 import React from 'react';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
+import { useHistory } from 'react-router-dom'
 
 const PurpleButton = styled(Button)({
     boxShadow: 'none',
@@ -24,9 +25,15 @@ const PurpleButton = styled(Button)({
 });
 
 export default function LogInButton() {
+    const history = useHistory;
+    const sendToUser = () => {
+        history.pushState('/user')
+    }
+
     return (
         <PurpleButton 
         variant="contained" size="large" type="submit" aria-label="submit"
+        onClick={sendToUser}
         >
             Log In
         </PurpleButton>
