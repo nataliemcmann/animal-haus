@@ -23,7 +23,6 @@ function TopNav() {
     }
 
     return (
-        <div className="nav">
             <Paper elevation={3}>
                 <Grid
                     container
@@ -49,7 +48,6 @@ function TopNav() {
 
                 </Grid> 
             </Paper>
-        </div>
     )
 }
 
