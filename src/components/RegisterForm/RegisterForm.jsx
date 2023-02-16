@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 //mui components
 import { Grid, Typography, TextField } from '@mui/material';
 import RegisterButton from '../Buttons/RegisterButton';
+import LogInButton from '../Buttons/LogInButton';
 
 function RegisterForm() {
   const [username, setUsername] = useState('');
@@ -28,7 +29,7 @@ function RegisterForm() {
         marginLeft={2}
         justifyContent="center"
       >
-        <Typography variant="h3">Register User</Typography>
+        <Typography variant="h4">Register User</Typography>
         {errors.registrationMessage && (
           <h3 className="alert" role="alert">
             {errors.registrationMessage}
@@ -67,8 +68,24 @@ function RegisterForm() {
               onChange={(event) => setPassword(event.target.value)}
             />
         </Grid>
-        <Grid marginLeft={12}>
-          <RegisterButton />
+        <Grid 
+          container direction="row" 
+          flexWrap="nowrap" 
+          justifyContent="space-evenly">
+          <Grid>
+            <RegisterButton />
+          </Grid>
+          <Grid container direction="column" sx={{width: '40%'}}>
+            <button
+              type="button"
+              className="btn btn_asLink"
+              onClick={() => {
+                history.push('/login');
+              }}
+            >
+              <Typography>Already a Member?</Typography>
+            </button>
+          </Grid>
         </Grid>
       </form>
   );

@@ -1,10 +1,12 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 //mui components
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 function DeleteButton(props) {
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const runDeleteDispatch = () => {
         console.log(props)
@@ -16,6 +18,7 @@ function DeleteButton(props) {
                 payload: idToDelete
             })
             //then history.push to pet summary page
+            history.push('/petSummary')
         } else if (props.className === 'taskDelete') {
             let taskObject = {
                 idToDelete: props.task.id,

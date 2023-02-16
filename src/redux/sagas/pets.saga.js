@@ -6,12 +6,13 @@ function* createPet(action) {
     try{
         const newPet = action.payload;
         yield console.log('New pet to post to database: ', newPet);
-        yield axios({
+        const response = yield axios({
             method: "POST",
             url: "/api/pets",
             data: newPet
         });
         //once get route/sagas is written, yield put to get all pets
+        yield put({ type: 'FETCH_PETS' });
     } catch (error) {
         console.log('Error in createPet: ', error);
     }
@@ -73,6 +74,7 @@ function* deleteAPet(action) {
         yield axios.delete(`/api/pets/${id}`);
         console.log('delete this pet:', id);
         //yield put to get all pets
+        yield put ({ type: 'FETCH_PETS'});
     } catch (error) {
         console.log('Error in deleteAPet: ', error);
     }

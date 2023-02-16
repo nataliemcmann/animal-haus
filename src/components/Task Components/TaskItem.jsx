@@ -45,9 +45,8 @@ function TaskItem({ task }) {
                         </Grid>
                     <Typography>Pet: {task.name}</Typography>
                     <Typography>{task.frequency} Task: {task.taskDesc}</Typography> 
-                    <Typography>Responsible People:
-                        {uniqueTURelation.map(user => <Typography>{user.username}</Typography>)}
-                    </Typography>
+                    <Typography>Responsible People:</Typography>
+                        {uniqueTURelation.map(user =>  <Typography key={user.claimID}>{user.username}</Typography>)}
                         <Grid
                             container spacing={2}
                             marginTop={1}
