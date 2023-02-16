@@ -16,7 +16,7 @@ function PetTaskItem({task}){
                 <Typography 
                 sx={{margin: 1, fontSize: '1.2rem'}}
                 >
-                    {task.frequency} task: {task.taskDesc}
+                    {task.frequency} Task: {task.taskDesc}
                 </Typography>
                 <Grid
                     container spacing={2}

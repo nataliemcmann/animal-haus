@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 //mui components
 import { Grid, Typography, TextField } from '@mui/material';
+//other components
 import RegisterButton from '../Buttons/RegisterButton';
-import LogInButton from '../Buttons/LogInButton';
+
 
 function RegisterForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const registerUser = (event) => {
     event.preventDefault();

@@ -1,9 +1,10 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const rejectUnauthenticated = require('../modules/authentication-middleware')
 
 //POST task-user relation
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
     const sqlValues = [req.body.taskID, req.user.id];
     const sqlQuery = `
     INSERT INTO "tasks_user"
@@ -20,7 +21,7 @@ router.post('/', (req, res) => {
 })
 
 //delete task-user relation
-router.delete('/', (req, res) => {
+router.delete('/', rejectUnauthenticated, (req, res) => {
     const sqlValues = [req.body.claimID]
     const sqlQuery = `
     DELETE FROM "tasks_user"

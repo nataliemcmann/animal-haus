@@ -2,12 +2,13 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 const sortTasks = require('../modules/sortTasks');
+const rejectUnauthenticated = require('../modules/authentication-middleware')
 
 
 /**
  * GET all route 
  */
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
     console.log('getting tasks');
     const sqlQuery = `
     SELECT 
@@ -49,7 +50,7 @@ router.get('/', (req, res) => {
 /**
  * GET by user route 
  */
-router.get('/user', (req, res) => {
+router.get('/user', rejectUnauthenticated, (req, res) => {
     console.log('getting user tasks');
     const sqlValues = [req.user.id]
     const sqlQuery = `
@@ -89,7 +90,7 @@ router.get('/user', (req, res) => {
 /**
  * POST TASK route 
  */
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
     //separate out petID --not sure where this will come from yet
     //sql values contains
     const sqlValues = [req.body.taskDesc, req.body.frequency, req.body.petID];
@@ -109,7 +110,7 @@ router.post('/', (req, res) => {
 });
 
 //Put task by id
-router.put('/:id', (req, res) => {
+router.put('/:id', rejectUnauthenticated, (req, res) => {
     //get id of pet to update
     let idToEdit = req.params.id;
     //grab task object
@@ -134,7 +135,7 @@ router.put('/:id', (req, res) => {
 });
 
 //Delete task by id
-router.delete('/:id', (req, res) => {
+router.delete('/:id', rejectUnauthenticated,(req, res) => {
     const sqlValues = [req.params.id];
     const sqlQuery = `
     DELETE FROM "tasks"
@@ -149,7 +150,7 @@ router.delete('/:id', (req, res) => {
 })
 
 //GET single task
-router.get('/:id', (req, res) => {
+router.get('/:id', rejectUnauthenticated, (req, res) => {
     const sqlValues = [req.params.id];
     const sqlQuery = `
     SELECT * FROM "tasks"
@@ -166,7 +167,7 @@ router.get('/:id', (req, res) => {
 })
 
 //GET by pet id
-router.get('/pet/:petID', (req, res) => {
+router.get('/pet/:petID', rejectUnauthenticated, (req, res) => {
     console.log('getting pet tasks');
     // get specific pet id from params
     const sqlValues = [req.params.petID];

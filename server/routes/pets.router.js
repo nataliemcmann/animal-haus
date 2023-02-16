@@ -1,11 +1,12 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const rejectUnauthenticated = require('../modules/authentication-middleware')
 
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
     const sqlQuery = `
     SELECT * FROM "pets";
     `;
@@ -19,7 +20,7 @@ router.get('/', (req, res) => {
 });
 
 //GET/:id route
-router.get('/:id', (req, res) => {
+router.get('/:id', rejectUnauthenticated, (req, res) => {
     //get specific pet id from params
     const sqlValues = [req.params.id];
     const sqlQuery = `
@@ -38,7 +39,7 @@ router.get('/:id', (req, res) => {
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
     //grab user id from req.user
     const userId = req.user.id;
     //create an array of req.body values plus userIdto inject into the query
@@ -67,7 +68,7 @@ router.post('/', (req, res) => {
 });
 
 //PUT by id route
-router.put('/:id', (req, res) => {
+router.put('/:id', rejectUnauthenticated, (req, res) => {
     //get id of pet to update
     let idToEdit = req.params.id;
     //grab pet object
@@ -97,7 +98,7 @@ router.put('/:id', (req, res) => {
 });
 
 //DELETE by id route
-router.delete('/:id', (req, res) => {
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
     //get id of pet to delete
     const sqlValues = [req.params.id];
     const sqlQuery = `

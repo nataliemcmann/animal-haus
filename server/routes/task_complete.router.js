@@ -1,9 +1,11 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const rejectUnauthenticated = require('../modules/authentication-middleware')
+
 
 //Post task-complete
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
     const sqlValues = [req.body.taskID];
     const sqlQuery = `
     INSERT INTO "task_complete"
