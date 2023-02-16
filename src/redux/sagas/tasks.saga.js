@@ -30,6 +30,8 @@ function* editTask(action) {
             data: editedTask
         });
         yield put({ type: 'FETCH_PET_TASKS', payload: editedTask.petID })
+        yield put({ type: 'FETCH_TASKS' })
+        yield put({ type: 'FETCH_USER_TASKS' })
     } catch (error) {
         console.log('Error in editTask: ', error);
     }
@@ -46,6 +48,8 @@ function* deleteTask(action) {
             url: `/api/tasks/${idToDelete}`
         });
         yield put({ type: 'FETCH_PET_TASKS', payload: taskObject.petID })
+        yield put({ type: 'FETCH_ALL_TASKS' })
+        yield put({ type: 'FETCH_USER_TASKS' })
     } catch (error) {
         console.log('Error in deleteTask', error);
     }
@@ -80,10 +84,8 @@ function* fetchPetTasks(action) {
 }
 
 //GET by userID Saga: will fire on "FETCH_USER_TASKS"
-function* fetchUserTasks(action) {
+function* fetchUserTasks() {
     try {
-        //get id from action object
-        const userID = action.payload;
         //axios get for tasks by petID
         const userTasks = yield axios.get(`api/tasks/user`);
         //make sure data looks correct
@@ -96,7 +98,7 @@ function* fetchUserTasks(action) {
 }
 
 //GET all tasks: will fire on "FETCH_ALL_TASKS"
-function* fetchTasks(action) {
+function* fetchTasks() {
     try {
         //axios get for tasks by petID
         const allTasks = yield axios.get(`api/tasks`);

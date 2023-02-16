@@ -25,6 +25,7 @@ import EditPetForm from '../Pet Components/EditPetForm';
 import EditTaskForm from '../Task Components/EditTaskForm';
 import PetSummary from '../Pet Components/PetSummary';
 import TaskSummary from '../Task Components/TaskSummary';
+import Footer from '../Footer/Footer';
 
 import './App.css';
 
@@ -170,7 +171,7 @@ function App() {
           </Route>
         </Switch>
 
-        
+        <Footer />
         <BottomNav />
       </div>
     </Router>

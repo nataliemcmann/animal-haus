@@ -58,7 +58,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     `;
     pool.query(sqlQuery, sqlValues)
     .then((result) => {
-        const petID = result.rows[0].id;n
+        const petID = result.rows[0].id;
         res.sendStatus(201)
     })
     .catch((err) => {
