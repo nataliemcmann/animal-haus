@@ -1,27 +1,27 @@
 import React from 'react';
-import RegisterForm from '../RegisterForm/RegisterForm';
+import LoginForm from './LoginForm';
 import { useHistory } from 'react-router-dom';
 //mui component
 import { Stack } from '@mui/material';
 
-function RegisterPage() {
+function LoginPage() {
   const history = useHistory();
 
   return (
-    <Stack paddingTop={6}>
-      <RegisterForm />
+      <Stack paddingTop={6}>
+        <LoginForm />
 
           <button
             type="button"
             className="btn btn_asLink"
             onClick={() => {
-              history.push('/login');
+              history.push('/registration');
             }}
           >
-            Login
+            Register
           </button>
         </Stack>
   );
 }
 
-export default RegisterPage;
+export default LoginPage;
