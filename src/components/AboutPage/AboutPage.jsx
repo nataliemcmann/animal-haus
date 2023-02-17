@@ -26,7 +26,14 @@ function AboutPage() {
       <Typography sx={{fontSize: '1.1rem'}}>
         - Thanks to my family, especially Bill, who inspired this application
       </Typography>
-      <Grid container direction="row" justifyContent="space-evenly">
+      <Typography variant="h6" sx={{m:1}}>Connect with Me!</Typography>
+      <Typography sx={{fontSize: '1.1rem'}}>
+        - LinkedIn: natalie-mcmann
+      </Typography>
+      <Typography sx={{fontSize: '1.1rem'}}>
+        - GitHub: nataliemcmann
+      </Typography>
+      <Grid marginTop={1} container direction="row" justifyContent="space-evenly">
         <img alt="dog with bandana" src='./images/howliday_dog.jpeg' className="relative"/>
         <img alt="cat in wild jersery" src='./images/jersey_cat.jpeg' className="relative"/>
       </Grid>
