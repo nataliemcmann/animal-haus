@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import LogOutButton from '../Buttons/LogOutButton';
+import LogOutButton from '../LogOutButton/LogOutButton';
 // import './Nav.css';
 import { useSelector } from 'react-redux';
 //mui components
@@ -32,7 +32,7 @@ function TopNav() {
                 >
                     <Avatar 
                         alt="Animal Haus Logo" 
-                        src='./images/Animal_HAUS.png'
+                        src='./Animal_HAUS.png'
                         sx={{ width: 75, height: 75 }}
                         onClick={sendToLogin}
                     />

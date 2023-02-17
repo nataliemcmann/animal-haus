@@ -15,9 +15,10 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
+import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
-import LoginPage from '../Login/LoginPage';
-import RegisterPage from '../Register/RegisterPage';
+import LoginPage from '../LoginPage/LoginPage';
+import RegisterPage from '../RegisterPage/RegisterPage';
 import PetForm from '../Pet Components/PetForm';
 import PetProfile from '../Pet Components/PetProfile';
 import EditPetForm from '../Pet Components/EditPetForm';
@@ -64,6 +65,14 @@ function App() {
             path="/user"
           >
             <UserPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/info"
+          >
+            <InfoPage />
           </ProtectedRoute>
 
           <ProtectedRoute

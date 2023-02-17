@@ -10,7 +10,7 @@ function AboutPage() {
     <Grid margin={1}>
       <Typography variant="h6" sx={{m:1}}>Technologies:</Typography>
       <Typography sx={{fontSize: '1.1rem'}}>
-        React, Redux, Saga, Node, Express, Passport, Postgres, and Material UI
+        React, Redux, Saga, Node, Express, Passport, Postgres, and Materiul UI
       </Typography>
       <Typography variant="h6" sx={{m:1}}>Future Features:</Typography>
       <Typography sx={{fontSize: '1.1rem'}}>
@@ -26,18 +26,6 @@ function AboutPage() {
       <Typography sx={{fontSize: '1.1rem'}}>
         - Thanks to my family, especially Bill, who inspired this application
       </Typography>
-      <Grid 
-      marginTop={0.8}
-      container direction="row"
-      justifyContent="space-evenly"
-      >
-        <Grid>
-          <img className="relative" src='./images/howliday_dog.jpeg'/>
-        </Grid>
-        <Grid>
-          <img className="relative" src='./images/jersey_cat.jpeg'/>
-        </Grid>
-      </Grid>
     </Grid>
   );
 }

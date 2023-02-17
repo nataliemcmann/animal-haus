@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 // CUSTOM COMPONENTS
-import RegisterForm from '../Register/RegisterForm';
+import RegisterForm from '../RegisterForm/RegisterForm';
 //mui components
 import { Grid, Typography } from '@mui/material';
 
