@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import LogOutButton from '../LogOutButton/LogOutButton';
+import LogOutButton from '../Buttons/LogOutButton';
 // import './Nav.css';
 import { useSelector } from 'react-redux';
 //mui components
