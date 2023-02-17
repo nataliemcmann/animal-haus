@@ -80,6 +80,7 @@ router.get('/user', rejectUnauthenticated, (req, res) => {
     pool.query(sqlQuery, sqlValues)
     .then((result) => {
         let taskArray = sortTasks(result.rows);
+        // console.log(taskArray);
         res.send(taskArray);
     })
     .catch(err => {

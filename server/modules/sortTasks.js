@@ -1,4 +1,3 @@
-const { ViewModuleSharp } = require('@mui/icons-material');
 const addTaskStatus = require('./addTaskStatus');
 
 //function to filter tasks for the user

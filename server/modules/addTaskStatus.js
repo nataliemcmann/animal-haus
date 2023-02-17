@@ -55,4 +55,26 @@ function matchDates(currentDate, sqlDate) {
     return arrayMatch.includes(false);
 } 
 
+//test array
+// let test1 = [
+//     {
+//     id: 7,
+//     taskDesc: 'Feed 7 AM',
+//     frequency: 'Daily',
+//     petID: 1,
+//     timeCompleted: "2023-02-16T06:00:00.000Z",
+//     name: 'Bennett'
+//     },
+//     {
+//     id: 8,
+//     taskDesc: 'Walk',
+//     frequency: 'Daily',
+//     petID: 1,
+//     timeCompleted: "2023-02-16T06:00:00.000Z",
+//     name: 'Bennett'
+//     }
+// ]
+
+// console.log(addTaskStatus(test1))
+
 module.exports = addTaskStatus;
