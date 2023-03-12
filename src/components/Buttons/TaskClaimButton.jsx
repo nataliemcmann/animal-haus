@@ -13,7 +13,7 @@ function TaskClaimButton({task}) {
             taskID: task.id,
             petID: task.petID
         } //need task id for dispatch to re-render petTasks
-        console.log(taskObject);
+        // console.log(taskObject);
         dispatch({
             type: 'ADD_TASK_USER',
             payload: taskObject

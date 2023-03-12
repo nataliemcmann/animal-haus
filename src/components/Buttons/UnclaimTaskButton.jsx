@@ -26,7 +26,7 @@ function UnclaimTaskButton({ task }) {
             claimID: findClaimID(user.id), 
             petID: task.petID
         }
-        console.log(taskObject);
+        // console.log(taskObject);
         dispatch({
             type: 'DELETE_TASK_USER',
             payload: taskObject
