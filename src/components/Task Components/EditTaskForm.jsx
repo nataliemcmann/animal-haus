@@ -19,7 +19,7 @@ function EditTaskForm() {
 
     //fetch a single task's details on page load
     useEffect(() => {
-        console.log(id);
+        // console.log(id);
         dispatch({
             type: 'FETCH_A_TASK',
             payload: id

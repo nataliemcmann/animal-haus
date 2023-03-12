@@ -26,7 +26,7 @@ function TaskForm () {
             frequency,
             petID: id
         }
-        console.log('Data to dispatch: ', taskObject);
+        // console.log('Data to dispatch: ', taskObject);
         //dispatch to saga to post and refresh page
         dispatch({
             type: 'ADD_TASK',
