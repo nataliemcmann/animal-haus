@@ -35,7 +35,7 @@ function PetForm() {
             exerciseDesc,
             exerciseMin
         }
-        console.log('Data to dispatch: ', petObject);
+        // console.log('Data to dispatch: ', petObject);
         //dispatch to sagas
         dispatch({
             type: 'ADD_PET',
