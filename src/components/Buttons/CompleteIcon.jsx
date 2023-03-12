@@ -11,7 +11,7 @@ function CompleteIcon({ task }) {
     //dispatch to task_complete saga
     const markComplete = () => {
         let taskID = task.id
-        console.log(taskID);
+        // console.log(taskID);
         dispatch({
             type: 'ADD_COMPLETE',
             payload: {

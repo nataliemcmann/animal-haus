@@ -18,7 +18,7 @@ function EditPetForm() {
 
     //fetch a pet's details on page load
     useEffect(() => {
-        console.log(id);
+        // console.log(id);
         dispatch({
             type: 'FETCH_PET_DETAILS',
             payload: id

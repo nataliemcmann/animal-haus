@@ -14,7 +14,7 @@ function* createTaskUserClaim(action) {
         yield put({ type: 'FETCH_USER_TASKS', payload: action.payload.userID })
         yield put({ type: 'FETCH_ALL_TASKS' })
     } catch (error) {
-        console.log('Error in createTaskUserClaim: ', error);
+        // console.log('Error in createTaskUserClaim: ', error);
     }
 }
 
@@ -31,7 +31,7 @@ function* deleteTaskUserClaim(action) {
         yield put({ type: 'FETCH_USER_TASKS', payload: action.payload.userID })
         yield put({ type: 'FETCH_ALL_TASKS' })
     } catch (error) {
-        console.log('Error in deleteTaskUserClaim: ', error);
+        // console.log('Error in deleteTaskUserClaim: ', error);
     }
 }
 

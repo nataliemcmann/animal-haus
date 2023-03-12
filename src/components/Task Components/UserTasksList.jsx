@@ -8,9 +8,9 @@ import { Paper, Typography } from '@mui/material';
 function UserTasksList({ id }) {
     const tasks = useSelector(store => store.tasks);
 
-    useEffect(() => {
-        console.log('This is the array of user tasks: ', tasks.userTasksReducer);
-    }, [])
+    // useEffect(() => {
+    //     console.log('This is the array of user tasks: ', tasks.userTasksReducer);
+    // }, [])
 
     return (
         <>

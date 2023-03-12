@@ -5,7 +5,7 @@ import axios from 'axios';
 function* createTask(action) {
     try {
         const newTask = action.payload;
-        yield console.log('New task to post to database: ', newTask);
+        // yield console.log('New task to post to database: ', newTask);
         yield axios ({
             method: "POST",
             url: "/api/tasks",
@@ -14,7 +14,7 @@ function* createTask(action) {
         //yield put to render task list
         yield put({ type: 'FETCH_PET_TASKS', payload: newTask.petID })
     } catch (error) {
-        console.log('Error in createTask: ', error);
+        // console.log('Error in createTask: ', error);
     }
 }
 
@@ -23,7 +23,7 @@ function* editTask(action) {
     try {
         const editedTask = action.payload;
         let idToEdit = editedTask.id
-        yield console.log('Task to edit: ', editedTask);
+        // yield console.log('Task to edit: ', editedTask);
         yield axios ({
             method: "PUT",
             url: `/api/tasks/${idToEdit}`,
@@ -33,7 +33,7 @@ function* editTask(action) {
         yield put({ type: 'FETCH_TASKS' })
         yield put({ type: 'FETCH_USER_TASKS' })
     } catch (error) {
-        console.log('Error in editTask: ', error);
+        // console.log('Error in editTask: ', error);
     }
 }
 
@@ -42,7 +42,7 @@ function* deleteTask(action) {
     try {
         const taskObject = action.payload;
         let idToDelete = taskObject.idToDelete
-        yield console.log('Delete tasks with id: ', idToDelete);
+        // yield console.log('Delete tasks with id: ', idToDelete);
         yield axios ({
             method: "DELETE",
             url: `/api/tasks/${idToDelete}`
@@ -51,7 +51,7 @@ function* deleteTask(action) {
         yield put({ type: 'FETCH_ALL_TASKS' })
         yield put({ type: 'FETCH_USER_TASKS' })
     } catch (error) {
-        console.log('Error in deleteTask', error);
+        // console.log('Error in deleteTask', error);
     }
 }
 
@@ -60,10 +60,10 @@ function* fetchATask(action) {
     try {
         const taskID = action.payload;
         const singleTask = yield axios.get(`api/tasks/${taskID}`)
-        console.log('get a single task', singleTask);
+        // console.log('get a single task', singleTask);
         yield put({type: 'SET_TASK', payload: singleTask.data[0]})
     } catch (error) {
-        console.log('Error in fetchATask', error);
+        // console.log('Error in fetchATask', error);
     }
 }
 
@@ -75,11 +75,11 @@ function* fetchPetTasks(action) {
         //axios get for tasks by petID
         const petTasks = yield axios.get(`api/tasks/pet/${petID}`);
         //make sure data looks correct
-        console.log('get a pets taks', petTasks);
+        // console.log('get a pets taks', petTasks);
         //send data to pet task reducer
         yield put({type: 'SET_PET_TASKS', payload: petTasks.data});
     } catch (error) {
-        console.log('Error in fetchPetTasks: ', error);
+        // console.log('Error in fetchPetTasks: ', error);
     }
 }
 
@@ -89,11 +89,11 @@ function* fetchUserTasks() {
         //axios get for tasks by petID
         const userTasks = yield axios.get(`api/tasks/user`);
         //make sure data looks correct
-        console.log('get a pets task', userTasks);
+        // console.log('get a pets task', userTasks);
         //send data to pet task reducer
         yield put({type: 'SET_USER_TASKS', payload: userTasks.data});
     } catch (error) {
-        console.log('Error in fetchUserTasks: ', error);
+        // console.log('Error in fetchUserTasks: ', error);
     }
 }
 
@@ -103,11 +103,11 @@ function* fetchTasks() {
         //axios get for tasks by petID
         const allTasks = yield axios.get(`api/tasks`);
         //make sure data looks correct
-        console.log('get all tasks');
+        // console.log('get all tasks');
         //send data to pet task reducer
         yield put({type: 'SET_TASKS', payload: allTasks.data});
     } catch (error) {
-        console.log('Error in fetchPetTasks: ', error);
+        // console.log('Error in fetchPetTasks: ', error);
     }
 }
 

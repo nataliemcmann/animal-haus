@@ -11,7 +11,7 @@ function PetTasksList({ id }) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log('This is the array of pet tasks: ', tasks.taskPetReducer);
+        // console.log('This is the array of pet tasks: ', tasks.taskPetReducer);
         dispatch({
             type: 'FETCH_PET_TASKS',
             payload: id

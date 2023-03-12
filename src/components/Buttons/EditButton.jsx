@@ -7,7 +7,7 @@ function EditButton(props) {
     const history = useHistory();
 
     const sendToEditForm = () => {
-        console.log('going to pet edit page')
+        // console.log('going to pet edit page')
         if (props.className === 'petEdit') {
             history.push(`/pet/edit/${props.pet.id}`);
         } else if (props.className === 'taskEdit') {
