@@ -16,7 +16,7 @@ function* createTaskComplete(action){
         })
         yield put({type: 'FETCH_ALL_TASKS'})
     } catch (error) {
-        console.log('Error in createTaskComplete: ', error);
+        // console.log('Error in createTaskComplete: ', error);
     }
 }
 

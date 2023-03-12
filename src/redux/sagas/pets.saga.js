@@ -53,7 +53,7 @@ function* fetchPets() {
 function* editAPet(action) {
     try {
         const editedPet = action.payload;
-        yield console.log('Pet data to update: ', editedPet);
+        // yield console.log('Pet data to update: ', editedPet);
         yield axios({
             method: "PUT",
             url: `/api/pets/${editedPet.id}`,
@@ -61,7 +61,7 @@ function* editAPet(action) {
         })
         yield put({ type: 'FETCH_PET_DETAILS', payload: editedPet.id})
     } catch (error) {
-        console.log('Error in editAPet: ', error);
+        // console.log('Error in editAPet: ', error);
     }
 }
 
@@ -72,11 +72,11 @@ function* deleteAPet(action) {
         const id = action.payload;
         //axios delete by pet id
         yield axios.delete(`/api/pets/${id}`);
-        console.log('delete this pet:', id);
+        // console.log('delete this pet:', id);
         //yield put to get all pets
         yield put ({ type: 'FETCH_PETS'});
     } catch (error) {
-        console.log('Error in deleteAPet: ', error);
+        // console.log('Error in deleteAPet: ', error);
     }
 }
 
