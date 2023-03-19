@@ -2,11 +2,11 @@
 
 Can't remember who last fed Fido? Tired of arguing about who cleans the litter box? Organize your hectic household with Animal Haus!
 
-*add screenshot of landing page
+![screenshot](/documentation/images/home.png)
 
 ## Prerequisites
 
-If not viewing the deployed version of the app on Heroku, you can download and install the app on your local computer.
+If not viewing the deployed version of the app on [Heroku](https://safe-island-91513.herokuapp.com/#/home), you can download and install the app on your local computer. Designed as a mobile application, Animal Haus is best viewed with a screen width of 375px by 667px. 
 
 Before you get started, make sure you have the following software installed:
 
@@ -43,54 +43,52 @@ Before you get started, make sure you have the following software installed:
 
 ## Usage
 
-When a new user registers, they will be taken to the pet summary page and given the option to add or see details of existing pets. At any time, user can click the pawprint on the bottom nav bar to visit this page. 
+When a new user registers, they will be taken to their user page. 
 
-*gif of new user registering and landing on pet page
+![usage](/documentation/images/register.gif)
 
-To add a pet, users must provide a pet name and the pet's food amount at minimum. They can add in details like pet age and more detailed instructions of the pet's food and exercise regime. 
+To add a pet, users must navigate to the pet summary page using the pawprint icon on the bottom navigation bar. The pet summary page displays all pets that are currently in the app. To add a pet, users must provide a pet name and the pet's food amount at minimum. They can add in details like pet age and more detailed instructions of the pet's food and exercise regime. 
 
-*gif of add pet form
+![usage](/documentation/images/addPet.gif)
 
-Once the pet is added, the user is taken back to the pet summary page and they can click on see details to review their new pet's details on the pet profile page. They can edit or delete the pet from this page. They can also create tasks concerning their pet's care on the pet profile page.
+Additionally, on the pet summary page, users can click on see details to review their new pet's details on the pet profile page. They can edit or delete the pet from this page. They can also create, view, and edit tasks concerning their pet's care on the pet profile page.
 
-*gif of view detail page and adding pet tasks
+View Tasks:
+![usage](/documentation/images/viewPet.gif)
 
-Tasks can be viewed by pet *screenshot of task list on pet profile page
-By user *screenshot of task list on user page
-Or by household *screenshot of tasks list on task summary page
+Create A Task:
+![usage](/documentation/images/createTask.gif)
 
-Tasks can be claimed or unclaimed by the user from multiple views (user page, task page, and pet details page), indicating that the user is responsible for the completing the task. 
+Users can claim tasks to signal to other household members that they are responsible for completing that task. 
 
-*gif showing claim/unclaim chip action
+![usage](/documentation/images/claimTask.gif)
 
-Tasks can be edited or deleted as well.
+Once claimed, the tasks will show up on the user page.
 
-*gif show edit and delete actions
+![screenshot](/documentation/images/userPage.png)
 
-Tasks can be marked complete from the user page and the task page. Currently, they cannot be marked uncomplete if someone "completes" one accidentally.
+All tasks for all pets can be viewed in the Household Task Summary page, which users can reach by clicking on the list icon on the bottom navigation bar. On this page, users can see what other household members are responsible for each task. 
 
-*gif marking task complete
+![usage](/documentation/images/householdTaskPage.gif)
 
-When a current user logins, they will see their user page. The user page contains a list of tasks that the user is responsible for completing for certain pets. A new user will see the pet
+Tasks can be claimed or unclaimed by the user from each view-- the user page, the pet details page, or the household task page. Tasks can be edited or deleted in all views as well.
 
-## Production Build
+Tasks can be marked complete from the user page or the task page.
 
-Before pushing to Heroku, run `npm run build` in terminal. This will create a build folder that contains the code Heroku will be pointed at. You can test this build by typing `npm start`. Keep in mind that `npm start` will let you preview the production build but will **not** auto update.
+![usage](/documentation/images/markComplete.gif)
 
-- Start postgres if not running already by using `brew services start postgresql`
-- Run `npm start`
-- Navigate to `localhost:5000`
+## Technologies
+-Javascript -CSS -HTML
 
-## Deployment
+## Acknowledgement
+Thanks to Prime Digital Academy who equipped me with the skills to make this application a reality.
 
-1. Create a new Heroku project
-1. Link the Heroku project to the project GitHub Repo
-1. Create an Heroku Postgres database
-1. Connect to the Heroku Postgres database from Postico
-1. Create the necessary tables
-1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
-1. In the deploy section, select manual deploy
+## Future Updates
+Currently, Animal Haus is lacking a household feature, meaning that all users can add, delete, and edit all pets and tasks. In the near future, I plan to add households, which will allow for heads of households to control who sees their pets and tasks by inviting users to their household with household-specific codes.
 
-## Update Documentation
+Another update will change the task frequency field on task creation from a text input to a menu dropdown and would expand task frequency options from daily to daily, weekly, and monthly. 
 
-Customize this ReadMe and the code comments in this project to read less like a starter repo and more like a project. Here is an example: https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
+And finally, there is no ability to mark a task incomplete if someone "completes" one accidentally. 
+
+## Bug Report
+No known bugs at this time!
