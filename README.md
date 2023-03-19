@@ -51,7 +51,7 @@ To add a pet, users must navigate to the pet summary page using the pawprint ico
 
 ![usage](/documentation/images/addPet.gif)
 
-Additionally, on the pet summary page, users can click on see details to review their new pet's details on the pet profile page. They can edit or delete the pet from this page. They can also create, view, and edit tasks concerning their pet's care on the pet profile page.
+Additionally, on the pet summary page, users can click on see their pet's details on the pet profile page. They can edit or delete the pet from this page. They can also create, view, and edit tasks concerning their pet's care on the pet profile page.
 
 View Tasks:
 ![usage](/documentation/images/viewPet.gif)
