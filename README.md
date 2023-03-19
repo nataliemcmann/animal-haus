@@ -91,4 +91,4 @@ Another update will change the task frequency field on task creation from a text
 And finally, there is no ability to mark a task incomplete if someone "completes" one accidentally. 
 
 ## Bug Report
-No known bugs at this time!
+No known bugs at this time! However, the Heroku server can be quite slow, so if using on Heroku, users may experience a lag between their actions and the site response. So, please be patient!
