@@ -6,7 +6,7 @@ Can't remember who last fed Fido? Tired of arguing about who cleans the litter b
 
 ## Prerequisites
 
-If not viewing the deployed version of the app on [Heroku](https://safe-island-91513.herokuapp.com/#/home), you can download and install the app on your local computer. Designed as a mobile application, Animal Haus is best viewed with a screen width of 375px by 667px. 
+If not viewing the deployed version of [Animal Haus](https://safe-island-91513.herokuapp.com/#/home) on Heroku, you can download and install the app on your local computer. Designed as a mobile application, Animal Haus is best viewed with a screen width of 375px by 667px or a small browser window. 
 
 Before you get started, make sure you have the following software installed:
 
