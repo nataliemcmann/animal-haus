@@ -10,6 +10,21 @@ CREATE TABLE "user" (
     "password" VARCHAR (1000) NOT NULL
 );
 
+-- create household table 
+CREATE TABLE "households" (
+	"id" SERIAL PRIMARY KEY,
+	"adminId" INT REFERENCES "user" ON DELETE CASCADE,
+	"householdCode" VARCHAR (16) NOT NULL
+);
+
+-- create household_user join table
+CREATE TABLE "households_user" (
+	"id" SERIAL PRIMARY KEY,
+	"userId" INT REFERENCES "user" ON DELETE CASCADE NOT NULL,
+	"householdId" INT REFERENCES "households" ON DELETE CASCADE NOT NULL
+);
+
+
 -- create pets table
 CREATE TABLE "pets" (
     "id" SERIAL PRIMARY KEY,
@@ -19,7 +34,7 @@ CREATE TABLE "pets" (
     "cupsPerFeed" DECIMAL (3, 2),
     "exerciseDesc" VARCHAR (1000),
     "exerciseMin" VARCHAR (20),
-    "userId" INT REFERENCES "user" ON DELETE CASCADE NOT NULL 
+    "householdId" INT REFERENCES "households" ON DELETE CASCADE NOT NULL
 );
 
 -- create tasks table
