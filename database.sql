@@ -14,6 +14,7 @@ CREATE TABLE "user" (
 CREATE TABLE "households" (
 	"id" SERIAL PRIMARY KEY,
 	"adminId" INT REFERENCES "user" ON DELETE CASCADE,
+	"householdName" VARCHAR (30) NOT NULL,
 	"householdCode" VARCHAR (16) NOT NULL
 );
 
