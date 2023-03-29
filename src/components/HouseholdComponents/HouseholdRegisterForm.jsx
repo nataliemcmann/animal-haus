@@ -13,8 +13,11 @@ function HouseholdRegisterForm() {
 
     const createHousehold = (event) => {
         event.preventDefault();
-
-        console.log('household created!');
+        let newHousehold = {
+            householdName,
+            householdCode
+        }
+        console.log('household created!', newHousehold);
     }
 
     return (

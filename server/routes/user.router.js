@@ -10,8 +10,27 @@ const router = express.Router();
 
 // Handles Ajax request for user information if user is authenticated
 router.get('/', rejectUnauthenticated, (req, res) => {
-  // Send back user object from the session (previously queried from the database)
-  res.send(req.user);
+  const sqlQuery = `
+    SELECT 
+        "user"."username",
+        "user"."id",
+        "households"."adminId",
+        "households_user"."householdId"
+    FROM "user"
+        LEFT JOIN "households_user"
+          ON "user"."id" = "households_user"."userId"
+        LEFT JOIN "households"
+          ON "households_user"."householdId" = "households"."id"
+    WHERE "user"."id" = $1
+    `;
+    pool.query(sqlQuery, [req.user.id])
+    .then((result) => {
+      res.send(result.rows[0]);
+    })
+    .catch(err => {
+      console.log('GET user info failed', err);
+    })
+  // res.send(req.user);
 });
 
 // Handles POST request with new user data
