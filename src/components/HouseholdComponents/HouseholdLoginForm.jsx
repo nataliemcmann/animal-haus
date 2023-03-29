@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
+import LogInButton from '../Buttons/LogInButton';
 //mui components
 import { Grid, Typography, TextField } from '@mui/material';
 
@@ -22,7 +23,7 @@ function HouseholdLoginForm() {
             marginLeft={2}
             justifyContent="center"
             >
-                <Typography variant="h4">Create a Household</Typography>
+                <Typography variant="h4">Login to an Existing Household</Typography>
             </Grid>
             <Grid
             container spacing={2}
@@ -53,6 +54,9 @@ function HouseholdLoginForm() {
                     value={householdCode}
                     onChange={(event) => setHouseholdCode(event.target.value)}
                     />
+            </Grid>
+            <Grid marginLeft={12}>
+                <LogInButton />
             </Grid>
         </form>
     )

@@ -123,6 +123,14 @@ function App() {
             <HouseholdLoginPage />
           </ProtectedRoute>
 
+          <ProtectedRoute
+            // logged in shows addPetPage else shows LoginPage
+            exact
+            path="/household_registration"
+          >
+            {/* <HouseholdLoginPage /> */}
+          </ProtectedRoute>
+
           <Route
             exact
             path="/login"
