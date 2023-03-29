@@ -28,7 +28,7 @@ export default function CreateHouseholdButton() {
         <PurpleButton 
         variant="contained" size="large" type="submit" aria-label="submit"
         >
-            Create Household
+            Create
         </PurpleButton>
     )
 }

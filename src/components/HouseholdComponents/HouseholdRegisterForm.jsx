@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
+import CreateHouseholdButton from '../Buttons/CreateHouseholdButton';
 //mui components
 import { Grid, Typography, TextField } from '@mui/material';
 
@@ -55,8 +56,10 @@ function HouseholdRegisterForm() {
                 />
         </Grid>
         <Grid marginLeft={12}>
-            <LogInButton />
+            <CreateHouseholdButton />
         </Grid>
     </form>
     )
 }
+
+export default HouseholdRegisterForm;

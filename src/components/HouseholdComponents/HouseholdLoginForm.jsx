@@ -23,7 +23,7 @@ function HouseholdLoginForm() {
             marginLeft={2}
             justifyContent="center"
             >
-                <Typography variant="h4">Login to an Existing Household</Typography>
+                <Typography variant="h4">Join an Existing Household</Typography>
             </Grid>
             <Grid
             container spacing={2}
