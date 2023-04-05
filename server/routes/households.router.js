@@ -7,7 +7,7 @@ const householdStrategy = require('../strategies/households.strategy');
 
 const router = express.Router();
 
-//handles post of new household data
+//handles post of new household data and admin creation
 router.post('/register', (req, res, next) => {
     const adminId = req.user.id;
     const householdName = req.body.householdName;

@@ -1,4 +1,5 @@
-import passportCustom from 'passport-custom';
+const passport = require('passport');
+const passportCustom = require('passport-custom');
 const CustomStrategy = passportCustom.Strategy;
 const encryptLib = require('../modules/encryption');
 const pool = require('../modules/pool');
