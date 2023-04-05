@@ -8,18 +8,30 @@ const householdStrategy = require('../strategies/households.strategy');
 const router = express.Router();
 
 //handles post of new household data and admin creation
-router.post('/register', (req, res, next) => {
+router.post('/register', async (req, res, next) => {
     const adminId = req.user.id;
     const householdName = req.body.householdName;
     const householdCode = encryptLib.encryptPassword(req.body.householdCode);
 
-    const sqlQuery = `
+    const householdQuery = `
+    --Start of transaction
+    BEGIN;
+
     INSERT INTO "households" 
         ("adminId", "householdName", "householdCode")
     VALUES 
         ($1, $2, $3) RETURNING "id";
     `
-    pool.query(sqlQuery, [adminId, householdName, householdCode])
+    const relationQuery = `
+    INSERT INTO "households_user"
+        ("userId", "householdId")
+    VALUES ($1, $2);
+
+    COMMIT;
+    --end of transaction
+    `
+    const response = await pool.query(householdQuery, [adminId, householdName, householdCode]);
+    pool.query(relationQuery, [adminId, response.rows[0].id]) 
     .then(() => res.sendStatus(201))
     .catch((err) => {
         console.log('Household registration failed: ', err);
