@@ -9,6 +9,7 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
+const householdRouter = require('./routes/households.router');
 const petsRouter = require('./routes/pets.router');
 const tasksRouter = require('./routes/tasks.router');
 const taskUserRouter = require('./routes/tasks_user.router');
@@ -27,6 +28,7 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter); //for user data
+app.use('/api/households', householdRouter); //for households data
 app.use('/api/pets', petsRouter); //for pet data
 app.use('/api/tasks', tasksRouter); //for task data
 app.use('/api/tasks_user', taskUserRouter); // for task user relation data

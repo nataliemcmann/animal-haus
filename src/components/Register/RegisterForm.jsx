@@ -24,6 +24,8 @@ function RegisterForm() {
         password: password,
       },
     });
+
+    history.push('/household_login');
   }; // end registerUser
 
   return (

@@ -18,6 +18,8 @@ import UserPage from '../UserPage/UserPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../Login/LoginPage';
 import RegisterPage from '../Register/RegisterPage';
+import HouseholdLoginPage from '../HouseholdComponents/HouseholdLoginPage';
+import HouseholdRegisterPage from '../HouseholdComponents/HouseholdRegisterPage';
 import PetForm from '../Pet Components/PetForm';
 import PetProfile from '../Pet Components/PetProfile';
 import EditPetForm from '../Pet Components/EditPetForm';
@@ -112,6 +114,22 @@ function App() {
             path="/taskSummary"
           >
             <TaskSummary />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows addPetPage else shows LoginPage
+            exact
+            path="/household_login"
+          >
+            <HouseholdLoginPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows addPetPage else shows LoginPage
+            exact
+            path="/household_registration"
+          >
+            <HouseholdRegisterPage />
           </ProtectedRoute>
 
           <Route
