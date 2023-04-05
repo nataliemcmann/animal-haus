@@ -13,10 +13,12 @@ router.post('/register', async (req, res, next) => {
     const householdName = req.body.householdName;
     const householdCode = encryptLib.encryptPassword(req.body.householdCode);
 
-    const householdQuery = `
+    //series of sql queries
+    const beginQuery = `
     --Start of transaction
     BEGIN;
-
+    `
+    const householdQuery = `
     INSERT INTO "households" 
         ("adminId", "householdName", "householdCode")
     VALUES 
@@ -25,17 +27,37 @@ router.post('/register', async (req, res, next) => {
     const relationQuery = `
     INSERT INTO "households_user"
         ("userId", "householdId")
-    VALUES ($1, $2);
+    VALUES ($1, $2);    
+    `
 
+    const commitQuery = `
     COMMIT;
     --end of transaction
     `
-    const response = await pool.query(householdQuery, [adminId, householdName, householdCode]);
-    pool.query(relationQuery, [adminId, response.rows[0].id]) 
+
+    const rollbackQuery = `
+    ROLLBACK;
+    --reverse last transaction
+    `
+
+    pool.query(beginQuery)
+    .then((res) => {
+        return pool.query(householdQuery, [adminId, householdName, householdCode]);
+    })
+    .then ((res) => {
+        return pool.query(relationQuery, [adminId, res.rows[0].id]) 
+    })
+    .then((res) => {
+        return pool.query(commitQuery)
+    })
     .then(() => res.sendStatus(201))
     .catch((err) => {
+        pool.query(rollbackQuery)
         console.log('Household registration failed: ', err);
         res.sendStatus(500);
+    })
+    .catch((err) => {
+        console.log('error rolling back transaction')
     });
 });
 
