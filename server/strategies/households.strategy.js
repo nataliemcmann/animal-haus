@@ -5,7 +5,7 @@ const pool = require('../modules/pool');
 
 // Does actual work of logging in
 passport.use(
-    'local',
+    'custom',
     new CustomStrategy((householdName, householdCode, done) => {
     pool
     .query('SELECT * FROM "households" WHERE householdName = $1', [householdName])
