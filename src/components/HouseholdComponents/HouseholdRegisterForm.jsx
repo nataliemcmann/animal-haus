@@ -16,7 +16,11 @@ function HouseholdRegisterForm() {
         let newHousehold = {
             householdName,
             householdCode
-        }
+        };
+        dispatch({
+            type: 'CREATE_HOUSEHOLD',
+            payload: newHousehold
+        });
         console.log('household created!', newHousehold);
     }
 
