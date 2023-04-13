@@ -15,9 +15,22 @@ function* createHousehold(action) {
     }
 }
 
+//add user to household: will fire on ADD_TO_HOUSEHOLD
+function* addUserToHousehold(action) {
+    try {
+        //sends household info to server
+        yield axios.post('api/households/newMember', action.payload);
+        //re-fetch user info
+        yield put({type: 'FETCH_USER'});
+    } catch (error) {
+        console.log('Error in addUserToHousehold: ', error);
+    }
+}
+
 //listening Saga function
 function* householdSaga() {
     yield takeLatest('CREATE_HOUSEHOLD', createHousehold);
+    yield takeLatest('ADD_TO_HOUSEHOLD', addUserToHousehold);
 }
 
 export default householdSaga;
