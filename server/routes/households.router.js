@@ -62,6 +62,35 @@ router.post('/register', async (req, res, next) => {
     });
 });
 
+//logs in
+router.post('/login', async (req, res) => {
+    const householdName = req.body.householdName;
+    const householdCode = req.body.householdCode;
+    const sqlQuery = `
+        SELECT * FROM "households" WHERE "householdName" = $1
+    `
+    try {
+        const result = await pool.query(sqlQuery, [householdName])
+        const household = result.rows[0];
+        // console.log(household);
+        if (household && encryptLib.comparePassword(householdCode, household.householdCode)) {
+        // All good! Passwords match!
+        res.send(household);
+        } else {
+        // Not good! Household name and code do not match.
+        // done takes an error (null in this case) and a Household (also null in this case)
+        // this will result in the server returning a 401 status code
+        res.sendStatus(401);
+        }
+    } catch (error) {
+        console.log('Error in household login ', error);
+        // done takes an error (we have one) and a Household (null in this case)
+       // this will result in the server returning a 500 status code
+        res.sendStatus(500);
+    }
+});
+
+
 //handles post of new household_user relation (which occurs upon log-in)
 router.post('/newMember', authenticateHousehold('custom'), checkHouseholdRelation, (req, res) => {
     const userId = req.user.id;

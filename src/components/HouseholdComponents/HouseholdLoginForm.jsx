@@ -14,7 +14,7 @@ function HouseholdLoginForm() {
     const householdLogin = (event) => {
         event.preventDefault();
         dispatch({
-            type: 'ADD_TO_HOUSEHOLD', 
+            type: 'LOGIN_HOUSEHOLD', 
             payload: {
                 householdName,
                 householdCode
