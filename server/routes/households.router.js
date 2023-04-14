@@ -1,9 +1,10 @@
 const { sliderClasses } = require('@mui/material');
 const express = require('express');
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
+const { checkHouseholdRelation } = require('../modules/household-login-middleware');
 const encryptLib = require('../modules/encryption');
 const pool = require('../modules/pool');
-const householdStrategy = require('../strategies/households.strategy');
+const { authenticateHousehold } = require('../strategies/households.strategy');
 
 const router = express.Router();
 
@@ -61,10 +62,10 @@ router.post('/register', async (req, res, next) => {
     });
 });
 
-//handles post of new household_user relation
-router.post('/newMember', householdStrategy.authenticate('custom'), (req, res) => {
+//handles post of new household_user relation (which occurs upon log-in)
+router.post('/newMember', authenticateHousehold('custom'), checkHouseholdRelation, (req, res) => {
     const userId = req.user.id;
-    const householdId = req.household.id;
+    const householdId = req.body.id;
 
     const sqlQuery = `
     INSERT INTO "households_user" 
@@ -79,5 +80,7 @@ router.post('/newMember', householdStrategy.authenticate('custom'), (req, res) =
         res.sendStatus(500);
     });
 });
+
+
 
 module.exports = router;

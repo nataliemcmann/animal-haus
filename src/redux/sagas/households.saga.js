@@ -15,6 +15,22 @@ function* createHousehold(action) {
     }
 }
 
+//login to existing household: will fire on LOGIN_HOUSEHOLD
+function* loginHousehold(action) {
+    try {
+        //make a config object to hold credentials
+        const config = {
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true,
+        };
+        //send household credentials to the server
+        yield axios.post('api/households/login', action.payload, config);
+
+    } catch (error) {
+        console.log('Error in loginHousehold: ', error);
+    }
+}
+
 //add user to household: will fire on ADD_TO_HOUSEHOLD
 function* addUserToHousehold(action) {
     try {
@@ -30,6 +46,7 @@ function* addUserToHousehold(action) {
 //listening Saga function
 function* householdSaga() {
     yield takeLatest('CREATE_HOUSEHOLD', createHousehold);
+    yield takeLatest('LOGIN_HOUSEHOLD', loginHousehold);
     yield takeLatest('ADD_TO_HOUSEHOLD', addUserToHousehold);
 }
 
