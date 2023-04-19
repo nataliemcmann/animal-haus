@@ -1,10 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 //mui components
 import EditIcon from '@mui/icons-material/Edit';
 
 function EditButton(props) {
     const history = useHistory();
+
+    const user = useSelector(store => store.user);
 
     const sendToEditForm = () => {
         // console.log('going to pet edit page')
@@ -15,11 +18,15 @@ function EditButton(props) {
         }
     }
 
-    return(
-        <EditIcon onClick={sendToEditForm} color="primary" size="small">
-            Edit
-        </EditIcon>
-    )
+    if (user.id === user.adminId) {
+        return(
+            <EditIcon onClick={sendToEditForm} color="primary" size="small">
+                Edit
+            </EditIcon>
+        )
+    } else {
+        return null
+    }
 }
 
 export default EditButton;
