@@ -26,9 +26,9 @@ function* loginHousehold(action) {
         //send household credentials to the server
         const response = yield axios.post('api/households/login', action.payload, config);
         console.log(response.data);
-        // if (response.data) {
-        //     yield put({ type: 'ADD_TO_HOUSEHOLD', payload: response.data.id})
-        // };
+        if (response.data) {
+            yield put({ type: 'ADD_TO_HOUSEHOLD', payload: response.data})
+        };
     } catch (error) {
         console.log('Error in loginHousehold: ', error);
     }

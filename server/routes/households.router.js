@@ -92,7 +92,7 @@ router.post('/login', async (req, res) => {
 
 
 //handles post of new household_user relation (which occurs upon log-in)
-router.post('/newMember', authenticateHousehold('custom'), checkHouseholdRelation, (req, res) => {
+router.post('/newMember', checkHouseholdRelation, (req, res) => {
     const userId = req.user.id;
     const householdId = req.body.id;
 
