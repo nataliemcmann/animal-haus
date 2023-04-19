@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 //mui components
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
@@ -7,6 +7,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 function DeleteButton(props) {
     const dispatch = useDispatch();
     const history = useHistory();
+    const user = useSelector(store => store.user);
 
     const runDeleteDispatch = () => {
         // console.log(props)
@@ -32,12 +33,15 @@ function DeleteButton(props) {
         }
     }
 
-
+    if (user.id === user.adminId) {
         return(
             <DeleteForeverIcon onClick={runDeleteDispatch} variant="contained"color="error" size="small">
                 Delete
             </DeleteForeverIcon>
         )
+    } else {
+        return null
+    }
 }
 
 export default DeleteButton;
