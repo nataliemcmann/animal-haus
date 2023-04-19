@@ -1,7 +1,8 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-const { rejectUnauthenticated } = require('../modules/authentication-middleware')
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
+const { checkIfAdmin } = require('../modules/admin-action-middleware');
 
 /**
  * GET route template
@@ -39,7 +40,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 /**
  * POST route template
  */
-router.post('/', rejectUnauthenticated, (req, res) => {
+router.post('/', rejectUnauthenticated, checkIfAdmin, (req, res) => {
     //grab user id from req.user
     const householdId = req.user.householdId;
     //create an array of req.body values plus userIdto inject into the query
@@ -68,7 +69,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 });
 
 //PUT by id route
-router.put('/:id', rejectUnauthenticated, (req, res) => {
+router.put('/:id', rejectUnauthenticated, checkIfAdmin, (req, res) => {
     //get id of pet to update
     let idToEdit = req.params.id;
     //grab pet object
@@ -98,7 +99,7 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
 });
 
 //DELETE by id route
-router.delete('/:id', rejectUnauthenticated, (req, res) => {
+router.delete('/:id', rejectUnauthenticated, checkIfAdmin, (req, res) => {
     //get id of pet to delete
     const sqlValues = [req.params.id];
     const sqlQuery = `
