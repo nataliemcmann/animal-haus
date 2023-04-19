@@ -12,11 +12,14 @@ function PetSummary() {
     const dispatch = useDispatch();
     //subscribe to pets reducer
     const pets = useSelector(store => store.pets);
+    //subscribe to user reducer
+    const user = useSelector(store => store.user);
 
     //fetch all pet details upon page load
     useEffect(() => {
         dispatch({
-            type: 'FETCH_PETS'
+            type: 'FETCH_PETS',
+            payload: user.householdId
         });
     }, []);
 

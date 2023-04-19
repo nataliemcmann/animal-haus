@@ -1,16 +1,19 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-const { rejectUnauthenticated } = require('../modules/authentication-middleware')
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
+const { checkIfAdmin } = require('../modules/admin-action-middleware');
 
 /**
  * GET route template
  */
-router.get('/', rejectUnauthenticated, (req, res) => {
+router.get('/household/:id', rejectUnauthenticated, (req, res) => {
+    const householdId = req.params.id;
     const sqlQuery = `
-    SELECT * FROM "pets";
+    SELECT * FROM "pets"
+    WHERE "householdId" = $1;
     `;
-    pool.query(sqlQuery)
+    pool.query(sqlQuery, [householdId])
     .then((result) => {
         res.send(result.rows);
     })
@@ -39,19 +42,17 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 /**
  * POST route template
  */
-router.post('/', rejectUnauthenticated, (req, res) => {
-    //grab user id from req.user
-    const userId = req.user.id;
+router.post('/', rejectUnauthenticated, checkIfAdmin, (req, res) => {
     //create an array of req.body values plus userIdto inject into the query
     const sqlValues = [req.body.name, req.body.age, 
                         req.body.foodDesc, req.body.cupsPerFeeding,
                         req.body.exerciseDesc, req.body.exerciseMin,
-                        userId];
+                        req.body.householdId];
     //post new pet query                    
     const sqlQuery = `
     INSERT INTO "pets"
         ("name", "age", "foodDesc", "cupsPerFeed",
-        "exerciseDesc", "exerciseMin", "userId")
+        "exerciseDesc", "exerciseMin", "householdId")
     VALUES
         ($1, $2, $3, $4, $5, $6, $7)
     RETURNING id;
@@ -68,7 +69,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 });
 
 //PUT by id route
-router.put('/:id', rejectUnauthenticated, (req, res) => {
+router.put('/:id', rejectUnauthenticated, checkIfAdmin, (req, res) => {
     //get id of pet to update
     let idToEdit = req.params.id;
     //grab pet object
@@ -98,7 +99,7 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
 });
 
 //DELETE by id route
-router.delete('/:id', rejectUnauthenticated, (req, res) => {
+router.delete('/:id', rejectUnauthenticated, checkIfAdmin, (req, res) => {
     //get id of pet to delete
     const sqlValues = [req.params.id];
     const sqlQuery = `
