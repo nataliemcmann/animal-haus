@@ -15,7 +15,7 @@ function PetForm() {
     const [exerciseDesc, setExerciseDesc] = useState('');
     const [exerciseMin, setExerciseMin] = useState('');
 
-    subscribe to user
+    // subscribe to user
     const user = useSelector(store => store.user);
 
     //declare history
@@ -34,7 +34,7 @@ function PetForm() {
             cupsPerFeeding,
             exerciseDesc,
             exerciseMin,
-            householdId = user.householdId
+            householdId: user.householdId
         }
         // console.log('Data to dispatch: ', petObject);
         //dispatch to sagas
