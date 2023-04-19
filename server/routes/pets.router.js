@@ -41,17 +41,17 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
  */
 router.post('/', rejectUnauthenticated, (req, res) => {
     //grab user id from req.user
-    const userId = req.user.id;
+    const householdId = req.user.householdId;
     //create an array of req.body values plus userIdto inject into the query
     const sqlValues = [req.body.name, req.body.age, 
                         req.body.foodDesc, req.body.cupsPerFeeding,
                         req.body.exerciseDesc, req.body.exerciseMin,
-                        userId];
+                        householdId];
     //post new pet query                    
     const sqlQuery = `
     INSERT INTO "pets"
         ("name", "age", "foodDesc", "cupsPerFeed",
-        "exerciseDesc", "exerciseMin", "userId")
+        "exerciseDesc", "exerciseMin", "householdId")
     VALUES
         ($1, $2, $3, $4, $5, $6, $7)
     RETURNING id;
