@@ -4,7 +4,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 const { checkHouseholdRelation } = require('../modules/household-login-middleware');
 const encryptLib = require('../modules/encryption');
 const pool = require('../modules/pool');
-const { authenticateHousehold } = require('../strategies/households.strategy');
+
 
 const router = express.Router();
 
