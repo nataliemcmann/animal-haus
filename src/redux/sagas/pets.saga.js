@@ -1,4 +1,4 @@
-import { put, take, takeEvery } from 'redux-saga/effects';
+import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 //POST Saga: will fire on "ADD_PET" actions
