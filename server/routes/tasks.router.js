@@ -2,7 +2,8 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 const sortTasks = require('../modules/sortTasks');
-const { rejectUnauthenticated } = require('../modules/authentication-middleware')
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
+const { checkIfAdmin } = require('../modules/admin-action-middleware');
 
 
 /**
@@ -91,7 +92,7 @@ router.get('/user', rejectUnauthenticated, (req, res) => {
 /**
  * POST TASK route 
  */
-router.post('/', rejectUnauthenticated, (req, res) => {
+router.post('/', rejectUnauthenticated, checkIfAdmin, (req, res) => {
     //separate out petID --not sure where this will come from yet
     //sql values contains
     const sqlValues = [req.body.taskDesc, req.body.frequency, req.body.petID];
