@@ -13,8 +13,15 @@ function HouseholdLoginForm() {
 
     const householdLogin = (event) => {
         event.preventDefault();
-
-        console.log('submit login!');
+        dispatch({
+            type: 'LOGIN_HOUSEHOLD', 
+            payload: {
+                householdName,
+                householdCode
+            }
+        });
+        // dispatch({type: 'ADD_TO_HOUSEHOLD', payload: householdToJoin})
+        console.log('submit household login!');
     }
 
     return (

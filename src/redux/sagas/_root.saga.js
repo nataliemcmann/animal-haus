@@ -6,6 +6,7 @@ import petsSaga from './pets.saga';
 import tasksSaga from './tasks.saga';
 import tasksUserSaga from './tasks_user.saga';
 import taskCompleteSaga from './task_complete.saga';
+import householdSaga from './households.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -22,6 +23,7 @@ export default function* rootSaga() {
     petsSaga(),
     tasksSaga(),
     tasksUserSaga(),
-    taskCompleteSaga()
+    taskCompleteSaga(),
+    householdSaga(),
   ]);
 }
