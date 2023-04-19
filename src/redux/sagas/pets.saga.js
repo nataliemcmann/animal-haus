@@ -37,10 +37,10 @@ function* fetchAPet(action) {
 } 
 
 //Get all Saga: will fire on "FETCH_PETS"
-function* fetchPets() {
+function* fetchPets(action) {
     try {
         //ask for pet data
-        const pets = yield axios.get('/api/pets');
+        const pets = yield axios.get(`/api/pets/household/${action.payload}`);
         console.log('all pet data', pets);
         //once data received, send to petsReducer 
         yield put({ type: 'SET_PETS', payload: pets.data })

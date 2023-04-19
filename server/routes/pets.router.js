@@ -7,11 +7,13 @@ const { checkIfAdmin } = require('../modules/admin-action-middleware');
 /**
  * GET route template
  */
-router.get('/', rejectUnauthenticated, (req, res) => {
+router.get('/household/:id', rejectUnauthenticated, (req, res) => {
+    const householdId = req.params.id;
     const sqlQuery = `
-    SELECT * FROM "pets";
+    SELECT * FROM "pets"
+    WHERE "householdId" = $1;
     `;
-    pool.query(sqlQuery)
+    pool.query(sqlQuery, [householdId])
     .then((result) => {
         res.send(result.rows);
     })
