@@ -84,7 +84,7 @@ Tasks can be marked complete from the user page or the task page.
 Thanks to Prime Digital Academy who equipped me with the skills to make this application a reality.
 
 ## Future Updates
-Currently, Animal Haus is lacking a household feature, meaning that all users can add, delete, and edit all pets and tasks. In the near future, I plan to add households, which will allow for heads of households to control who sees their pets and tasks by inviting users to their household with household-specific codes.
+Currently, Animal Haus is lacking a household feature, meaning that all users can add, delete, and edit all pets and tasks. In the near future, I plan to add households, which will allow for heads of households to control who sees their pets and tasks by allowing new users to login to their household with a household name and password.
 
 Another update will change the task frequency field on task creation from a text input to a menu dropdown and would expand task frequency options from daily to daily, weekly, and monthly. 
 
