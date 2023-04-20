@@ -98,10 +98,10 @@ function* fetchUserTasks() {
 }
 
 //GET all tasks: will fire on "FETCH_ALL_TASKS"
-function* fetchTasks() {
+function* fetchTasks(action) {
     try {
         //axios get for tasks by petID
-        const allTasks = yield axios.get(`api/tasks`);
+        const allTasks = yield axios.get(`api/tasks/household/${action.payload}`);
         //make sure data looks correct
         // console.log('get all tasks');
         //send data to pet task reducer
