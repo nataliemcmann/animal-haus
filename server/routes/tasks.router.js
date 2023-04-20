@@ -9,8 +9,9 @@ const { checkIfAdmin } = require('../modules/admin-action-middleware');
 /**
  * GET all route 
  */
-router.get('/', rejectUnauthenticated, (req, res) => {
+router.get('/household/:id', rejectUnauthenticated, (req, res) => {
     console.log('getting tasks');
+    const householdId = req.params.id;
     const sqlQuery = `
     SELECT 
         "tasks"."id",
@@ -34,10 +35,11 @@ router.get('/', rejectUnauthenticated, (req, res) => {
             ON "tasks"."id" = "tasks_user"."taskID"
         LEFT JOIN "user"
         	ON "tasks_user"."userID" = "user"."id"
+    WHERE "pets"."householdId" = $1
         GROUP BY "tasks"."id", "pets"."name", "task_complete"."timeCompleted"
 	    ORDER BY "tasks"."id", "task_complete"."timeCompleted" DESC;
     `;
-    pool.query(sqlQuery)
+    pool.query(sqlQuery, [householdId])
     .then((result) => {
         let taskArray = sortTasks(result.rows);
         res.send(taskArray);

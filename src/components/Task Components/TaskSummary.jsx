@@ -11,10 +11,13 @@ function TaskSummary() {
     const dispatch = useDispatch();
     //subscribe to tasks reducer
     const tasks = useSelector(store => store.tasks);
+    //subscribe to user reducer
+    const user = useSelector(store => store.user);
 
     useEffect(() => {
         dispatch({
-            type: 'FETCH_ALL_TASKS'
+            type: 'FETCH_ALL_TASKS',
+            payload: user.householdId
         });
     }, [])
 
