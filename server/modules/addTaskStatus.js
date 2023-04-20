@@ -13,9 +13,9 @@ function addTaskStatus(taskArray){
         if (task.frequency === 'Daily') {
             setStatusIfDaily(task, currentDate, sqlDate)
         }
-        //  else if (task.frequnecy === 'Weekly') {
-
-        // }
+         else if (task.frequnecy === 'Weekly') {
+            setStatusIfWeekly(task, currentDate, sqlDate);
+        }
     }
     return taskArray;
 }
@@ -42,7 +42,11 @@ function setStatusIfWeekly(task, currentDate, sqlDate) {
         task.status = 'false'; //add status property of false
     } else {
         //if false, the year and month match
-        if 
+        if (determineWeek) {
+            task.status = 'true';
+        } else {
+            task.status = 'false';
+        }
     }
 }
 
@@ -105,9 +109,9 @@ function determineWeek(currentDate, sqlDate) {
     let taskDay = captureDateNumber(sqlDate);
     let diff = today - taskDay; 
     if (diff <= 7 || diff >= -7) {
-        return true;
+        return true; //task date is within a week of today
     } else {
-        return false;
+        return false; //task date is not within the week
     }
 }
 

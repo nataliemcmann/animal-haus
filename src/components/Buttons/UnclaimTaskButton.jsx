@@ -24,7 +24,8 @@ function UnclaimTaskButton({ task }) {
     const deleteUserClaim = () => {
         let taskObject = {
             claimID: findClaimID(user.id), 
-            petID: task.petID
+            petID: task.petID,
+            householdId: user.householdId
         }
         // console.log(taskObject);
         dispatch({
