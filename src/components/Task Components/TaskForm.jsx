@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'; //try using userParams to get petID
 //import components
 import SubmitButton from '../Buttons/SubmitButton';
+import FrequencyMenu from './FrequencyMenu';
 //import mui components
 import { Grid, Paper, Typography, TextField } from '@mui/material';
 
@@ -18,6 +19,9 @@ function TaskForm () {
     //subscribe to user
     const user = useSelector(store => store.user);
 
+    //subscribe to tasks
+    const tasks = useSelector(store => store.tasks);
+
     //grab pet id from router parameter
     let { id } = useParams();
 
@@ -26,7 +30,7 @@ function TaskForm () {
         event.preventDefault();
         let taskObject = {
             taskDesc,
-            frequency,
+            frequency: tasks.singleTaskReducer.frequency,
             petID: id
         }
         // console.log('Data to dispatch: ', taskObject);
@@ -36,13 +40,8 @@ function TaskForm () {
             payload: taskObject
         })
         //clear inputs
-        clearInputs();
-    }
-
-    //clear inputs
-    const clearInputs = () => {
         setTaskDesc('');
-        setFrequency('');
+
     }
 
 
@@ -76,14 +75,7 @@ function TaskForm () {
                                 required
                                 onChange={(event) => setTaskDesc(event.target.value)}
                             />
-                            <TextField sx={{width: '45%'}}
-                                id="task-frequency"
-                                variant="filled"
-                                label="Frequency"
-                                value={frequency}
-                                required
-                                onChange={(event) => setFrequency(event.target.value)}
-                            />
+                            <FrequencyMenu />
                         </Grid>
                         <Grid marginLeft={16}>
                             <SubmitButton />

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 //mui components
 import { Button, Menu, MenuItem } from '@mui/material';
 
@@ -12,13 +13,32 @@ function FrequencyMenu({task}) {
     const handleClose = () => {
         setAnchorElement(null);
     }
+
+    //declare dispatch'
+    const dispatch = useDispatch();
     
-    // const changeFrequency = (value) => {
-    //     dispatch({
-    //         type: 'SET_FREQUENCY',
-    //         payload: value
-    //     })
-    // }
+    //subscribe to tasks
+    const tasks = useSelector(store => store.tasks);
+
+    //set frequency values
+    const handleDaily = () => {
+        changeFrequency('Daily');
+    }
+
+    const handleWeekly = () => {
+        changeFrequency('Weekly');
+    }
+
+    const handleMonthly = () => {
+        changeFrequency('Monthly');
+    }
+
+    const changeFrequency = (value) => {
+        dispatch({
+            type: 'SET_FREQUENCY',
+            payload: value
+        })
+    }
 
     return (
         <>
@@ -31,7 +51,7 @@ function FrequencyMenu({task}) {
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
             >
-                {task.frequency || ''}
+                {tasks.singleTaskReducer.frequency || 'Daily'}
             </Button>
             <Menu
             id="basic-menu"
@@ -42,9 +62,9 @@ function FrequencyMenu({task}) {
             'aria-labelledby': 'basic-button',
             }}
             >
-                <MenuItem onClick={handleClose}>Daily</MenuItem>
-                {/* <MenuItem onClick={handleClose}>Weekly</MenuItem>
-                <MenuItem onClick={handleClose}>Monthly</MenuItem> */}
+                <MenuItem onClick={handleDaily}>Daily</MenuItem>
+                <MenuItem onClick={handleWeekly}>Weekly</MenuItem>
+                <MenuItem onClick={handleMonthly}>Monthly</MenuItem>
             </Menu>
         </>
     )
