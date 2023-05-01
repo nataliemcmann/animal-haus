@@ -43,15 +43,17 @@ Before you get started, make sure you have the following software installed:
 
 ## Usage
 
-When a new user registers, they will be taken to their user page. 
+When a new user registers, they will be taken to a household login page. From here they can either enter the household name and password provided to them by another user or they can create their own household. Once logged in to a household, the user will remain logged in. If a user creates a household, they are that household's admin and should be mindful to save the household name and password so they can share it with other users.
 
-![usage](/documentation/images/register.gif)
+![screenshot](/documentation/images/joinHousehold.png)
 
-To add a pet, users must navigate to the pet summary page using the pawprint icon on the bottom navigation bar. The pet summary page displays all pets that are currently in the app. To add a pet, users must provide a pet name and the pet's food amount at minimum. They can add in details like pet age and more detailed instructions of the pet's food and exercise regime. 
+After joining or creating a household, the new user is taken to the pet summary page, where they can see pets of that household or, if the new user is an admin, they can add pets to their household.
+
+Admin users can add pets to their household any time by navigating to the pet summary page using the pawprint icon on the bottom navigation bar. The pet summary page displays all pets that are currently in the app. To add a pet, the admin must provide a pet name and the pet's food amount at minimum. They can add in details like pet age and more detailed instructions of the pet's food and exercise regime. 
 
 ![usage](/documentation/images/addPet.gif)
 
-Additionally, on the pet summary page, users can click on see their pet's details on the pet profile page. They can edit or delete the pet from this page. They can also create, view, and edit tasks concerning their pet's care on the pet profile page.
+Additionally, on the pet summary page, all users can click on see their pet's details on the pet profile page. Only admin users can edit or delete the pet from this page. Admin users can also create, view, and edit tasks concerning their pet's care on the pet profile page.
 
 View Tasks:
 ![usage](/documentation/images/viewPet.gif)
@@ -71,7 +73,7 @@ All tasks for all pets can be viewed in the Household Task Summary page, which u
 
 ![usage](/documentation/images/householdTaskPage.gif)
 
-Tasks can be claimed or unclaimed by the user from each view-- the user page, the pet details page, or the household task page. Tasks can be edited or deleted in all views as well.
+Tasks can be claimed or unclaimed by the user from each view-- the user page, the pet details page, or the household task page. Tasks can be edited or deleted by the admin in all views as well.
 
 Tasks can be marked complete from the user page or the task page.
 
@@ -84,11 +86,7 @@ Tasks can be marked complete from the user page or the task page.
 Thanks to Prime Digital Academy who equipped me with the skills to make this application a reality.
 
 ## Future Updates
-Currently, Animal Haus is lacking a household feature, meaning that all users can add, delete, and edit all pets and tasks. In the near future, I plan to add households, which will allow for heads of households to control who sees their pets and tasks by allowing new users to login to their household with a household name and password.
-
-Another update will change the task frequency field on task creation from a text input to a menu dropdown and would expand task frequency options from daily to daily, weekly, and monthly. 
-
-And finally, there is no ability to mark a task incomplete if someone "completes" one accidentally. 
+Currently, this app does not adhere to WCAG guidelines, nor is it particularly forgiving of user error. For example, there is no ability to mark a task incomplete if someone "completes" one accidentally. A future update will include more friction for user actions like completing tasks or deleting tasks and pets. Subsequent updates will also seek to improve WCAG compliance and make the layout responsive to difference screen sizes.  
 
 ## Bug Report
 No known bugs at this time! However, the Heroku server can be quite slow, so if using on Heroku, users may experience a lag between their actions and the site response. So, please be patient!
