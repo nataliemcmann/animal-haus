@@ -11,7 +11,6 @@ import { Grid, Paper, Typography, TextField } from '@mui/material';
 function TaskForm () {
     //state for form inputs
     const [taskDesc, setTaskDesc] = useState('');
-    const [frequency, setFrequency] = useState('');
 
     //declare dispatch
     const dispatch = useDispatch();
