@@ -13,7 +13,7 @@ function addTaskStatus(taskArray){
         if (task.frequency === 'Daily') {
             setStatusIfDaily(task, currentDate, sqlDate)
         }
-         else if (task.frequnecy === 'Weekly') {
+         else if (task.frequency === 'Weekly') {
             setStatusIfWeekly(task, currentDate, sqlDate);
         }
     }
