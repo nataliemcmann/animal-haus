@@ -82,9 +82,9 @@ router.get('/user', rejectUnauthenticated, (req, res) => {
     `;
     pool.query(sqlQuery, sqlValues)
     .then((result) => {
-        console.log(result.rows);
+        // console.log(result.rows);
         let taskArray = sortTasks(result.rows);
-        console.log(taskArray);
+        // console.log(taskArray);
         res.send(taskArray);
     })
     .catch(err => {
