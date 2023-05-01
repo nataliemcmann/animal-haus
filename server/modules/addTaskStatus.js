@@ -15,6 +15,8 @@ function addTaskStatus(taskArray){
         }
          else if (task.frequency === 'Weekly') {
             setStatusIfWeekly(task, currentDate, sqlDate);
+        } else if (task.frequency === 'Monthly') {
+            setStatusIfMonthly(task, currentDate, sqlDate);
         }
     }
     return taskArray;
@@ -47,6 +49,19 @@ function setStatusIfWeekly(task, currentDate, sqlDate) {
         } else {
             task.status = 'false';
         }
+    }
+}
+
+//helper function for monthly frequency
+function setStatusIfMonthly(task, currentDate, sqlDate) {
+    //conditional to see if current date is in same month as sqlDate
+    if (matchYearMonth(currentDate, sqlDate)) {
+        //if matchYearMonth returns true
+        // then currentDate and sqlDate don't match
+        task.status = 'false';
+    } else {
+        //if false, then match
+        task.status = 'true';
     }
 }
 
