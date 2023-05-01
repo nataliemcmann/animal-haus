@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {useSelector} from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import LogInButton from '../Buttons/LogInButton';
 //mui components
 import { Grid, Typography, TextField } from '@mui/material';
@@ -10,6 +10,7 @@ function HouseholdLoginForm() {
     const [householdCode, setHouseholdCode] = useState('');
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const householdLogin = (event) => {
         event.preventDefault();
@@ -22,6 +23,7 @@ function HouseholdLoginForm() {
         });
         // dispatch({type: 'ADD_TO_HOUSEHOLD', payload: householdToJoin})
         console.log('submit household login!');
+        history.push('/petSummary');
     }
 
     return (
