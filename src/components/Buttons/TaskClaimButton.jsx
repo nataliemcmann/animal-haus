@@ -1,5 +1,5 @@
 import React from 'react';
-import {useDispatch } from 'react-redux';
+import {useDispatch, useSelector } from 'react-redux';
 //mui component
 import Chip from '@mui/material/Chip';
 
@@ -7,11 +7,15 @@ function TaskClaimButton({task}) {
     //declare dispatch
     const dispatch = useDispatch();
 
+    //subscribe to user
+    const user = useSelector(store => store.user);
+
     //function to post new user relationship
     const addUserClaim = () => {
         let taskObject = { 
             taskID: task.id,
-            petID: task.petID
+            petID: task.petID,
+            householdId: user.householdId
         } //need task id for dispatch to re-render petTasks
         // console.log(taskObject);
         dispatch({
