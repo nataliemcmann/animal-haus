@@ -39,7 +39,7 @@ const singleTaskReducer = (state = {}, action) => {
             const newFrequency = action.payload;
             return {...state, frequency: newFrequency}
         default: 
-            return state;
+            return {...state, frequency: 'Daily'};
     }
 }
 
